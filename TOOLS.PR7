@@ -1,0 +1,127 @@
+;============================================
+TOOL EMP-3E
+DESCR EMPulse 3E original
+SENS 2; sensors number
+;sensor parameters: name, length, position, current, RRef, NZero, NminC, NmaxC, NminT, NmaxT, ICal(0), ICal(1)
+VS 520 0 1500 1 39 9 24 10 41 66033 3.9038
+SS 220 0 1500 1 43 14 22 15 44 66033 3.9038
+MASK 1
+CHANNELS 20
+;channel records: Name, units, low units, cal coef(0), cal coef(1), description
+SLA mV uV 0 1 VS signal low ampl.
+VLA mV uV 0 1 SS signal low ampl.
+-- mV uV 0 1 VS signal high ampl.
+-- mV uV 0 1 SS signal high ampl.
+
+FX- Gs mGs 0 0.164 Magn.field X sens.
+FX+ Gs mGs 0 -0.164 Magn.field X sens.
+VJE mA uA 0 1 VS exc.current
+SJE mA uA 0 1 SS exc.current
+Tin degC degC 0 1 Internal temperature
+AcX mV uV 452 1 Accelerometer X
+Spd mV uV 0 1 Speed deviation
+VHA mV uV 0 1 VS signal high ampl.
+
+
+FY- Gs mGs 0 0.164 Magn.field Y sens.
+FY+ Gs mGs 0 -0.164 Magn.field Y sens.
+Ubt V mV -2048 0.006357 Battery voltage
+1.8v V mV -2048 0.001 +1.8V power voltage
+Tex degC degC 0 1 External temperature
+AcY mV uV 452 1 Accelerometer Y
+AcZ mV uV 452 1 Accelerometer Z
+SHA mV uV 0 1 SS signal high ampl.
+
+EDSET 1;edit settings
+
+DEFSCR S+DPLL;default cycle
+CLBSHF shift.mc7
+CLBDAC dac.mc7
+
+CRMF 1.3;DMF increase coef
+
+CDMF 0.01;MF derivative shift coef
+;============================================
+TOOL EMP-3N
+DESCR EMPulse 3E original
+SENS 2; sensors number
+;sensor parameters: name, length, position, current, RRef, NZero, NminC, NmaxC, NminT, NmaxT, ICal(0), ICal(1)
+VS 520 0 1500 1 39 9 24 10 41 66033 3.9038
+SS 220 0 1500 1 43 14 22 15 44 66033 3.9038
+MASK 1
+CHANNELS 20
+;channel records: Name, units, low units, cal coef(0), cal coef(1), description
+VLA mV uV 0 1 VS signal low ampl.
+SLA mV uV 0 1 SS signal low ampl.
+VHA mV uV 0 1 VS signal high ampl.
+SHA mV uV 0 1 SS signal high ampl.
+
+FX- Gs mGs 0 -0.164 Magn.field X sens.
+Tin degC degC 0 1 Internal temperature
+SJE mA uA 0 1 SS exc.current
+Spd mV uV 0 1 Speed deviation
+FX+ Gs mGs 0 0.164 Magn.field X sens.
+AcX mV uV 452 1 Accelerometer X
+VJE mA uA 0 1 VS exc.current
+AcZ mV uV 452 1 Accelerometer Z
+
+FY- Gs mGs 0 -0.164 Magn.field Y sens.
+AcY mV uV 452 1 Accelerometer Y
+Ubt V mV -2048 0.006357 Battery voltage
+VUE mV uV 0 1 VS exc.voltage
+3.3v V mV -2048 0.001 +3.3V power voltage
+Tex degC degC 0 1 External temperature
+FY+ Gs mGs 0 0.164 Magn.field Y sens.
+SUE mV uV 0 1 SS exc.voltage
+
+EDSET 1;edit settings
+
+DEFSCR S+DPLL;default cycle
+CLBSHF shift.mc7
+CLBDAC dac.mc7
+
+CRMF 1.3;DMF increase coef
+
+CDMF 0.01;MF derivative shift coef
+;============================================
+TOOL EMP-3U
+DESCR EMPulse 3E original
+SENS 2; sensors number
+;sensor parameters: name, length, position, current, RRef, NZero, NminC, NmaxC, NminT, NmaxT, ICal(0), ICal(1)
+VS 520 0 500 1 39 4 25 10 41 66033 3.9038
+SS 220 0 1000 1 43 8 12 15 44 66033 3.9038
+MASK 1
+CHANNELS 20
+;channel records: Name, units, low units, cal coef(0), cal coef(1), description
+VLA mV uV 0 1 VS signal low ampl.
+SLA mV uV 0 1 SS signal low ampl.
+VHA mV uV 0 1 VS signal high ampl.
+SHA mV uV 0 1 SS signal high ampl.
+
+FX- Gs mGs 0 0.164 Magn.field X sens.
+Tin degC degC 0 1 Internal temperature
+SJE mA uA 0 1 SS exc.current
+Spd mV uV 0 1 Speed deviation
+FX+ Gs mGs 0 0.164 Magn.field X sens.
+AcX mV uV 452 1 Accelerometer X
+VJE mA uA 0 1 VS exc.current
+AcZ mV uV 452 1 Accelerometer Z
+
+FY- Gs mGs 0 0.164 Magn.field Y sens.
+AcY mV uV 452 1 Accelerometer Y
+Ubt V mV -2048 0.006357 Battery voltage
+VUE mV uV 0 1 VS exc.voltage
+3.3v V mV -2048 0.001 +3.3V power voltage
+Tex degC degC 0 1 External temperature
+FY+ Gs mGs 0 0.164 Magn.field Y sens.
+SUE mV uV 0 1 SS exc.voltage
+
+EDSET 1;edit settings
+
+DEFSCR S+DPLL;default cycle
+CLBSHF shift.mc7
+CLBDAC dac.mc7
+
+CRMF 1.3;DMF increase coef
+
+CDMF 0.01;MF derivative shift coef

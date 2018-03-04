@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Device">
+      <UniqueIdentifier>{eb449928-914a-48ad-8643-fc9f259b4dbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Device">
+      <UniqueIdentifier>{0add52c1-28b2-4cca-b882-6334e87069fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{ea46dac1-0e56-414a-9d49-2a0626ed97f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{4e5f5d8e-4033-4c8e-bcaf-d8b604334270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DR7">
+      <UniqueIdentifier>{5b0d70b3-cd33-4dbc-90dd-4a63ec7594ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DR7">
+      <UniqueIdentifier>{361c1f76-3feb-4417-8fec-9014f24e7c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Frames">
+      <UniqueIdentifier>{203edf89-6e75-4515-af7e-c00dd40c50a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Frames">
+      <UniqueIdentifier>{a2988483-e26e-4d7c-a891-ed46206a9d75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ITool">
+      <UniqueIdentifier>{aafa0c7e-4960-46c1-b7f0-9461001eb533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Test">
+      <UniqueIdentifier>{694d0152-57f3-4d7d-9b15-9f287bd4d669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Test">
+      <UniqueIdentifier>{347d37c7-7029-4f6c-9158-53926d40263c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\Interval3E.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\Script3E.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\Cyclogram3E.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\Channel3E.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\Value.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\Calibration.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\MemPack.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DR7\DR7Sample.cpp">
+      <Filter>Source Files\DR7</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DR7\TimeScale.cpp">
+      <Filter>Source Files\DR7</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DR7\DR7Parser.cpp">
+      <Filter>Source Files\DR7</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Test\Test.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\Channel.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frames\Frame.cpp">
+      <Filter>Source Files\Frames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\BufferedFile.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\StreamBuffer.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\IndigoTimer.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frames\Frames.cpp">
+      <Filter>Source Files\Frames</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\MetaInfoStorage.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frames\Frame3E.cpp">
+      <Filter>Source Files\Frames</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\Interval3E.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\Cyclogram3E.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\Script3E.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\Channel3E.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CommonDevice.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\Value.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\Calibration.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\MemPack.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\DR7Sample.h">
+      <Filter>Header Files\DR7</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\itool_classes.h">
+      <Filter>Header Files\ITool</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\TimeScale.h">
+      <Filter>Header Files\DR7</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\DR7Parser.h">
+      <Filter>Header Files\DR7</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\EmPulse3ENotifier.h">
+      <Filter>Header Files\DR7</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Test\Test.h">
+      <Filter>Header Files\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\Channel.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frames\Frame.h">
+      <Filter>Header Files\Frames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\MetaInfo.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\BufferedFile.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\StreamBuffer.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\IndigoTimer.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frames\Frames.h">
+      <Filter>Header Files\Frames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\MetaInfoStorage.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frames\Frame3E.h">
+      <Filter>Header Files\Frames</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
