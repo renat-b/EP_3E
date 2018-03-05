@@ -114,6 +114,9 @@
     <ClCompile Include="src\Frames\Frame3E.cpp">
       <Filter>Source Files\Frames</Filter>
     </ClCompile>
+    <ClCompile Include="src\Device\CyclogramBase.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -190,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="src\Frames\Frame3E.h">
       <Filter>Header Files\Frames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\CyclogramBase.h">
+      <Filter>Header Files\Device</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -47,9 +47,10 @@ uint32_t DR7Sample::LastError()
     return 0;
 }
 
-void DR7Sample::FrameAdd(uint32_t pos_interval, const Frame &frame)
+void DR7Sample::FramesAssign(const Frames &frames)
 {
-    m_frames.Add(pos_interval, frame);
+    m_frames.Clear();
+    m_frames = frames;
 }
 
 bool DR7Sample::ParseHeader()

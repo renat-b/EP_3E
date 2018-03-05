@@ -14,6 +14,9 @@ private:
 public:
     Frames();
     ~Frames();
+    
+    void     operator = (const Frames &other);
+    void     Clear();
 
     uint32_t CountIntervals() const;
     uint32_t CountFrames(uint32_t pos_interval) const;

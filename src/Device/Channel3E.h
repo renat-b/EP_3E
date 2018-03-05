@@ -23,7 +23,7 @@ public:
     ScVar             ScaleTypeGet() const;
     uint32_t          PointStart() const;
     uint32_t          PointCount() const;
-	uint32_t          AmountOfSavingsGet() const;
+    uint32_t          AmountOfSavingsGet() const;
 
 private:
     ChannelMetaInfo3E *MetaInfoGet() const;

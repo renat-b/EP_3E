@@ -95,7 +95,7 @@ bool DR7Parser::ParseCyclogram()
     uint8_t *data = m_stream->GetRawDataPtr(len_cyclo); 
     if (!data)
         return false;
-    bool r = m_cyclogram.Load(data, len_cyclo);
+    bool r = m_cyclogram3E.Load(data, len_cyclo);
     if (!r)
         return false;
 
@@ -154,24 +154,31 @@ void DR7Parser::DR7SampleInit()
     m_dr7_sample.SetNotifier(m_notifier);
     m_dr7_sample.SetStream(m_stream);
     m_dr7_sample.SetCurTime(m_header.StartTime);
+    m_dr7_sample.FramesAssign(m_cyclogram.FramesGet());
 }
 
 void DR7Parser::OnCyclogram()
 {
-    if (!FramesCreate())
+    if (!CyclogramBaseCreate())
         return;
 
     if (!m_notifier)
         return;
 
-    m_notifier->OnCyclogram(m_cyclogram, EmPulse3ENotifier::FLAG_NOTIFY_END);
+    m_notifier->OnCyclogram(m_cyclogram3E, EmPulse3ENotifier::FLAG_NOTIFY_END);
 }
 
-bool DR7Parser::FramesCreate()
+bool DR7Parser::CyclogramBaseCreate()
 {
-    for (uint32_t pos_interval = 0; pos_interval < m_cyclogram.IntervalCount(); pos_interval++)
+    m_cyclogram.Clear();
+
+
+    m_cyclogram.ToolIdSet(0);
+    m_cyclogram.SerNumSet("");
+    
+    for (uint32_t pos_interval = 0; pos_interval < m_cyclogram3E.IntervalCount(); pos_interval++)
     {
-        Script3E &script = m_cyclogram.IntervalGet(pos_interval).ScriptGet();
+        Script3E &script = m_cyclogram3E.IntervalGet(pos_interval).ScriptGet();
         for (uint32_t pos_measure = 0; pos_measure < script.MeasureCount(); pos_measure++)
         {
             Frame frame;
@@ -197,9 +204,12 @@ bool DR7Parser::FramesCreate()
                 if (!frame.ChannelAdd(channel3E.ChannelGet(), val))
                     return false;
             }
-            m_dr7_sample.FrameAdd(pos_interval, frame);
+
+            if (!m_cyclogram.Add(pos_interval, frame))
+                return false;
         }
     }
+    
     return true;
 }
 

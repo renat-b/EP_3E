@@ -87,6 +87,7 @@
     <ClCompile Include="src\Device\Channel.cpp" />
     <ClCompile Include="src\Device\Channel3E.cpp" />
     <ClCompile Include="src\Device\Cyclogram3E.cpp" />
+    <ClCompile Include="src\Device\CyclogramBase.cpp" />
     <ClCompile Include="src\Device\MetaInfoStorage.cpp" />
     <ClCompile Include="src\Device\Script3E.cpp" />
     <ClCompile Include="src\Device\Interval3E.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="src\Device\Calibration.h" />
     <ClInclude Include="src\Device\Channel.h" />
     <ClInclude Include="src\Device\Channel3E.h" />
+    <ClInclude Include="src\Device\CyclogramBase.h" />
     <ClInclude Include="src\Device\MetaInfo.h" />
     <ClInclude Include="src\Device\Cyclogram3E.h" />
     <ClInclude Include="src\Device\MetaInfoStorage.h" />

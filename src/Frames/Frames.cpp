@@ -9,6 +9,17 @@ Frames::~Frames()
 {
 }
 
+void Frames::operator=(const Frames &other)
+{
+    Clear();
+    m_frames = other.m_frames;
+}
+
+void Frames::Clear()
+{
+    m_frames.clear();
+}
+
 uint32_t Frames::CountIntervals() const
 {
     uint32_t count = m_frames.size();

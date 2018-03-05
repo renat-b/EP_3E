@@ -38,7 +38,7 @@ public:
     bool     Parse();
     uint32_t LastError();
 
-    void     FrameAdd(uint32_t pos_interval, const Frame &frame);
+    void     FramesAssign(const Frames &frames);
 
 
 private:

@@ -3,6 +3,7 @@
 #include "..\CommonDevice.h"
 #include "..\Common\StreamBuffer.h"
 #include "..\Device\Cyclogram3E.h"
+#include "..\Device\CyclogramBase.h"
 #include "DR7Sample.h"
 #include "EmPulse3ENotifier.h"
 
@@ -16,7 +17,8 @@ private:
     DR7Header          m_header;
     DR7Sample          m_dr7_sample;
 
-    Cyclogram3E        m_cyclogram;
+    Cyclogram3E        m_cyclogram3E;
+    CyclogramBase      m_cyclogram; 
 
     IStreamBuffer     *m_stream = nullptr;
     EmPulse3ENotifier *m_notifier = nullptr;
@@ -42,6 +44,6 @@ private:
     void   DR7SampleInit();
 
     void   OnCyclogram();
-    bool   FramesCreate();
+    bool   CyclogramBaseCreate();
     void   FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_measure);
 };
