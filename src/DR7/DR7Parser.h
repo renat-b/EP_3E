@@ -4,23 +4,24 @@
 #include "..\Common\StreamBuffer.h"
 #include "..\Device\Cyclogram3E.h"
 #include "..\Device\CyclogramBase.h"
+#include "..\Device\Calibration3E.h"
 #include "DR7Sample.h"
+#include "DV7Sample.h"
 #include "EmPulse3ENotifier.h"
 
 
 class DR7Parser
 {
 private:
-    uint8_t           *m_data = nullptr;
-    uint32_t           m_size = 0;
-
     DR7Header          m_header;
     DR7Sample          m_dr7_sample;
+    DV7Sample          m_dv7_sample;
 
     Cyclogram3E        m_cyclogram3E;
     CyclogramBase      m_cyclogram; 
+    Calibration3E      m_calibration;
 
-    IStreamBuffer     *m_stream = nullptr;
+    IStreamBuffer     *m_stream   = nullptr;
     EmPulse3ENotifier *m_notifier = nullptr;
 
 
@@ -38,10 +39,15 @@ private:
     bool   ParseCyclogram();
     bool   ParseCalibration();
     bool   ParseResource();
-    bool   ParseSamples();
-    bool   ParseSample();
+
+    bool   ParseDR7Samples();
+    bool   ParseDR7Sample();
+    
+    bool   ParseDV7Samples();
+    bool   ParseDV7Sample();
 
     void   DR7SampleInit();
+    void   DV7SampleInit();
 
     void   OnCyclogram();
     bool   CyclogramBaseCreate();

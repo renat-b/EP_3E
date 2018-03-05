@@ -1,5 +1,8 @@
 #pragma once
 
+#include "..\CommonDevice.h"
+
+
 class TimeScale
 {
 private:
@@ -23,7 +26,7 @@ public:
     TimeScale();
     ~TimeScale();
 
-    //bool   AmountOfSavingGet(const DV7Channel3E& channel, uint32_t& amount_of_saving) const;
+    uint32_t   AmountOfPointsGet(ScVar scale, uint32_t num_point) const;
     //bool   GetMs(const DV7Channel3E& channel, double& ms) const;
 
 };

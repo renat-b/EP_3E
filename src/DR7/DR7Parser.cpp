@@ -2,7 +2,7 @@
 #include "DR7Parser.h"
 #include "..\Frames\Frame3E.h"
 
-DR7Parser::DR7Parser() : m_data(nullptr), m_size(0), m_notifier(nullptr), m_stream(nullptr)
+DR7Parser::DR7Parser() : m_notifier(nullptr), m_stream(nullptr)
 {
 
 }
@@ -39,7 +39,7 @@ bool DR7Parser::Parse(IStreamBuffer &stream)
         return false;
 
     // dr7 samples
-    if (!ParseSamples())
+    if (!ParseDR7Samples())
         return false;
 
     return true;
@@ -110,7 +110,11 @@ bool DR7Parser::ParseCalibration()
     if (!m_stream->GetInt16(&len_calib))
         return false;
     
-    if (!m_stream->GetRawDataPtr(len_calib))
+    uint8_t *ptr; 
+    if (!(ptr = m_stream->GetRawDataPtr(len_calib)))
+        return false;
+    
+    if (!m_calibration.Load(ptr, len_calib))
         return false;
 
     return true;
@@ -129,23 +133,48 @@ bool DR7Parser::ParseResource()
     return true;
 }
 
-bool DR7Parser::ParseSamples()
+bool DR7Parser::ParseDR7Samples()
 {
     bool r = true;
 
     DR7SampleInit();
     while (m_stream->GetRemaind())
     {
-        r = ParseSample();
+        r = ParseDR7Sample();
         if (!r)
             break;
     }
     return r;
 }
 
-bool DR7Parser::ParseSample()
+bool DR7Parser::ParseDR7Sample()
 {
     bool r = m_dr7_sample.Parse();
+    return r;
+}
+
+bool DR7Parser::ParseDV7Samples()
+{
+    bool r = true;
+
+    DV7SampleInit();
+    while (m_stream->GetRemaind())
+    {
+        r = ParseDV7Sample();
+        if (!r)
+            break;
+    }
+    return r;
+}
+
+bool DR7Parser::ParseDV7Sample()
+{
+    bool r = m_dv7_sample.Parse();
+    if (!r)
+    {
+        if (m_dv7_sample.LastError() == DV7Sample::ErrorCodeEOF)
+            r = true;
+    }
     return r;
 }
 
@@ -155,6 +184,14 @@ void DR7Parser::DR7SampleInit()
     m_dr7_sample.SetStream(m_stream);
     m_dr7_sample.SetCurTime(m_header.StartTime);
     m_dr7_sample.FramesAssign(m_cyclogram.FramesGet());
+}
+
+void DR7Parser::DV7SampleInit()
+{
+    m_dv7_sample.SetNotifier(m_notifier);
+    m_dv7_sample.SetStream(m_stream);
+    m_dv7_sample.SetParams(m_calibration, m_header.StartTime);
+    m_dv7_sample.FramesAssign(m_cyclogram.FramesGet());
 }
 
 void DR7Parser::OnCyclogram()

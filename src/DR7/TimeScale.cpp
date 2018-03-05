@@ -628,58 +628,58 @@ TimeScale::~TimeScale()
 {
 }
 
-/*!!!
-bool TimeScale::AmountOfSavingGet(const DV7Channel3E& channel, uint32_t& amount_of_saving) const
+uint32_t TimeScale::AmountOfPointsGet(ScVar scale, uint32_t num_point) const
 {
-    amount_of_saving = 0;
-    if (ScVarType0 == channel.ScaleTypeGet())
+    uint32_t amount_of_points = 0;
+
+    if (ScVarType0 == scale)
     {
-        amount_of_saving = channel.AmountOfSavingsGet();
-        return true; 
+        amount_of_points = 0; 
     }
-    else if (channel.ScaleTypeGet() == ScVarType7)
+    else if (scale == ScVarType7)
     {
-        return false;
+        amount_of_points = 0;
     }
-    else if (channel.ScaleTypeGet() == ScVarType1)
+    else if (scale == ScVarType1)
     {
-        if (channel.PointPos() >= _countof(s_scale_16_log))
-            return false;
-        amount_of_saving = s_scale_16_log[channel.PointPos()].amount_of_saving;
+        if (num_point >= _countof(s_scale_16_log))
+            return 0;
+        amount_of_points = s_scale_16_log[num_point].amount_of_saving;
     }
-    else if (channel.ScaleTypeGet() == ScVarType2)
+    else if (scale == ScVarType2)
     {
-        if (channel.PointPos() >= _countof(s_scale_16_log_50Hz))
-            return false;
-        amount_of_saving = s_scale_16_log_50Hz[channel.PointPos()].amount_of_saving;
+        if (num_point >= _countof(s_scale_16_log_50Hz))
+            return 0;
+        amount_of_points = s_scale_16_log_50Hz[num_point].amount_of_saving;
     }
-    else if (channel.ScaleTypeGet() == ScVarType3)
+    else if (scale == ScVarType3)
     {
-        if (channel.PointPos() >= _countof(s_scale_16_log_60Hz))
-            return false;
-        amount_of_saving = s_scale_16_log_60Hz[channel.PointPos()].amount_of_saving;
+        if (num_point >= _countof(s_scale_16_log_60Hz))
+            return 0;
+        amount_of_points = s_scale_16_log_60Hz[num_point].amount_of_saving;
     }
-    else if (channel.ScaleTypeGet() == ScVarType4)
+    else if (scale == ScVarType4)
     {
-        if (channel.PointPos() >= _countof(s_scale_32_log))
-            return false;
-        amount_of_saving = s_scale_32_log[channel.PointPos()].amount_of_saving;
+        if (num_point >= _countof(s_scale_32_log))
+            return 0;
+        amount_of_points = s_scale_32_log[num_point].amount_of_saving;
     }
-    else if (channel.ScaleTypeGet() == ScVarType5)
+    else if (scale == ScVarType5)
     {
-        if (channel.PointPos() >= _countof(s_scale_32_log_50Hz))
-            return false;
-        amount_of_saving = s_scale_32_log_50Hz[channel.PointPos()].amount_of_saving;
+        if (num_point >= _countof(s_scale_32_log_50Hz))
+            return 0;
+        amount_of_points = s_scale_32_log_50Hz[num_point].amount_of_saving;
     }
-    else if (channel.ScaleTypeGet() == ScVarType6)
+    else if (scale == ScVarType6)
     {
-        if (channel.PointPos() >= _countof(s_scale_32_log_60Hz))
-            return false;
-        amount_of_saving = s_scale_32_log_60Hz[channel.PointPos()].amount_of_saving;
+        if (num_point >= _countof(s_scale_32_log_60Hz))
+            return 0;
+        amount_of_points = s_scale_32_log_60Hz[num_point].amount_of_saving;
     }
-    return true;
+    return amount_of_points;
 }
 
+/*!!!
 bool TimeScale::GetMs(const DV7Channel3E& channel, double& ms) const
 {
     ms = 0.0;

@@ -72,9 +72,6 @@
     <ClCompile Include="src\Common\Value.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="src\Device\Calibration.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
     <ClCompile Include="src\Common\MemPack.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
@@ -117,6 +114,12 @@
     <ClCompile Include="src\Device\CyclogramBase.cpp">
       <Filter>Source Files\Device</Filter>
     </ClCompile>
+    <ClCompile Include="src\DR7\DV7Sample.cpp">
+      <Filter>Source Files\DR7</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\Calibration3E.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -142,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="src\Common\Value.h">
       <Filter>Header Files\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\Calibration.h">
-      <Filter>Header Files\Device</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\MemPack.h">
       <Filter>Header Files\Common</Filter>
@@ -195,6 +195,12 @@
       <Filter>Header Files\Frames</Filter>
     </ClInclude>
     <ClInclude Include="src\Device\CyclogramBase.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\DV7Sample.h">
+      <Filter>Header Files\DR7</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\Calibration3E.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
   </ItemGroup>

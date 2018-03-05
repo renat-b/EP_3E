@@ -13,7 +13,11 @@ public:
     };
 
 protected:
-    uint32_t   m_offset_time = 0;
+    uint32_t   m_offset_time      = 0;
+    uint32_t   m_num_points       = 1;
+    uint32_t   m_amount_of_points = 1;
+    ScVar      m_scale            = ScVarType0;
+
 
 public:
     FrameMetaInfo3E();
@@ -28,7 +32,11 @@ public:
     void operator = (const FrameMetaInfo3E& other);
 
     uint32_t   OffsetTimeGet() const;
-    void       Create(const OperationMeasure& measure);
+    ScVar      ScaleGet() const;
+    uint32_t   AmountOfPoints(uint32_t num_point) const;
+    uint32_t   NumPoints() const;
+
+    void       Create(const OperationMeasure &measure);
 };
 
 class Frame3E
@@ -41,4 +49,12 @@ public:
     ~Frame3E();
 
     uint32_t   OffsetTimeGet() const;
+    ScVar      ScaleGet() const;
+    uint32_t   AmountOfPoints(uint32_t num_point) const;
+    uint32_t   NumPoints() const;
+
+    uint32_t       ChannelsCount() const;
+    const Channel &ChannelGet(uint32_t pos) const;
+    const Value   &ValueGet(uint32_t pos) const;
+    Value         &ValueGet(uint32_t pos);
 };

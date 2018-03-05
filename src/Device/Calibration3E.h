@@ -3,7 +3,7 @@
 #include "..\Common\Value.h"
 
 
-class Calibration
+class Calibration3E
 {
 private:
     static float R_REF;
@@ -91,9 +91,9 @@ private:
     CalibrationTable  m_table;
 
 public:
-    Calibration();
-    ~Calibration();
+    Calibration3E();
+    ~Calibration3E();
 
     bool  Load(const uint8_t *data, uint32_t size);
-    bool  Calibrate(uint32_t channel_id, const Value &adc_val, Value &val) const;
+    bool  Calibrate(double &val, uint32_t channel_id, const double &adc_val) const;
 };
