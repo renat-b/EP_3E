@@ -24,7 +24,8 @@ public:
     uint32_t          PointStart() const;
     uint32_t          PointCount() const;
     uint32_t          AmountOfSavingsGet() const;
-
+    bool              IsPositive() const;
+    bool              IsNegative() const;
 private:
     ChannelMetaInfo3E *MetaInfoGet() const;
 };

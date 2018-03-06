@@ -54,6 +54,24 @@ uint32_t Channel3E::AmountOfSavingsGet() const
     return meta->AmountOfSavingsGet();
 }
 
+
+bool Channel3E::IsPositive() const
+{
+    ChannelMetaInfo3E *meta = MetaInfoGet();
+    if (!meta)
+        return false;
+    return meta->ChannelIsPositive();
+}
+
+
+bool Channel3E::IsNegative() const
+{
+    ChannelMetaInfo3E *meta = MetaInfoGet();
+    if (!meta)
+        return false;
+    return meta->ChannelIsNegative();
+}
+
 ChannelMetaInfo3E *Channel3E::MetaInfoGet() const
 {
     ChannelMetaInfo3E *meta = nullptr;
@@ -97,6 +115,9 @@ void ChannelMetaInfo3E::operator=(const ChannelMetaInfo3E& other)
     m_scale_type  = other.m_scale_type;
     m_point_start = other.m_point_start;
     m_point_count = other.m_point_count;
+
+    m_positive_channel = other.m_positive_channel;
+    m_negative_channel = other.m_negative_channel;
 }
 
 ScVar ChannelMetaInfo3E::ScaleTypeGet() const
