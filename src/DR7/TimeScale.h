@@ -27,7 +27,6 @@ public:
     ~TimeScale();
 
     uint32_t   AmountOfPointsGet(ScVar scale, uint32_t num_point) const;
-    //bool   GetMs(const DV7Channel3E& channel, double& ms) const;
-
+    double     MsGet(ScVar scale, uint32_t num_point) const;
 };
 

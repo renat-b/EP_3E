@@ -134,7 +134,10 @@ bool DV7Sample::ParseChannel(Value &value, const Frame3E &frame, const Channel &
     else
     {
         if (!m_stream->GetRawData(&val, sizeof(val)))
+        {
+            m_last_error = LastErrorCodes::ErrorCodeEOF;
             return false;
+        }
 
         d = (double)val / frame.AmountOfPoints(num_point);
         if (!m_calibration.Calibrate(d, channel.IDGet(), d))

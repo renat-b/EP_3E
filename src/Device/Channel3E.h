@@ -24,6 +24,8 @@ public:
     uint32_t          PointStart() const;
     uint32_t          PointCount() const;
     uint32_t          AmountOfSavingsGet() const;
+    double            MsNumPoint(uint32_t num_point) const;
+
     bool              IsPositive() const;
     bool              IsNegative() const;
 private:
@@ -39,7 +41,7 @@ public:
     };
 
 protected:
-    ScVar      m_scale_type  = ScVarType0;
+    ScVar      m_scale  = ScVarType0;
     uint32_t   m_point_start = 0;
     uint32_t   m_point_count = 0;
     uint32_t   m_amount_of_savings = 0;
@@ -64,6 +66,8 @@ public:
     uint32_t          AmountOfSavingsGet() const;
     bool              ChannelIsPositive() const;
     bool              ChannelIsNegative() const;
+    double            MsGet(uint32_t num_point) const;
+
 
     void              Create(const Channel &channel, const OperationMeasure &measure);
     void              PolarFlagAssign(const Channel &channel, const OperationImpulse &impulse);

@@ -54,6 +54,13 @@ uint32_t Channel3E::AmountOfSavingsGet() const
     return meta->AmountOfSavingsGet();
 }
 
+double Channel3E::MsNumPoint(uint32_t num_point) const
+{
+    ChannelMetaInfo3E *meta = MetaInfoGet();
+    if (!meta)
+        return 0.0;
+    return meta->MsGet(num_point);   
+}
 
 bool Channel3E::IsPositive() const
 {
@@ -112,7 +119,7 @@ void ChannelMetaInfo3E::operator=(const ChannelMetaInfo3E& other)
 {
     m_amount_of_savings = other.m_amount_of_savings;
 
-    m_scale_type  = other.m_scale_type;
+    m_scale  = other.m_scale;
     m_point_start = other.m_point_start;
     m_point_count = other.m_point_count;
 
@@ -122,7 +129,7 @@ void ChannelMetaInfo3E::operator=(const ChannelMetaInfo3E& other)
 
 ScVar ChannelMetaInfo3E::ScaleTypeGet() const
 {
-    return m_scale_type;
+    return m_scale;
 }
 
 uint32_t ChannelMetaInfo3E::PointStart() const
@@ -150,6 +157,14 @@ bool ChannelMetaInfo3E::ChannelIsNegative() const
     return m_negative_channel;
 }
 
+double ChannelMetaInfo3E::MsGet(uint32_t num_point) const
+{
+    TimeScale time_scale;
+
+    double ms = time_scale.MsGet(m_scale, num_point);
+    return ms;
+}
+
 void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure &measure)
 {
     m_positive_channel = false;
@@ -158,7 +173,7 @@ void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure &m
     if (channel.SinglePointIs()) // это одинарная точка
     {
         // запомним параметры, шкалу и кол-во накоплений
-        m_scale_type = ScVarType0;
+        m_scale = ScVarType0;
         m_amount_of_savings = measure.n_point.data;
 
         // not used field, assign zero values
@@ -168,7 +183,7 @@ void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure &m
     else // это спад
     {
         // выставим параметры, шкалу, стартовую точку, кол-во точек в спаде        
-        m_scale_type  = measure.sc_var;
+        m_scale  = measure.sc_var;
         m_point_start = measure.b_point.data;
         m_point_count = measure.n_point.data;
 

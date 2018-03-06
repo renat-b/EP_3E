@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
     if (r)
         r = parser.Initialize(&notifier);
     if (r)
-        r = parser.Parse(stream);
+        r = parser.Parse(stream, false);
 
     uint64_t ms = timer.Stop();
     if (r)

@@ -86,6 +86,8 @@ struct CalibrationTable
     float reserved_63           = 0.0; 
 };
 
+private:
+    static const double s_decimal[10];
 
 private:
     CalibrationTable  m_table;
@@ -96,4 +98,7 @@ public:
 
     bool  Load(const uint8_t *data, uint32_t size);
     bool  Calibrate(double &val, uint32_t channel_id, const double &adc_val) const;
+
+private:
+    double __fastcall NormalizeDouble(const double val, UINT digits) const;
 };

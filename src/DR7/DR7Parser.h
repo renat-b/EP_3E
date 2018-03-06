@@ -13,6 +13,13 @@
 class DR7Parser
 {
 private:
+    enum constants
+    {
+        MODE_DR7 = 1,
+        MODE_DV7,
+    };
+
+private:
     DR7Header          m_header;
     DR7Sample          m_dr7_sample;
     DV7Sample          m_dv7_sample;
@@ -24,6 +31,7 @@ private:
     IStreamBuffer     *m_stream   = nullptr;
     EmPulse3ENotifier *m_notifier = nullptr;
 
+    uint32_t           m_mode = MODE_DR7;
 
 public:
     DR7Parser();
@@ -31,7 +39,7 @@ public:
 
     bool   Initialize(EmPulse3ENotifier *notifier);
     
-    bool   Parse(IStreamBuffer &stream);
+    bool   Parse(IStreamBuffer &stream, bool is_dr7 = true);
     //!!!bool   BigFile(const char *path, uint32_t count);
 
 private:
@@ -39,6 +47,7 @@ private:
     bool   ParseCyclogram();
     bool   ParseCalibration();
     bool   ParseResource();
+    bool   ParseSamples();
 
     bool   ParseDR7Samples();
     bool   ParseDR7Sample();
@@ -51,5 +60,5 @@ private:
 
     void   OnCyclogram();
     bool   CyclogramBaseCreate();
-    void   FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_measure);
+    void   FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_measure);
 };

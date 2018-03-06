@@ -18,9 +18,13 @@ bool DR7Parser::Initialize(EmPulse3ENotifier *notifier)
     return true;
 }
 
-bool DR7Parser::Parse(IStreamBuffer &stream)
+bool DR7Parser::Parse(IStreamBuffer &stream, bool is_dr7/* = true */)
 {
     m_stream = &stream;
+    if (is_dr7)
+        m_mode = MODE_DR7;
+    else
+        m_mode = MODE_DV7;
 
     // DR7 header
     if (!ParseHeader())
@@ -38,8 +42,8 @@ bool DR7Parser::Parse(IStreamBuffer &stream)
     if (!ParseResource())
         return false;
 
-    // dr7 samples
-    if (!ParseDR7Samples())
+    // samples
+    if (!ParseSamples())
         return false;
 
     return true;
@@ -133,6 +137,17 @@ bool DR7Parser::ParseResource()
     return true;
 }
 
+bool DR7Parser::ParseSamples()
+{
+    bool r;
+    if (m_mode == MODE_DR7)
+        r = ParseDR7Samples(); 
+    else
+        r = ParseDV7Samples();
+
+    return r;
+}
+
 bool DR7Parser::ParseDR7Samples()
 {
     bool r = true;
@@ -219,7 +234,7 @@ bool DR7Parser::CyclogramBaseCreate()
         for (uint32_t pos_measure = 0; pos_measure < script.MeasureCount(); pos_measure++)
         {
             Frame frame;
-            FrameAssign(frame, script.MeasureGet(pos_measure), pos_measure);
+            FrameAssign(frame, script.MeasureGet(pos_measure), pos_interval, pos_measure);
 
             for (uint32_t pos_channel = 0; pos_channel < script.ChannelCount(pos_measure); pos_channel++)
             {
@@ -250,9 +265,10 @@ bool DR7Parser::CyclogramBaseCreate()
     return true;
 }
 
-void DR7Parser::FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_measure)
+void DR7Parser::FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_measure)
 {
     frame.FrameNumSet(pos_measure);
+    frame.IntervalSet(pos_interval);
 
     FrameMetaInfo3E *meta = nullptr;
     if (frame.MetaInfoGet((IMetaInfo **)&meta, FrameMetaInfo3E::ID_EmPulse3E))

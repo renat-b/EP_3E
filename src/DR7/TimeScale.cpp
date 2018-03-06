@@ -679,54 +679,53 @@ uint32_t TimeScale::AmountOfPointsGet(ScVar scale, uint32_t num_point) const
     return amount_of_points;
 }
 
-/*!!!
-bool TimeScale::GetMs(const DV7Channel3E& channel, double& ms) const
+double TimeScale::MsGet(ScVar scale, uint32_t num_point) const
 {
-    ms = 0.0;
-    if (channel.ScaleTypeGet() == ScVarType0)
+    double ms = 0.0;
+    if (scale == ScVarType0 || scale == ScVarType7)
+        return 0.0;
+
+    if (scale == ScVarType1)
     {
-        return false;
+        if (num_point >= _countof(s_scale_16_log))
+            return 0.0;
+
+        ms = s_scale_16_log[num_point].ms;
     }
-    else if (channel.ScaleTypeGet() == ScVarType7)
+    else if (num_point == ScVarType2)
     {
-        return false;
+        if (num_point >= _countof(s_scale_16_log_50Hz))
+            return 0.0;
+
+        ms = s_scale_16_log_50Hz[num_point].ms;
     }
-    else if (channel.ScaleTypeGet() == ScVarType1)
+    else if (scale == ScVarType3)
     {
-        if (channel.PointPos() >= _countof(s_scale_16_log))
-            return false;
-        ms = s_scale_16_log[channel.PointPos()].ms;
+        if (num_point >= _countof(s_scale_16_log_60Hz))
+            return 0.0;
+
+        ms = s_scale_16_log_60Hz[num_point].ms;
     }
-    else if (channel.ScaleTypeGet() == ScVarType2)
+    else if (scale == ScVarType4)
     {
-        if (channel.PointPos() >= _countof(s_scale_16_log_50Hz))
-            return false;
-        ms = s_scale_16_log_50Hz[channel.PointPos()].ms;
+        if (num_point >= _countof(s_scale_32_log))
+            return 0.0;
+
+        ms = s_scale_32_log[num_point].ms;
     }
-    else if (channel.ScaleTypeGet() == ScVarType3)
+    else if (scale == ScVarType5)
     {
-        if (channel.PointPos() >= _countof(s_scale_16_log_60Hz))
-            return false;
-        ms = s_scale_16_log_60Hz[channel.PointPos()].ms;
+        if (num_point >= _countof(s_scale_32_log_50Hz))
+            return 0.0;
+
+        ms = s_scale_32_log_50Hz[num_point].ms;
     }
-    else if (channel.ScaleTypeGet() == ScVarType4)
+    else if (scale == ScVarType6)
     {
-        if (channel.PointPos() >= _countof(s_scale_32_log))
-            return false;
-        ms = s_scale_32_log[channel.PointPos()].ms;
+        if (num_point >= _countof(s_scale_32_log_60Hz))
+            return 0.0;
+
+        ms = s_scale_32_log_60Hz[num_point].ms;
     }
-    else if (channel.ScaleTypeGet() == ScVarType5)
-    {
-        if (channel.PointPos() >= _countof(s_scale_32_log_50Hz))
-            return false;
-        ms = s_scale_32_log_50Hz[channel.PointPos()].ms;
-    }
-    else if (channel.ScaleTypeGet() == ScVarType6)
-    {
-        if (channel.PointPos() >= _countof(s_scale_32_log_60Hz))
-            return false;
-        ms = s_scale_32_log_60Hz[channel.PointPos()].ms;
-    }
-    return true;
+    return ms;
 }
-*/

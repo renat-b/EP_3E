@@ -35,7 +35,10 @@ IMetaInfo *FrameMetaInfo3E::Copy() const
 
 void FrameMetaInfo3E::operator=(const FrameMetaInfo3E &other)
 {
-    m_offset_time = other.m_offset_time;
+    m_offset_time      = other.m_offset_time;
+    m_num_points       = other.m_num_points;
+    m_amount_of_points = other.m_amount_of_points;
+    m_scale            = other.m_scale;
 }
 
 uint32_t FrameMetaInfo3E::OffsetTimeGet() const
