@@ -8,6 +8,7 @@ class Calibration3E
 private:
     static float R_REF;
 
+#pragma pack(push, 1)
 struct CalibrationTable
 {
     float version    = 1.0;                     // Version of Calibration Table
@@ -85,6 +86,7 @@ struct CalibrationTable
     float reserved_62           = 0.0; 
     float reserved_63           = 0.0; 
 };
+#pragma pack(pop)
 
 private:
     static const double s_decimal[10];

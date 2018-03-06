@@ -108,12 +108,14 @@ bool DV7Sample::ParseChannels(Frame &frame)
 
             if (!ParseChannel(value, frame3E, channel, pos_point))
                 return false;
+
+
         }
     }
     return true;
 }
 
-bool DV7Sample::ParseChannel(Value &value, const Frame3E &frame, const Channel &channel, uint32_t num_point)
+bool DV7Sample::ParseChannel(Value &value, const Frame3E &frame, const Channel &channel, uint32_t pos_point)
 {
     uint32_t val = 0;
     double   d; 
@@ -139,11 +141,11 @@ bool DV7Sample::ParseChannel(Value &value, const Frame3E &frame, const Channel &
             return false;
         }
 
-        d = (double)val / frame.AmountOfPoints(num_point);
+        d = (double)val / frame.AmountOfPoints(pos_point);
         if (!m_calibration.Calibrate(d, channel.IDGet(), d))
             return false;
 
-        if (!value.Assign(d, num_point))
+        if (!value.Assign(d, pos_point))
             return false;
     }
 

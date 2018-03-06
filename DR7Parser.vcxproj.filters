@@ -120,6 +120,9 @@
     <ClCompile Include="src\Device\Calibration3E.cpp">
       <Filter>Source Files\Device</Filter>
     </ClCompile>
+    <ClCompile Include="src\Test\PrintLogChannels.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -202,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="src\Device\Calibration3E.h">
       <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\BinFile.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Test\PrintLogChannels.h">
+      <Filter>Header Files\Test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

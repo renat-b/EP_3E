@@ -103,11 +103,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Test\PrintLogChannels.cpp" />
     <ClCompile Include="src\Test\Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Common.h" />
     <ClInclude Include="src\CommonDevice.h" />
+    <ClInclude Include="src\Common\BinFile.h" />
     <ClInclude Include="src\Common\BufferedFile.h" />
     <ClInclude Include="src\Common\IndigoTimer.h" />
     <ClInclude Include="src\Common\MemPack.h" />
@@ -131,6 +133,7 @@
     <ClInclude Include="src\Frames\Frame3E.h" />
     <ClInclude Include="src\Frames\Frames.h" />
     <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\Test\PrintLogChannels.h" />
     <ClInclude Include="src\Test\Test.h" />
     <ClInclude Include="src\Tools\itool_classes.h" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+﻿#include "StdAfx.h"
 #include "MemPack.h"
 
 MemPack::MemPack() : m_buffer(nullptr), m_size(0), m_capacity(0)
@@ -96,6 +96,23 @@ bool MemPack::AddString(const char *val, uint32_t size)
     bool r; 
     r = Add(val, size);
     return r;
+}
+
+bool MemPack::AddStringFormat(const char *value, ...)
+{
+    va_list arg_ptr;
+    char    str[1024] = { 0 };
+    int     len;
+
+    va_start(arg_ptr, value);
+    if ((len = _vsnprintf_s(str, _countof(str) - 1, _TRUNCATE, value, arg_ptr)) < 0)
+    {
+        va_end(arg_ptr);
+        return(false);
+    }
+    va_end(arg_ptr);
+
+    return(AddString(str, (uint32_t)len));
 }
 
 bool MemPack::AddMemPack(MemPack *mempack)

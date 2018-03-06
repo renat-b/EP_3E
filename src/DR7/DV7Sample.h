@@ -9,7 +9,6 @@
 #include "..\Frames\Frames.h"
 #include "EmPulse3ENotifier.h"
 
-
 class DV7Sample
 {
 public:
@@ -35,7 +34,7 @@ private:
     Frames              m_frames;
     
     uint32_t            m_last_error = LastErrorCodes::ErrorCodeSuccess;
-
+    
 
 public:
     DV7Sample();

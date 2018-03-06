@@ -13,33 +13,60 @@ void Usage()
 
 int main(int argc, char* argv[])
 {
+    char  file_name[MAX_PATH] = { 0 };
+    int       pos = 1;
+    uint32_t  num_interval = INT_MAX, num_frame = INT_MAX;
+
+    while (pos < argc)
+    {
+        if (strcmp(argv[pos], "-f") == 0) // file name dr7 or dv7
+        {
+            if ((pos + 1) >= argc)
+            {
+                Usage();
+                return -1;
+            }
+            pos++;
+            strcpy_s(file_name, argv[pos]);
+        }
+        else if (strcmp(argv[pos], "-n") == 0) // num frame for analize
+        {
+            if ((pos + 1) >= argc)
+            {
+                Usage();
+                return -1;
+            }
+            pos++;
+            num_frame = atoi(argv[pos]);
+        }
+        else if (strcmp(argv[pos], "-i") == 0) // num interval for analize
+        {
+            if ((pos + 1) >= argc)
+            {
+                Usage();
+                return -1;
+            }
+            pos++;
+            num_interval = atoi(argv[pos]);
+        }
+        pos++;
+    }
+    if (!file_name[0])
+    {
+        Usage();
+        return -1;
+    }
+
+    DR7Parser parser;
     TestDR7Parser notifier;
-    DR7Parser     parser;
-
-    if (argc != 3)
-    {
-        Usage();
-        return -1;
-    }
-    if (strcmp(argv[1], "-f") != 0)
-    {
-        Usage();
-        return -1;
-    }
-
-    if (0)
-    {
-        //parser.BigFile(argv[2], 3500);
-
-        return 0;
-    } 
-
-    IndigoTimer timer;
+    IndigoTimer   timer;
 
     timer.Start(0);
     StreamFile stream;
 
-    bool r = stream.Initialize(argv[2]);
+    bool r = stream.Initialize(file_name);
+    if (r)
+        r = notifier.Initialize(file_name, num_interval, num_frame);
     if (r)
         r = parser.Initialize(&notifier);
     if (r)

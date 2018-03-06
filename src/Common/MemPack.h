@@ -26,6 +26,8 @@ public:
     bool      AddInt8(uint8_t val);
     bool      Add(const void *val, uint32_t size);
     bool      AddString(const char *val, uint32_t size);
+    bool      AddStringFormat(const char *value, ...);
+
     bool      AddMemPack(MemPack *mem);
     bool      Fill(uint8_t val, uint32_t size);
     bool      Resize(uint32_t add);
