@@ -2,10 +2,10 @@
 
 enum ChannelKeyID
 {
-    ChannelBase_VLA = 1,        // VS signal low ampl.
-    ChannelBase_SLA = 2,        // SS signal low ampl.
-    ChannelBase_VHA = 3,        // VS signal high ampl.
-    ChannelBase_SHA = 4,        // SS signal high ampl.
+    ChannelBase_SLA = 1,        // SS signal low ampl.
+    ChannelBase_VLA = 2,        // VS signal low ampl.
+    ChannelBase_SHA = 3,        // SS signal high ampl.
+    ChannelBase_VHA = 4,        // VS signal high ampl.
     ChannelBaseLast = ChannelBase_SHA, 
 
     Channel1stMultiFXPlus,      // - Gs mGs 0 0.164 Magn.field X sens.

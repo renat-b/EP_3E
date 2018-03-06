@@ -161,7 +161,7 @@ void ChannelMetaInfo3E::PolarFlagAssign(const Channel &channel, const OperationI
     if (channel.IDGet() == ChannelBase_VLA) // длинный датчик
     {
         // смотрим признак пол€рности по второму каналу 
-        if (impulse.ctrl.Pol1)
+        if (impulse.ctrl.Pol0)
             m_negative_channel = true;
         else
             m_positive_channel = true;
@@ -169,7 +169,7 @@ void ChannelMetaInfo3E::PolarFlagAssign(const Channel &channel, const OperationI
     else if (channel.IDGet() == ChannelBase_SLA) // короткий датчик
     {
         // смотрим признак пол€рности по первому каналу
-        if (impulse.ctrl.Pol0)
+        if (impulse.ctrl.Pol1)
             m_negative_channel = true;
         else
             m_positive_channel = true;
