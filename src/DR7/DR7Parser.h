@@ -38,9 +38,7 @@ public:
     ~DR7Parser();
 
     bool   Initialize(EmPulse3ENotifier *notifier);
-    
     bool   Parse(IStreamBuffer &stream, bool is_dr7 = true);
-    //!!!bool   BigFile(const char *path, uint32_t count);
 
 private:
     bool   ParseHeader();

@@ -27,8 +27,8 @@ private:
     DR7SampleHeader     m_header;
     Calibration3E       m_calibration;
 
-    uint64_t            m_cur_time;
-    uint64_t            m_start_cyclo_time;
+    FrameTime           m_cur_time = { 0, 0 };
+    FrameTime           m_start_cyclo_time = { 0, 0 };
 
     EmPulse3ENotifier  *m_notifier  = nullptr;
     Frames              m_frames;
@@ -45,7 +45,7 @@ public:
 
     void     SetStream(IStreamBuffer *stream);
 
-    void     SetParams(const Calibration3E &calibration, const uint64_t &cur_time);
+    void     SetParams(const Calibration3E &calibration, const uint64_t &unix_time);
 
     bool     Parse();
     uint32_t LastError() const;

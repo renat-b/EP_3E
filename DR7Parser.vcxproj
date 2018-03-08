@@ -132,6 +132,7 @@
     <ClInclude Include="src\Frames\Frame.h" />
     <ClInclude Include="src\Frames\Frame3E.h" />
     <ClInclude Include="src\Frames\Frames.h" />
+    <ClInclude Include="src\Frames\FrameTime.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\Test\PrintLogChannels.h" />
     <ClInclude Include="src\Test\Test.h" />

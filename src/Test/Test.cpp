@@ -72,7 +72,7 @@ bool TestDR7Parser::OnFrame(const Frame &frame)
         return false;
     m_num_line++;
 
-    if (!m_log_file.AddDouble((double)frame.TimeGet()))
+    if (!m_log_file.AddDouble(frame.TimeGet().GetTimeIndigo()))
         return false;
     for (uint32_t pos = 0; pos < frame.ChannelsCount(); pos++)
     {

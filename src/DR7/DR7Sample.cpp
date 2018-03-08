@@ -2,7 +2,7 @@
 #include "DR7Sample.h"
 #include "..\Frames\Frame3E.h"
 
-DR7Sample::DR7Sample() : m_cur_time(0), m_start_cyclo_time(0), m_notifier(nullptr), m_stream(nullptr)
+DR7Sample::DR7Sample() : m_notifier(nullptr), m_stream(nullptr)
 {
 }
 
@@ -12,7 +12,7 @@ DR7Sample::~DR7Sample()
 
 void DR7Sample::Clear()
 {
-    m_start_cyclo_time = 0;
+    m_start_cyclo_time = m_cur_time;
 }
 
 void DR7Sample::SetNotifier(EmPulse3ENotifier *notifier)
@@ -25,9 +25,9 @@ void DR7Sample::SetStream(IStreamBuffer* stream)
     m_stream = stream;
 }
 
-void DR7Sample::SetParams(const Calibration3E &calibration, const uint64_t &cur_time)
+void DR7Sample::SetParams(const Calibration3E &calibration, const uint64_t &unix_time)
 {
-    m_cur_time = cur_time;
+    m_cur_time.AddSec(unix_time);
     m_calibration = calibration;
 }
 
@@ -61,7 +61,7 @@ bool DR7Sample::ParseHeader()
         return false;
 
     // calculate start cyclo time
-    m_start_cyclo_time = m_cur_time + m_header.time;
+    m_start_cyclo_time.AddMs(m_header.time);
     return true;
 }
 
@@ -164,7 +164,8 @@ void DR7Sample::FrameAssign(Frame &frame)
 {
     Frame3E frame3E(frame);
 
-    uint64_t measure_time = m_start_cyclo_time + uint64_t(frame3E.OffsetTimeGet() * m_measure_unit_offset);   
+    FrameTime measure_time = m_start_cyclo_time; 
+    measure_time.AddMs((uint64_t)(frame3E.OffsetTimeGet() * m_measure_unit_offset));
 
     frame.TimeSet(measure_time);
     frame.TypeSet(FrameTypeID::SampleTypeCalib);

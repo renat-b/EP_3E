@@ -3,6 +3,7 @@
 #include "..\Device\MetaInfoStorage.h"
 #include "..\Device\Channel.h"
 #include "..\Common\Value.h"
+#include "FrameTime.h"
 
 enum FrameTypeID
 {
@@ -27,7 +28,7 @@ private:
     uint32_t   m_id        = 0;
     uint32_t   m_interval  = 0;
     uint32_t   m_frame_num = 0;
-    uint64_t   m_time      = 0;
+    FrameTime  m_time      =  { 0, 0 };
     uint32_t   m_type      = 0;
     Channels   m_channels;
     MetaInfoStorage  m_storage;
@@ -49,8 +50,8 @@ public:
     uint32_t FrameNumGet() const;
     void     FrameNumSet(uint32_t frame_num);
 
-    uint64_t TimeGet()  const;
-    void     TimeSet(uint64_t time);
+    FrameTime TimeGet()  const;
+    void     TimeSet(FrameTime time);
 
     uint32_t TypeGet() const;
     void     TypeSet(uint32_t type);

@@ -67,12 +67,12 @@ void Frame::FrameNumSet(uint32_t frame_num)
     m_frame_num = frame_num;
 }
 
-uint64_t Frame::TimeGet() const
+FrameTime Frame::TimeGet() const
 {
     return m_time;
 }
 
-void Frame::TimeSet(uint64_t time)
+void Frame::TimeSet(FrameTime time)
 {
     m_time = time;
 }

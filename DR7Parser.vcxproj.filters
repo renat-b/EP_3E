@@ -212,5 +212,8 @@
     <ClInclude Include="src\Test\PrintLogChannels.h">
       <Filter>Header Files\Test</Filter>
     </ClInclude>
+    <ClInclude Include="src\Frames\FrameTime.h">
+      <Filter>Header Files\Frames</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -49,39 +49,6 @@ bool DR7Parser::Parse(IStreamBuffer &stream, bool is_dr7/* = true */)
     return true;
 }
 
-/*!!!
-bool DR7Parser::BigFile(const char *path, uint32_t count)
-{
-    HANDLE handle = CreateFile(path, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-    if (handle == INVALID_HANDLE_VALUE)
-        return false;
-
-    DWORD size = GetFileSize(handle, NULL);
-    if (INVALID_FILE_SIZE == size)
-    {
-        CloseHandle(handle);
-        return false;
-    }
-
-    SetFilePointer(handle, 644, NULL, FILE_BEGIN); 
-    DWORD readed = 0;
-
-    uint8_t *buf = new uint8_t[357568];
-    BOOL r = ReadFile(handle, buf, 357568, &readed, NULL);
-    
-    SetFilePointer(handle, 0, NULL, FILE_END);
-    for (uint32_t i = 0; i < count; i++)
-    {
-        r = WriteFile(handle, buf, 357568, &readed, NULL);
-        r = r;
-    }
-    CloseHandle(handle);
-
-    delete [] buf;
-    return true;
-}
-*/
-
 bool DR7Parser::ParseHeader()
 {
     if (!m_stream->GetRawData(&m_header, sizeof(DR7Header)))
