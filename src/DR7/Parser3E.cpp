@@ -12,7 +12,7 @@ Parser3E::~Parser3E()
 
 }
 
-bool Parser3E::Initialize(EmPulse3ENotifier *notifier)
+bool Parser3E::Initialize(NotifierParserBase *notifier)
 {
     m_notifier = notifier;
     return true;
@@ -51,7 +51,7 @@ bool Parser3E::Parse(IStreamBuffer &stream, bool is_dr7/* = true */)
 
 bool Parser3E::ParseHeader()
 {
-    if (!m_stream->GetRawData(&m_header, sizeof(DR7Header)))
+    if (!m_stream->GetRawData(&m_header, sizeof(DR7BaseHeader)))
         return false;
     return true;
 }
@@ -232,7 +232,7 @@ bool Parser3E::CyclogramBaseCreate()
     return true;
 }
 
-void Parser3E::FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_frame)
+void Parser3E::FrameAssign(Frame &frame, const OperationMeasure3E &measure, uint32_t pos_interval, uint32_t pos_frame)
 {
     frame.FrameNumSet(pos_frame);
     frame.IntervalSet(pos_interval);

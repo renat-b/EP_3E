@@ -31,7 +31,7 @@ public:
     uint32_t   OffsetTimeGet() const;
     uint32_t   NumPoints() const;
 
-    void       Create(const OperationMeasure &measure);
+    void       Create(const OperationMeasure3E &measure);
 };
 
 class FrameInfo3E

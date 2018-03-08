@@ -7,7 +7,7 @@
 #include "..\Device\Calibration3E.h"
 #include "DR7Sample.h"
 #include "DV7Sample.h"
-#include "EmPulse3ENotifier.h"
+#include "NotifierParserBase.h"
 
 
 class Parser3E
@@ -20,7 +20,7 @@ private:
     };
 
 private:
-    DR7Header          m_header;
+    DR7BaseHeader          m_header;
     DR7Sample          m_dr7_sample;
     DV7Sample          m_dv7_sample;
 
@@ -29,7 +29,7 @@ private:
     Calibration3E      m_calibration;
 
     IStreamBuffer     *m_stream   = nullptr;
-    EmPulse3ENotifier *m_notifier = nullptr;
+    NotifierParserBase *m_notifier = nullptr;
 
     uint32_t           m_mode = MODE_DR7;
 
@@ -37,7 +37,7 @@ public:
     Parser3E();
     ~Parser3E();
 
-    bool   Initialize(EmPulse3ENotifier *notifier);
+    bool   Initialize(NotifierParserBase *notifier);
     bool   Parse(IStreamBuffer &stream, bool is_dr7 = true);
 
 private:
@@ -58,5 +58,5 @@ private:
 
     void   OnCyclogram();
     bool   CyclogramBaseCreate();
-    void   FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_frame);
+    void   FrameAssign(Frame &frame, const OperationMeasure3E &measure, uint32_t pos_interval, uint32_t pos_frame);
 };

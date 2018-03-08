@@ -29,5 +29,5 @@ private:
     bool   ParseInterval();
     bool   ParseScript(Interval3E &interval);
 
-    void   PrintMeasure(OperationMeasure &measure, uint32_t measure_pos);
+    void   PrintMeasure(OperationMeasure3E &measure, uint32_t measure_pos);
 };

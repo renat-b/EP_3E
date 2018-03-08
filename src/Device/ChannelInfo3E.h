@@ -20,7 +20,7 @@ public:
     const Channel    &ChannelGet() const;
 
     uint32_t          IDGet() const;
-    ScVar             ScaleGet() const;
+    ScaleVariantInner3E             ScaleGet() const;
     uint32_t          PointStart() const;
     uint32_t          PointCount() const;
     uint32_t          AmountOfSavingsGet() const;
@@ -41,7 +41,7 @@ public:
     };
 
 protected:
-    ScVar      m_scale  = ScVarType0;
+    ScaleVariantInner3E      m_scale  = ScVarType0;
     uint32_t   m_point_start = 0;
     uint32_t   m_point_count = 0;
     uint32_t   m_amount_of_savings = 0;
@@ -60,7 +60,7 @@ public:
 public:
     void operator = (const ChannelMetaInfo3E& other);
 
-    ScVar             ScaleTypeGet() const;
+    ScaleVariantInner3E             ScaleTypeGet() const;
     uint32_t          PointStart()   const;
     uint32_t          PointCount()   const;
     uint32_t          AmountOfSavingsGet() const;
@@ -69,6 +69,6 @@ public:
     double            MsGet(uint32_t num_point) const;
 
 
-    void              Create(const Channel &channel, const OperationMeasure &measure);
-    void              PolarFlagAssign(const Channel &channel, const OperationImpulse &impulse);
+    void              Create(const Channel &channel, const OperationMeasure3E &measure);
+    void              PolarFlagAssign(const Channel &channel, const OperationImpulse3E &impulse);
 };

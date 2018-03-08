@@ -126,7 +126,7 @@
     <ClInclude Include="src\Device\Interval3E.h" />
     <ClInclude Include="src\DR7\Parser3E.h" />
     <ClInclude Include="src\DR7\DV7Sample.h" />
-    <ClInclude Include="src\DR7\EmPulse3ENotifier.h" />
+    <ClInclude Include="src\DR7\NotifierParserBase.h" />
     <ClInclude Include="src\DR7\DR7Sample.h" />
     <ClInclude Include="src\DR7\TimeScale3E.h" />
     <ClInclude Include="src\Frames\Frame.h" />

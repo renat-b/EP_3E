@@ -27,6 +27,7 @@ public:
     uint32_t    CountIntervals() const;
     uint32_t    CountFrames(uint32_t pos_interval) const;
     Frame      &Get(uint32_t pos_interval, uint32_t pos_script);
+    const Frame  &Get(uint32_t pos_interval, uint32_t pos_script) const;
 
     bool        Add(uint32_t pos_interval, const Frame &frame);
     bool        Remove(uint32_t pos_interval, uint32_t pos_script);

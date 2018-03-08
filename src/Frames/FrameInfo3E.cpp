@@ -44,7 +44,7 @@ uint32_t FrameMetaInfo3E::OffsetTimeGet() const
     return m_offset_time;
 }
 
-void FrameMetaInfo3E::Create(const OperationMeasure &measure)
+void FrameMetaInfo3E::Create(const OperationMeasure3E &measure)
 {
     m_offset_time = measure.ofs.Get();
 

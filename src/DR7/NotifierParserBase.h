@@ -4,7 +4,7 @@
 #include "..\Frames\Frame.h"
 #include "..\Device\CyclogramBase.h"
 
-class EmPulse3ENotifier
+class NotifierParserBase
 {
 public:
     enum
@@ -15,7 +15,7 @@ public:
 
 public:
     virtual bool   OnParse(uint32_t flags) = 0;
-    virtual bool   OnCyclogram(CyclogramBase &cyclo) = 0;
+    virtual bool OnCyclogram(const CyclogramBase &cyclo) = 0;
 
     virtual bool   OnCyclo(uint32_t flags) = 0;
     virtual bool   OnFrame(const Frame &frame) = 0;

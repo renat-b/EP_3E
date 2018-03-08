@@ -2,7 +2,7 @@
 #include "stdint.h"
 
 #pragma pack(push, 1)
-struct DR7Header
+struct DR7BaseHeader
 {
     uint8_t  DevName[6];   // – название прибора(обычно EMP - 3E)
     uint16_t DevNum;       // – серийный номер
@@ -28,7 +28,7 @@ struct uint24_t
 #pragma pack(pop)
 
 
-struct SCom
+struct SComInner3E
 {
     uint8_t   Cn1: 3;       // адрес канала первого мультиплексированного АЦП
     uint8_t   Cn2: 3;       // адрес канала второго мультиплексированного АЦП
@@ -36,7 +36,7 @@ struct SCom
     uint8_t   Cg1: 1;       // требование установки адреса второго мультиплексора
 };
 
-struct Mask
+struct MaskInner3E
 {
     uint8_t   reserved: 1;  // Резерв
     uint8_t   Rn0: 1;       // Запуск АЦП канала 0 (18 - разрядный АЦП датчика 0)
@@ -48,7 +48,7 @@ struct Mask
 };
 
 
-enum ScVar : uint8_t 
+enum ScaleVariantInner3E : uint8_t 
 {
     ScVarType0 = 0,   // измерение единичной точки сигналов с количеством накоплений, заданном в NPnt;
     ScVarType1 = 1,   // измерение спада в логарифмической шкале с плотностью точек 16 точек на декаду с максимальным количеством накоплений;
@@ -61,7 +61,7 @@ enum ScVar : uint8_t
 };
 
 #pragma pack(push, 1)
-struct BPoint
+struct BeginPointInner3E
 {
     uint8_t   data;
     uint8_t   reserved;
@@ -73,7 +73,7 @@ struct BPoint
 };
 #pragma pack(pop)
 
-struct NPnt
+struct NumPointInner3E
 {
     uint16_t  data;
     //
@@ -85,21 +85,21 @@ struct NPnt
 
 // Операция измерения
 #pragma pack(push, 1)
-struct OperationMeasure
+struct OperationMeasure3E
 {
     uint24_t ofs;        // смещение начала операции относительно начала сценария в единицах 0.01 мс
-    SCom     scom;       // управление коммутацией коммутируемых каналов
-    Mask     mask;       // выбор запускаемых в операции АЦП 
-    ScVar    sc_var;     // вариант шкалы измерения 
-    BPoint   b_point;    // номер начальной точки шкалы для логарифмических шкал (1-6) или выбор шага для равномерной шкалы (7), используется только младший байт (2)
-    NPnt     n_point;    // количество регистрируемых точек спада для шкал 1-7 или количество накоплений точки для варианта 0 
+    SComInner3E     scom;       // управление коммутацией коммутируемых каналов
+    MaskInner3E     mask;       // выбор запускаемых в операции АЦП 
+    ScaleVariantInner3E    sc_var;     // вариант шкалы измерения 
+    BeginPointInner3E   b_point;    // номер начальной точки шкалы для логарифмических шкал (1-6) или выбор шага для равномерной шкалы (7), используется только младший байт (2)
+    NumPointInner3E     n_point;    // количество регистрируемых точек спада для шкал 1-7 или количество накоплений точки для варианта 0 
 };
 #pragma pack(pop)
 
 
 // включаемое в этот момент состояние сигналов управления
 #pragma pack(push, 1)
-struct Ctrl
+struct ControlInner3E
 {
     uint8_t ShD0: 1;	// Включение преобразователя канала 0	RA0, XS40
     uint8_t ShD1: 1;	// Включение преобразователя канала 1	RA1, XS42
@@ -114,18 +114,18 @@ struct Ctrl
 
 // Операция возбуждения 
 #pragma pack(push, 1)
-struct OperationImpulse
+struct OperationImpulse3E
 {
-    uint24_t   ofs;    // смещение операции относительно начала сценария в единицах 0.01 мс
-    Ctrl       ctrl;   // включаемое состояние сигналов управления
-    uint16_t   dac0;   // задаваемый ток возбуждения датчика VS в единицах 0.1 мА
-    uint16_t   dac1;   // задаваемый ток возбуждения датчика SS в единицах 0.1 мА
+    uint24_t   ofs;       // смещение операции относительно начала сценария в единицах 0.01 мс
+    ControlInner3E  ctrl; // включаемое состояние сигналов управления
+    uint16_t   dac0;      // задаваемый ток возбуждения датчика VS в единицах 0.1 мА
+    uint16_t   dac1;      // задаваемый ток возбуждения датчика SS в единицах 0.1 мА
 };
 #pragma pack(pop)
 
 // интервал включает следующие параметры
 #pragma pack(push, 1)
-struct Interval
+struct IntervalInner3E
 {
     uint24_t   ScrTim;      // – длительность цикла в единицах 0.01 мс
     uint24_t   Pause;       // – длительность паузы перед циклами измерений – количество ScrTim

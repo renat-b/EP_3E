@@ -7,7 +7,7 @@
 #include "..\Device\Calibration3E.h"
 #include "..\Frames\FrameInfo3E.h"
 #include "..\Frames\Frames.h"
-#include "EmPulse3ENotifier.h"
+#include "NotifierParserBase.h"
 
 class DV7Sample
 {
@@ -30,7 +30,7 @@ private:
     FrameTime           m_cur_time = { 0, 0 };
     FrameTime           m_start_cyclo_time = { 0, 0 };
 
-    EmPulse3ENotifier  *m_notifier  = nullptr;
+    NotifierParserBase  *m_notifier  = nullptr;
     Frames              m_frames;
     
     uint32_t            m_last_error = LastErrorCodes::ErrorCodeSuccess;
@@ -41,7 +41,7 @@ public:
     ~DV7Sample();
 
     void     Clear();
-    void     SetNotifier(EmPulse3ENotifier *notifier);
+    void     SetNotifier(NotifierParserBase *notifier);
 
     void     SetStream(IStreamBuffer *stream);
 

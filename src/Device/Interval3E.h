@@ -8,7 +8,7 @@ class Interval3E
     friend class Cyclogram3E;
 
 private:
-    Interval   m_interval;
+    IntervalInner3E   m_interval;
     Script3E   m_script;
 
 public:

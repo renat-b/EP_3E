@@ -22,7 +22,7 @@ uint32_t ChannelInfo3E::IDGet() const
     return m_channel->IDGet();
 }
 
-ScVar ChannelInfo3E::ScaleGet() const
+ScaleVariantInner3E ChannelInfo3E::ScaleGet() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -127,7 +127,7 @@ void ChannelMetaInfo3E::operator=(const ChannelMetaInfo3E& other)
     m_negative_channel = other.m_negative_channel;
 }
 
-ScVar ChannelMetaInfo3E::ScaleTypeGet() const
+ScaleVariantInner3E ChannelMetaInfo3E::ScaleTypeGet() const
 {
     return m_scale;
 }
@@ -165,7 +165,7 @@ double ChannelMetaInfo3E::MsGet(uint32_t num_point) const
     return ms;
 }
 
-void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure &measure)
+void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure3E &measure)
 {
     m_positive_channel = false;
     m_negative_channel = false;
@@ -192,7 +192,7 @@ void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure &m
     }
 }
 
-void ChannelMetaInfo3E::PolarFlagAssign(const Channel &channel, const OperationImpulse &impulse)
+void ChannelMetaInfo3E::PolarFlagAssign(const Channel &channel, const OperationImpulse3E &impulse)
 {
     if (channel.IDGet() == ChannelBase_VSL) // длинный датчик
     {

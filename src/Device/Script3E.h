@@ -13,7 +13,7 @@ private:
 
     struct Measure
     {
-        OperationMeasure operation;
+        OperationMeasure3E operation;
         Channels         channels;        
 
         Measure();
@@ -22,7 +22,7 @@ private:
 
     };
     typedef std::vector<Measure>           Measures; 
-    typedef std::vector<OperationImpulse>  Impulses;
+    typedef std::vector<OperationImpulse3E>  Impulses;
 
 
 private:
@@ -40,20 +40,20 @@ public:
     void        ChannelsCreate();
 
     uint32_t    MeasureCount() const;
-    OperationMeasure &MeasureGet(uint32_t pos);
+    OperationMeasure3E &MeasureGet(uint32_t pos);
 
     uint32_t    ChannelCount(uint32_t pos_measure) const;
     Channel    &ChannelGet(uint32_t pos_measure, uint32_t pos_channel);
 
     uint32_t    ImpulseCount() const;
-    OperationImpulse  ImpulseGet(uint32_t pos);
+    OperationImpulse3E  ImpulseGet(uint32_t pos);
 
 
 private:
-    bool        MeasureAdd(const OperationMeasure &measure);
+    bool        MeasureAdd(const OperationMeasure3E &measure);
     void        ChannelAdd(uint32_t id, uint32_t flags, Measure &measure);
 
     void        ChannelAssign(Channel &channel, uint32_t id, uint32_t flags);
-    void        MetaCreate(Channel &channel, const OperationMeasure &operation);
-    void        MetaAssign(ChannelMetaInfo3E *meta, const Channel &channel, const OperationMeasure &operation);
+    void        MetaCreate(Channel &channel, const OperationMeasure3E &operation);
+    void        MetaAssign(ChannelMetaInfo3E *meta, const Channel &channel, const OperationMeasure3E &operation);
 };

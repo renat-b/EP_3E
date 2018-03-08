@@ -41,6 +41,12 @@ Frame &Frames::Get(uint32_t pos_interval, uint32_t pos_script)
     return frame;
 }
 
+const Frame & Frames::Get(uint32_t pos_interval, uint32_t pos_script) const
+{
+    const Frame &frame = m_frames[pos_interval][pos_script];
+    return frame;
+}
+
 bool Frames::Add(uint32_t pos_interval, const Frame &frame)
 {
     if (pos_interval >= m_frames.size())

@@ -44,7 +44,7 @@ void Script3E::ChannelsCreate()
     for (uint32_t pos = 0; pos < m_measures.size(); pos++)
     {
         Measure          &measure   = m_measures[pos];
-        OperationMeasure &operation = measure.operation;
+        OperationMeasure3E &operation = measure.operation;
 
         if (operation.sc_var == ScVarType0)
         {
@@ -94,7 +94,7 @@ uint32_t Script3E::MeasureCount() const
     return count;
 }
 
-OperationMeasure &Script3E::MeasureGet(uint32_t pos)
+OperationMeasure3E &Script3E::MeasureGet(uint32_t pos)
 {
     Measure &val = m_measures[pos];
     return val.operation;
@@ -118,13 +118,13 @@ uint32_t Script3E::ImpulseCount() const
     return count;
 }
 
-OperationImpulse Script3E::ImpulseGet(uint32_t pos)
+OperationImpulse3E Script3E::ImpulseGet(uint32_t pos)
 {
-    OperationImpulse &val = m_impulses[pos];
+    OperationImpulse3E &val = m_impulses[pos];
     return val;
 }
 
-bool Script3E::MeasureAdd(const OperationMeasure &measure)
+bool Script3E::MeasureAdd(const OperationMeasure3E &measure)
 {
     Measure info;
 
@@ -165,7 +165,7 @@ void Script3E::ChannelAssign(Channel &channel, uint32_t id, uint32_t flags)
     }
 }
 
-void Script3E::MetaCreate(Channel &channel, const OperationMeasure &operation)
+void Script3E::MetaCreate(Channel &channel, const OperationMeasure3E &operation)
 {
     ChannelMetaInfo3E *meta = new(std::nothrow) ChannelMetaInfo3E;
     if (!meta)
@@ -179,7 +179,7 @@ void Script3E::MetaCreate(Channel &channel, const OperationMeasure &operation)
     }
 }
 
-void Script3E::MetaAssign(ChannelMetaInfo3E *meta, const Channel &channel, const OperationMeasure &operation)
+void Script3E::MetaAssign(ChannelMetaInfo3E *meta, const Channel &channel, const OperationMeasure3E &operation)
 {
     // создаем информацю по текущему каналу
     meta->Create(channel, operation);
@@ -191,7 +191,7 @@ void Script3E::MetaAssign(ChannelMetaInfo3E *meta, const Channel &channel, const
         uint32_t i = m_impulses.size();
         for (i = 0; i < m_impulses.size(); i++)
         {
-            OperationImpulse &impulses = m_impulses[i];
+            OperationImpulse3E &impulses = m_impulses[i];
             if (impulses.ofs.Get() == operation.ofs.Get())
                 break;
         }

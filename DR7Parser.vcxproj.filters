@@ -149,9 +149,6 @@
     <ClInclude Include="src\Tools\itool_classes.h">
       <Filter>Header Files\ITool</Filter>
     </ClInclude>
-    <ClInclude Include="src\DR7\EmPulse3ENotifier.h">
-      <Filter>Header Files\DR7</Filter>
-    </ClInclude>
     <ClInclude Include="src\Device\Channel.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
@@ -214,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="src\CommonDevice3E.h">
       <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\NotifierParserBase.h">
+      <Filter>Header Files\DR7</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

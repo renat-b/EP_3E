@@ -50,7 +50,7 @@ Interval3E &Cyclogram3E::IntervalGet(uint32_t interval_pos)
 
 bool Cyclogram3E::ParseInterval()
 {
-    Interval val = { 0 };
+    IntervalInner3E val = { 0 };
     if (!m_convertor.GetRawData(&val, sizeof(val)))
         return false;
 
@@ -75,10 +75,10 @@ bool Cyclogram3E::ParseScript(Interval3E &interval)
 
 
     Script3E script;
-    OperationMeasure measure;
+    OperationMeasure3E measure;
     for (uint32_t pos = 0; pos < count_measure; pos++)
     {
-        if (!m_convertor.GetRawData(&measure, sizeof(OperationMeasure)))
+        if (!m_convertor.GetRawData(&measure, sizeof(OperationMeasure3E)))
             return false;
 
         if (!script.MeasureAdd(measure))
@@ -87,10 +87,10 @@ bool Cyclogram3E::ParseScript(Interval3E &interval)
         PrintMeasure(measure, pos);
     }
 
-    OperationImpulse impulse;
+    OperationImpulse3E impulse;
     for (uint32_t pos = 0; pos < count_impulse; pos++)
     {
-        if (!m_convertor.GetRawData(&impulse, sizeof(OperationImpulse)))
+        if (!m_convertor.GetRawData(&impulse, sizeof(OperationImpulse3E)))
             return false;
         script.m_impulses.push_back(impulse);
     }
@@ -100,7 +100,7 @@ bool Cyclogram3E::ParseScript(Interval3E &interval)
     return true;
 }
 
-void Cyclogram3E::PrintMeasure(OperationMeasure &measure, uint32_t measure_pos)
+void Cyclogram3E::PrintMeasure(OperationMeasure3E &measure, uint32_t measure_pos)
 {
     printf("measure operation #%d\n", measure_pos);
     if (measure.mask.Rn0)

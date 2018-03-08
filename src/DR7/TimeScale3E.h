@@ -26,7 +26,7 @@ public:
     TimeScale3E();
     ~TimeScale3E();
 
-    uint32_t   AmountOfPointsGet(ScVar scale, uint32_t num_point) const;
-    double     MsGet(ScVar scale, uint32_t num_point) const;
+    uint32_t   AmountOfPointsGet(ScaleVariantInner3E scale, uint32_t num_point) const;
+    double     MsGet(ScaleVariantInner3E scale, uint32_t num_point) const;
 };
 

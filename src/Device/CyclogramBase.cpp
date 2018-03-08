@@ -66,6 +66,12 @@ Frame &CyclogramBase::Get(uint32_t pos_interval, uint32_t pos_script)
     return frame;
 }
 
+const Frame & CyclogramBase::Get(uint32_t pos_interval, uint32_t pos_script) const
+{
+    const Frame &frame = m_frames.Get(pos_interval, pos_script);
+    return frame;
+}
+
 bool CyclogramBase::Add(uint32_t pos_interval, const Frame &frame)
 {
     bool r = m_frames.Add(pos_interval, frame);

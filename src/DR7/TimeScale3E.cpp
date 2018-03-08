@@ -627,7 +627,7 @@ TimeScale3E::~TimeScale3E()
 {
 }
 
-uint32_t TimeScale3E::AmountOfPointsGet(ScVar scale, uint32_t num_point) const
+uint32_t TimeScale3E::AmountOfPointsGet(ScaleVariantInner3E scale, uint32_t num_point) const
 {
     uint32_t amount_of_points = 0;
 
@@ -678,7 +678,7 @@ uint32_t TimeScale3E::AmountOfPointsGet(ScVar scale, uint32_t num_point) const
     return amount_of_points;
 }
 
-double TimeScale3E::MsGet(ScVar scale, uint32_t num_point) const
+double TimeScale3E::MsGet(ScaleVariantInner3E scale, uint32_t num_point) const
 {
     double ms = 0.0;
     if (scale == ScVarType0 || scale == ScVarType7)

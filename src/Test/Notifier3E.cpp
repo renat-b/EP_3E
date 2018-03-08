@@ -43,7 +43,7 @@ bool Notifier3E::OnParse(uint32_t flags)
     return true;
 }
 
-bool Notifier3E::OnCyclogram(CyclogramBase &cyclo)
+bool Notifier3E::OnCyclogram(const CyclogramBase &cyclo)
 {
     m_vals.clear();
 

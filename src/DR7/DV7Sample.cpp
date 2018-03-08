@@ -17,7 +17,7 @@ void DV7Sample::Clear()
     m_start_cyclo_time = m_cur_time;
 }
 
-void DV7Sample::SetNotifier(EmPulse3ENotifier *notifier)
+void DV7Sample::SetNotifier(NotifierParserBase *notifier)
 {
     m_notifier = notifier;
 }
@@ -157,7 +157,7 @@ bool DV7Sample::OnCyclo()
     if (!m_notifier)
         return true;
 
-    if (!m_notifier->OnCyclo(EmPulse3ENotifier::FLAG_NOTIFY_END))
+    if (!m_notifier->OnCyclo(NotifierParserBase::FLAG_NOTIFY_END))
         return false;
     return true;
 }
