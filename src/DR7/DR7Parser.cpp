@@ -184,7 +184,7 @@ void DR7Parser::OnCyclogram()
     if (!m_notifier)
         return;
 
-    m_notifier->OnCyclogram(m_cyclogram3E, EmPulse3ENotifier::FLAG_NOTIFY_END);
+    m_notifier->OnCyclogram(m_cyclogram);
 }
 
 bool DR7Parser::CyclogramBaseCreate()

@@ -30,7 +30,7 @@ public:
     bool           Initialize(const char *file_name, uint32_t num_interval, uint32_t num_frame);
 
     virtual bool   OnParse(uint32_t flags) override;
-    virtual bool   OnCyclogram(Cyclogram3E &cyclo, uint32_t flags) override;
+    virtual bool OnCyclogram(CyclogramBase &cyclo) override;
 
     virtual bool   OnCyclo(uint32_t flags) override;
     virtual bool   OnFrame(const Frame &frame) override;
@@ -38,6 +38,6 @@ public:
 private:
     void           AssignValue(const uint64_t &time, const Channel &channel, const Value &value);
     bool           PrintLogValue(const Value &val);
-    void           PrintLogCaption(OperationMeasure &measure);
-    char          *PrintLogCaptionParams(OperationMeasure &measure, char *buf, uint32_t len);
+    void           PrintLogCaption(const Frame &frame);
+    char          *PrintLogCaptionParams(const Frame &frame, char *buf, uint32_t len);
 };

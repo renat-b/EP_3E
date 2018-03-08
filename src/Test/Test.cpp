@@ -43,18 +43,17 @@ bool TestDR7Parser::OnParse(uint32_t flags)
     return true;
 }
 
-bool TestDR7Parser::OnCyclogram(Cyclogram3E &cyclo, uint32_t flags)
+bool TestDR7Parser::OnCyclogram(CyclogramBase &cyclo)
 {
     m_vals.clear();
 
-    if (m_num_interval >= cyclo.IntervalCount())
+    if (m_num_interval >= cyclo.CountIntervals())
         return true;
     
-    Script3E &script = cyclo.IntervalGet(m_num_interval).ScriptGet();
-    if (m_num_frame >= script.MeasureCount())
+    if (m_num_frame >= cyclo.CountFrames(m_num_interval))
         return false;
     
-    PrintLogCaption(script.MeasureGet(m_num_frame)); 
+    PrintLogCaption(cyclo.FramesGet().Get(m_num_interval, m_num_frame)); 
     return true;
 }
 
@@ -108,66 +107,69 @@ bool TestDR7Parser::PrintLogValue(const Value &val)
     return m_log_file.AddDouble(dd);    
 }
 
-void TestDR7Parser::PrintLogCaption(OperationMeasure &measure)
+void TestDR7Parser::PrintLogCaption(const Frame &frame)
 {
     std::string caption = "Num\tTime\t";
     char buf[64];
 
-    if (measure.mask.Rn0)
+    if (frame.IDGet() == ChannelBase_SSL)
     {
         if (caption.size())
             caption += "\t";
         caption += "SSL";
-        caption += PrintLogCaptionParams(measure, buf, _countof(buf));
+        caption += PrintLogCaptionParams(frame, buf, _countof(buf));
     }
-    if (measure.mask.Rn1)
+    if (frame.IDGet() == ChannelBase_VSL)
     {
         if (caption.size())
             caption += "\t";
         caption += "VSL";
-        caption += PrintLogCaptionParams(measure, buf, _countof(buf));
+        caption += PrintLogCaptionParams(frame, buf, _countof(buf));
     }
-    if (measure.mask.Rn2)
+    if (frame.IDGet() == ChannelBase_SSH)
     {
         if (caption.size())
             caption += "\t";
         caption += "SSH";
-        caption += PrintLogCaptionParams(measure, buf, _countof(buf));
+        caption += PrintLogCaptionParams(frame, buf, _countof(buf));
     }
-    if (measure.mask.Rn3)
+    if (frame.IDGet() == ChannelBase_VSH)
     {
         if (caption.size())
             caption += "\t";
         caption += "VSH";
-        caption += PrintLogCaptionParams(measure, buf, _countof(buf));
+        caption += PrintLogCaptionParams(frame, buf, _countof(buf));
     }
-    if (measure.mask.Rn4)
+    if (frame.IDGet() >= Channel1stMultiFXMinus && frame.IDGet() <= Channel1stMultiVHA)
     {
         if (caption.size())
             caption += "\t";
-        sprintf_s(buf, "1st multi, id: %d", (uint32_t)measure.scom.Cn1);
+        sprintf_s(buf, "1st multi, id: %d", (uint32_t)frame.IDGet() - ChannelBaseLast);
         caption += buf;
-        caption += PrintLogCaptionParams(measure, buf, _countof(buf));
+        caption += PrintLogCaptionParams(frame, buf, _countof(buf));
     }
-    if (measure.mask.Rn5)
+    if (frame.IDGet() >= Channel2stMultiFYMinus && frame.IDGet() <= Channel2stMultiSHA)
     {
         if (caption.size())
             caption += "\t";
-        sprintf_s(buf, "2st multi, id: %d", (uint32_t)measure.scom.Cn1);
+        sprintf_s(buf, "2st multi, id: %d", (uint32_t)frame.IDGet() - Channel1stMultiLast);
         caption += buf;
-        caption += PrintLogCaptionParams(measure, buf, _countof(buf));
+        caption += PrintLogCaptionParams(frame, buf, _countof(buf));
     }
 
     m_log_file.AddCaptions(caption.c_str());
     m_log_file.AddEndLine();
 }
 
-char *TestDR7Parser::PrintLogCaptionParams(OperationMeasure &measure, char *buf, uint32_t len)
+char *TestDR7Parser::PrintLogCaptionParams(const Frame &frame, char *buf, uint32_t len)
 {
-    if (measure.sc_var == ScVarType0)
-        sprintf_s(buf, len, " (%d)", measure.n_point);
+    buf[0] = 0;
+
+    Channel3E channel(frame.ChannelGet(0));
+    if (channel.ScaleGet() == ScVarType0)
+        sprintf_s(buf, len, " (%d)", channel.AmountOfSavingsGet());
     else
-        sprintf_s(buf, len, " (%d, %d, %d)", (uint32_t)measure.sc_var, (uint32_t)measure.b_point.data, (uint32_t)measure.n_point.data);
+        sprintf_s(buf, len, " (%d, %d)", (uint32_t)channel.PointStart(), (uint32_t)channel.PointCount());
 
     return buf;
 }
