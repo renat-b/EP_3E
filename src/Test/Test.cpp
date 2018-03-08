@@ -12,7 +12,10 @@ TestDR7Parser::~TestDR7Parser()
 
 bool TestDR7Parser::Initialize(const char *file_name, uint32_t num_interval, uint32_t num_frame)
 {
-    if (num_interval == INT_MAX || num_frame == INT_MAX)
+    m_num_interval = num_interval;
+    m_num_frame    = num_frame;
+
+    if (m_num_interval == INT_MAX || m_num_frame == INT_MAX)
         return true;
 
     char *ptr;
@@ -32,11 +35,6 @@ bool TestDR7Parser::Initialize(const char *file_name, uint32_t num_interval, uin
     strcat_s(buf, name);
 
     bool r = m_log_file.Open(buf);
-    if (r)
-    {
-        m_num_interval = num_interval;
-        m_num_frame    = num_frame;
-    }
     return r;
 }
 
@@ -91,7 +89,7 @@ void TestDR7Parser::AssignValue(const uint64_t &time, const Channel &channel, co
     Channel3E   channel3E(channel);
 
     ChannelData data = { time, 0.0 };
-    if (channel3E.ScaleTypeGet() == ScVarType0)
+    if (channel3E.ScaleGet() == ScVarType0)
         value.CopyTo(data.val);
     else
         value.CopyTo(data.val, 0);
@@ -119,28 +117,28 @@ void TestDR7Parser::PrintLogCaption(OperationMeasure &measure)
     {
         if (caption.size())
             caption += "\t";
-        caption += "SLA";
+        caption += "SSL";
         caption += PrintLogCaptionParams(measure, buf, _countof(buf));
     }
     if (measure.mask.Rn1)
     {
         if (caption.size())
             caption += "\t";
-        caption += "VLA";
+        caption += "VSL";
         caption += PrintLogCaptionParams(measure, buf, _countof(buf));
     }
     if (measure.mask.Rn2)
     {
         if (caption.size())
             caption += "\t";
-        caption += "SHA";
+        caption += "SSH";
         caption += PrintLogCaptionParams(measure, buf, _countof(buf));
     }
     if (measure.mask.Rn3)
     {
         if (caption.size())
             caption += "\t";
-        caption += "VHA";
+        caption += "VSH";
         caption += PrintLogCaptionParams(measure, buf, _countof(buf));
     }
     if (measure.mask.Rn4)

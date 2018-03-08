@@ -197,7 +197,7 @@ void DR7Parser::DR7SampleInit()
 {
     m_dr7_sample.SetNotifier(m_notifier);
     m_dr7_sample.SetStream(m_stream);
-    m_dr7_sample.SetCurTime(m_header.StartTime);
+    m_dr7_sample.SetParams(m_calibration, m_header.StartTime);
     m_dr7_sample.FramesAssign(m_cyclogram.FramesGet());
 }
 
@@ -242,7 +242,7 @@ bool DR7Parser::CyclogramBaseCreate()
                 Value     val;
                 Channel3E channel3E(script.ChannelGet(pos_measure, pos_channel));
 
-                if (channel3E.ScaleTypeGet() == ScVarType0)
+                if (channel3E.ScaleGet() == ScVarType0)
                 {
                     if (!val.Create(sizeof(double)))
                         return false;

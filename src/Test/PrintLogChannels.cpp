@@ -31,12 +31,12 @@ bool PrintLogChannels::AddDouble(const double &val)
 {
     if (m_buffer.GetSize())
     {
-        if (!m_buffer.AddStringFormat("\t%.3f", val))
+        if (!m_buffer.AddStringFormat("\t%.4f", val))
             return false;
     }
     else
     {
-        if (!m_buffer.AddStringFormat("%.3f", val))
+        if (!m_buffer.AddStringFormat("%.4f", val))
             return false;
     }
     return true;

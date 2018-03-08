@@ -57,7 +57,7 @@ private:
     bool     ParseHeader();
     bool     ParseFrames();
     bool     ParseChannels(Frame &frame);
-    bool     ParseChannel(Value &value, const Frame3E &frame, const Channel &channel, uint32_t num_point);
+    bool     ParseChannel(Value &value, const Channel3E &channel, uint32_t pos_point);
 
     bool     OnCyclo();
     bool     OnFrame(const Frame &frame);

@@ -4,6 +4,7 @@
 #include "..\CommonDevice.h"
 #include "..\Common\StreamBuffer.h"
 #include "..\Device\Cyclogram3E.h"
+#include "..\Device\Calibration3E.h"
 #include "..\Frames\Frames.h"
 #include "EmPulse3ENotifier.h"
 
@@ -16,6 +17,7 @@ private:
 private:
     IStreamBuffer      *m_stream = nullptr;
     DR7SampleHeader     m_header;
+    Calibration3E       m_calibration;
 
     uint64_t            m_cur_time;
     uint64_t            m_start_cyclo_time;
@@ -33,7 +35,7 @@ public:
 
     void     SetStream(IStreamBuffer *stream);
 
-    void     SetCurTime(const uint64_t &cur_time);
+    void     SetParams(const Calibration3E &calibration, const uint64_t &cur_time);
 
     bool     Parse();
     uint32_t LastError();

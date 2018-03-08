@@ -25,9 +25,10 @@ void DR7Sample::SetStream(IStreamBuffer* stream)
     m_stream = stream;
 }
 
-void DR7Sample::SetCurTime(const uint64_t &cur_time)
+void DR7Sample::SetParams(const Calibration3E &calibration, const uint64_t &cur_time)
 {
     m_cur_time = cur_time;
+    m_calibration = calibration;
 }
 
 bool DR7Sample::Parse()
@@ -106,26 +107,33 @@ bool DR7Sample::ParseChannels(Frame &frame)
 
 bool DR7Sample::ParseChannel(const Channel &channel, Value& value)
 {
-    float val = 0;
-    
+    float    d_adc = 0;
+    double   d_calib;
+
     Channel3E channel3E(channel);
 
-    if (channel3E.ScaleTypeGet() == ScVarType0)
+    if (channel3E.ScaleGet() == ScVarType0)
     {
-        if (!m_stream->GetRawData(&val, sizeof(val)))
+        if (!m_stream->GetRawData(&d_adc, sizeof(d_adc)))
             return false;
 
-        value = (double)val;
+        if (!m_calibration.Calibrate(d_calib, channel.IDGet(), d_adc))
+            return false;;
+
+        value = d_calib;
     }
     else
     {
         assert(channel3E.PointCount() != 0);
         for (uint32_t i = 0; i < channel3E.PointCount(); i++)
         {
-            if (!m_stream->GetRawData(&val, sizeof(val)))
+            if (!m_stream->GetRawData(&d_adc, sizeof(d_adc)))
                 return false;
 
-            if (!value.Assign((double)val, i))
+            if (!m_calibration.Calibrate(d_calib, channel.IDGet(), d_adc))
+                return false;;
+
+            if (!value.Assign(d_calib, i))
                 return false;
         }
     }

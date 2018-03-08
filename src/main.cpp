@@ -64,13 +64,17 @@ int main(int argc, char* argv[])
     timer.Start(0);
     StreamFile stream;
 
+    bool dr7 = false;
+    if (strstr(file_name, ".DR7"))
+        dr7 = true;
+
     bool r = stream.Initialize(file_name);
     if (r)
         r = notifier.Initialize(file_name, num_interval, num_frame);
     if (r)
         r = parser.Initialize(&notifier);
     if (r)
-        r = parser.Parse(stream, false);
+        r = parser.Parse(stream, dr7);
 
     uint64_t ms = timer.Stop();
     if (r)

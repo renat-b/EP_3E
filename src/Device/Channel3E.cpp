@@ -22,7 +22,7 @@ uint32_t Channel3E::IDGet() const
     return m_channel->IDGet();
 }
 
-ScVar Channel3E::ScaleTypeGet() const
+ScVar Channel3E::ScaleGet() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -194,7 +194,7 @@ void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure &m
 
 void ChannelMetaInfo3E::PolarFlagAssign(const Channel &channel, const OperationImpulse &impulse)
 {
-    if (channel.IDGet() == ChannelBase_VLA) // длинный датчик
+    if (channel.IDGet() == ChannelBase_VSL) // длинный датчик
     {
         // смотрим признак пол€рности по второму каналу 
         if (impulse.ctrl.Pol0)
@@ -202,7 +202,7 @@ void ChannelMetaInfo3E::PolarFlagAssign(const Channel &channel, const OperationI
         else
             m_positive_channel = true;
     }
-    else if (channel.IDGet() == ChannelBase_SLA) // короткий датчик
+    else if (channel.IDGet() == ChannelBase_SSL) // короткий датчик
     {
         // смотрим признак пол€рности по первому каналу
         if (impulse.ctrl.Pol1)

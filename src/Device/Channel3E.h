@@ -20,7 +20,7 @@ public:
     const Channel    &ChannelGet() const;
 
     uint32_t          IDGet() const;
-    ScVar             ScaleTypeGet() const;
+    ScVar             ScaleGet() const;
     uint32_t          PointStart() const;
     uint32_t          PointCount() const;
     uint32_t          AmountOfSavingsGet() const;

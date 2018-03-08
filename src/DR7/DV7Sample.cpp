@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "DV7Sample.h"
 #include "..\Frames\Frame3E.h"
+#include "TimeScale.h"
 
 DV7Sample::DV7Sample() : m_cur_time(0), m_start_cyclo_time(0), m_notifier(nullptr), m_stream(nullptr)
 {
@@ -77,7 +78,6 @@ bool DV7Sample::ParseFrames()
     for (uint32_t pos_frame = 0; pos_frame < m_frames.CountFrames(pos_interval); pos_frame++)
     {
         Frame &frame = m_frames.Get(pos_interval, pos_frame);
-
         FrameAssign(frame);
 
         if (!ParseChannels(frame))
@@ -103,49 +103,49 @@ bool DV7Sample::ParseChannels(Frame &frame)
     {
         for (uint32_t pos_channel = 0; pos_channel < count_channel; pos_channel++)
         {
-            const Channel &channel = frame3E.ChannelGet(pos_channel);
-            Value &value = frame3E.ValueGet(pos_channel);
+            Channel3E channel(frame.ChannelGet(pos_channel));
+            Value &value = frame.ValueGet(pos_channel);
 
-            if (!ParseChannel(value, frame3E, channel, pos_point))
+            if (!ParseChannel(value, channel, pos_point))
                 return false;
-
-
         }
     }
     return true;
 }
 
-bool DV7Sample::ParseChannel(Value &value, const Frame3E &frame, const Channel &channel, uint32_t pos_point)
+bool DV7Sample::ParseChannel(Value &value, const Channel3E &channel, uint32_t pos_point)
 {
-    uint32_t val = 0;
-    double   d; 
-    if (frame.ScaleGet() == ScVarType0)
+    int32_t  adc_voltage = 0;
+    float    d_adc; 
+    double   d_calib; 
+
+    if (channel.ScaleGet() == ScVarType0)
     {
-        if (!m_stream->GetRawData(&val, sizeof(val)))
+        if (!m_stream->GetRawData(&adc_voltage, sizeof(adc_voltage)))
         {
             m_last_error = LastErrorCodes::ErrorCodeEOF;
             return false;
         }
-
-        d = (double)val / frame.AmountOfPoints(0);
-        if (!m_calibration.Calibrate(d, channel.IDGet(), d))
+        d_adc = ((float)adc_voltage) / channel.AmountOfSavingsGet();
+        if (!m_calibration.Calibrate(d_calib, channel.IDGet(), d_adc))
             return false;;
 
-        value = d;
+        value = d_calib;
     }
     else
     {
-        if (!m_stream->GetRawData(&val, sizeof(val)))
+        if (!m_stream->GetRawData(&adc_voltage, sizeof(adc_voltage)))
         {
             m_last_error = LastErrorCodes::ErrorCodeEOF;
             return false;
         }
-
-        d = (double)val / frame.AmountOfPoints(pos_point);
-        if (!m_calibration.Calibrate(d, channel.IDGet(), d))
+        
+        TimeScale scale;
+        d_adc = ((float)adc_voltage) / scale.AmountOfPointsGet(channel.ScaleGet(), channel.PointStart() + pos_point);
+        if (!m_calibration.Calibrate(d_calib, channel.IDGet(), d_adc))
             return false;
 
-        if (!value.Assign(d, pos_point))
+        if (!value.Assign(d_calib, pos_point))
             return false;
     }
 

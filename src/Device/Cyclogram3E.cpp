@@ -105,7 +105,7 @@ void Cyclogram3E::PrintMeasure(OperationMeasure &measure, uint32_t measure_pos)
     printf("measure operation #%d\n", measure_pos);
     if (measure.mask.Rn0)
     {
-        printf("channel: SLA, ");
+        printf("channel: SSL, ");
         if (measure.sc_var == ScVarType0)
             printf("amount points: %d", measure.n_point);
         else
@@ -114,7 +114,7 @@ void Cyclogram3E::PrintMeasure(OperationMeasure &measure, uint32_t measure_pos)
     }
     if (measure.mask.Rn1)
     {
-        printf("channel: VLA, ");
+        printf("channel: VSL, ");
         if (measure.sc_var == ScVarType0)
             printf("amount points: %d", measure.n_point);
         else
@@ -123,7 +123,7 @@ void Cyclogram3E::PrintMeasure(OperationMeasure &measure, uint32_t measure_pos)
     }
     if (measure.mask.Rn2)
     {
-        printf("channel SHA, ");
+        printf("channel SSH, ");
         if (measure.sc_var == ScVarType0)
             printf("amount points: %d", measure.n_point);
         else
@@ -132,7 +132,7 @@ void Cyclogram3E::PrintMeasure(OperationMeasure &measure, uint32_t measure_pos)
     }
     if (measure.mask.Rn3)
     {
-        printf("channel: VHA, ");
+        printf("channel: VSH, ");
         if (measure.sc_var == ScVarType0)
             printf("amount points: %d", measure.n_point);
         else

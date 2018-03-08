@@ -49,13 +49,13 @@ void Script3E::ChannelsCreate()
         if (operation.sc_var == ScVarType0)
         {
             if (operation.mask.Rn0)
-                ChannelAdd(ChannelBase_SLA, ChannelFlagSingleMeasure, measure);
+                ChannelAdd(ChannelBase_SSL, ChannelFlagSingleMeasure, measure);
             if (operation.mask.Rn1)
-                ChannelAdd(ChannelBase_VLA, ChannelFlagSingleMeasure, measure);
+                ChannelAdd(ChannelBase_VSL, ChannelFlagSingleMeasure, measure);
             if (operation.mask.Rn2)
-                ChannelAdd(ChannelBase_SHA, ChannelFlagSingleMeasure, measure);
+                ChannelAdd(ChannelBase_SSH, ChannelFlagSingleMeasure, measure);
             if (operation.mask.Rn3)
-                ChannelAdd(ChannelBase_VHA, ChannelFlagSingleMeasure, measure);
+                ChannelAdd(ChannelBase_VSH, ChannelFlagSingleMeasure, measure);
             if (operation.mask.Rn4)
                 ChannelAdd(operation.scom.Cn1, (ChannelFlagSingleMeasure | ChannelFlag1stMulti), measure);
             if (operation.mask.Rn5)
@@ -64,13 +64,13 @@ void Script3E::ChannelsCreate()
         else
         {
             if (operation.mask.Rn0)
-                ChannelAdd(ChannelBase_SLA, ChannelFlagDecayMeasure, measure);
+                ChannelAdd(ChannelBase_SSL, ChannelFlagDecayMeasure, measure);
             if (operation.mask.Rn1)
-                ChannelAdd(ChannelBase_VLA, ChannelFlagDecayMeasure, measure);
+                ChannelAdd(ChannelBase_VSL, ChannelFlagDecayMeasure, measure);
             if (operation.mask.Rn2)
-                ChannelAdd(ChannelBase_SHA, ChannelFlagDecayMeasure, measure);
+                ChannelAdd(ChannelBase_SSH, ChannelFlagDecayMeasure, measure);
             if (operation.mask.Rn3)
-                ChannelAdd(ChannelBase_VHA, ChannelFlagDecayMeasure, measure);
+                ChannelAdd(ChannelBase_VSH, ChannelFlagDecayMeasure, measure);
             if (operation.mask.Rn4)
                 ChannelAdd(operation.scom.Cn1, (ChannelFlagDecayMeasure | ChannelFlag1stMulti), measure);
             if (operation.mask.Rn5)

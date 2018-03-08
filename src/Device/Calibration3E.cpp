@@ -40,19 +40,19 @@ bool Calibration3E::Load(const uint8_t *data, uint32_t size)
     return true;
 }
 
-bool Calibration3E::Calibrate(double &val, uint32_t channel_id, const double &adc_voltage) const
+bool Calibration3E::Calibrate(double &val, uint32_t channel_id, const double adc_voltage) const
 {
-    if (channel_id < 1 || channel_id > Channel2stMultiZHA)
+    if (channel_id < ChannelBase_SSL || channel_id > ChannelLast)
         return false;
 
-    const float *adc_ch_offset   = &m_table.adc_ch_0_offset; 
-    const float *adc_ch_coeff    = &m_table.adc_ch_0_coeff;  
- 
-    adc_ch_offset += (channel_id - 1) * 2; 
-    adc_ch_coeff  += (channel_id - 1) * 2;
+    const float *adc_ch_offset = &m_table.adc_ch_base0_offset; 
+    const float *adc_ch_coeff  = &m_table.adc_ch_base0_coeff;  
 
-    val = (adc_voltage - ((double)*adc_ch_offset)) * ((double)*adc_ch_coeff);
-    val = NormalizeDouble(val, 3);
+    double  ch_offset = adc_ch_offset[(channel_id) * 2];
+    double  ch_coeff  = adc_ch_coeff[(channel_id) * 2];
+   
+    val = (adc_voltage - ch_offset) * ch_coeff;
+    val = NormalizeDouble(val, 5);
     return true;
 }
 
