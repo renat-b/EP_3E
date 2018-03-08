@@ -1,11 +1,11 @@
 #include "StdAfx.h"
-#include ".\DR7\Parser3E.h"
+#include ".\EmPulse3E\Common\Parser3E.h"
 #include ".\Test\Notifier3E.h"
 #include ".\Common\IndigoTimer.h"
 
 void Usage()
 {
-    printf("Usage DR7 parser\n"
+    printf("Usage EmPulse3E parser\n"
         "params: \n"
         "-f \"c:\\example.dr7\"\n"
     );

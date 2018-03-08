@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "Notifier3E.h"
+#include "..\EmPulse3E\Common\ChannelInfo3E.h"
 
 Notifier3E::Notifier3E()
 {

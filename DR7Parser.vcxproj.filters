@@ -13,207 +13,204 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Device">
-      <UniqueIdentifier>{eb449928-914a-48ad-8643-fc9f259b4dbc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Device">
-      <UniqueIdentifier>{0add52c1-28b2-4cca-b882-6334e87069fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Common">
-      <UniqueIdentifier>{ea46dac1-0e56-414a-9d49-2a0626ed97f5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Common">
-      <UniqueIdentifier>{4e5f5d8e-4033-4c8e-bcaf-d8b604334270}</UniqueIdentifier>
+      <UniqueIdentifier>{bfec2500-e0fd-46ae-9a51-17ce4372c4b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\DR7">
-      <UniqueIdentifier>{5b0d70b3-cd33-4dbc-90dd-4a63ec7594ba}</UniqueIdentifier>
+    <Filter Include="Header Files\EmPulse3E">
+      <UniqueIdentifier>{d650bf65-d080-438d-9178-8fcf0c39d6ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\DR7">
-      <UniqueIdentifier>{361c1f76-3feb-4417-8fec-9014f24e7c01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Frames">
-      <UniqueIdentifier>{203edf89-6e75-4515-af7e-c00dd40c50a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Frames">
-      <UniqueIdentifier>{a2988483-e26e-4d7c-a891-ed46206a9d75}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ITool">
-      <UniqueIdentifier>{aafa0c7e-4960-46c1-b7f0-9461001eb533}</UniqueIdentifier>
+    <Filter Include="Header Files\Frame">
+      <UniqueIdentifier>{7bdc1c7d-e024-4569-a51c-111d91d287c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Test">
-      <UniqueIdentifier>{694d0152-57f3-4d7d-9b15-9f287bd4d669}</UniqueIdentifier>
+      <UniqueIdentifier>{720261fa-7f49-47b0-bc9f-bc163ed6bcc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{c1c78a7a-0800-48d0-9b08-9963c2948546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EmPulse3E">
+      <UniqueIdentifier>{00d9eda3-c28d-490b-81b4-30974e2e2cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Frame">
+      <UniqueIdentifier>{19f5ae99-5b28-4cd3-9eb9-8c0aa7e15bbf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Test">
-      <UniqueIdentifier>{347d37c7-7029-4f6c-9158-53926d40263c}</UniqueIdentifier>
+      <UniqueIdentifier>{88754d1b-89e0-4ad1-ae30-859a59a04fe3}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\Interval3E.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\Script3E.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\Cyclogram3E.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Common\Value.cpp">
-      <Filter>Source Files\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Common\MemPack.cpp">
-      <Filter>Source Files\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DR7\DR7Sample.cpp">
-      <Filter>Source Files\DR7</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\Channel.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Frames\Frame.cpp">
-      <Filter>Source Files\Frames</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Common\BufferedFile.cpp">
-      <Filter>Source Files\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Common\StreamBuffer.cpp">
-      <Filter>Source Files\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Common\IndigoTimer.cpp">
-      <Filter>Source Files\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Frames\Frames.cpp">
-      <Filter>Source Files\Frames</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\MetaInfoStorage.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\CyclogramBase.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DR7\DV7Sample.cpp">
-      <Filter>Source Files\DR7</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\Calibration3E.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Test\PrintLogChannels.cpp">
-      <Filter>Source Files\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DR7\Parser3E.cpp">
-      <Filter>Source Files\DR7</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Test\Notifier3E.cpp">
-      <Filter>Source Files\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DR7\TimeScale3E.cpp">
-      <Filter>Source Files\DR7</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Device\ChannelInfo3E.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Frames\FrameInfo3E.cpp">
-      <Filter>Source Files\Frames</Filter>
-    </ClCompile>
+    <Filter Include="Header Files\EmPulse3E\Common">
+      <UniqueIdentifier>{5cfe5b3b-47cf-4fd0-b990-1d191550079d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EmPulse3E\Device">
+      <UniqueIdentifier>{86b16199-8cd3-4d22-890c-254bbbbd4033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EmPulse3E\Common">
+      <UniqueIdentifier>{0f511de8-93c8-4540-8c87-cd6533e566fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EmPulse3E\Device">
+      <UniqueIdentifier>{91256293-452d-4e97-baf5-d56e6ebb5d3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Device\Interval3E.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\Cyclogram3E.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\Script3E.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common\Value.h">
+    <ClInclude Include="src\Common\BinFile.h">
       <Filter>Header Files\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common\MemPack.h">
-      <Filter>Header Files\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DR7\DR7Sample.h">
-      <Filter>Header Files\DR7</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tools\itool_classes.h">
-      <Filter>Header Files\ITool</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\Channel.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Frames\Frame.h">
-      <Filter>Header Files\Frames</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\MetaInfo.h">
-      <Filter>Header Files\Device</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\BufferedFile.h">
-      <Filter>Header Files\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common\StreamBuffer.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\IndigoTimer.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frames\Frames.h">
-      <Filter>Header Files\Frames</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\MetaInfoStorage.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\CyclogramBase.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DR7\DV7Sample.h">
-      <Filter>Header Files\DR7</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Device\Calibration3E.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common\BinFile.h">
+    <ClInclude Include="src\Common\MemPack.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Test\PrintLogChannels.h">
-      <Filter>Header Files\Test</Filter>
+    <ClInclude Include="src\Common\StreamBuffer.h">
+      <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frames\FrameTime.h">
-      <Filter>Header Files\Frames</Filter>
+    <ClInclude Include="src\Common\Value.h">
+      <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\DR7\Parser3E.h">
-      <Filter>Header Files\DR7</Filter>
+    <ClInclude Include="src\EmPulse3E\Common3E.h">
+      <Filter>Header Files\EmPulse3E</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Common\ChannelInfo3E.h">
+      <Filter>Header Files\EmPulse3E\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Common\DR7Sample.h">
+      <Filter>Header Files\EmPulse3E\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Common\DV7Sample.h">
+      <Filter>Header Files\EmPulse3E\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Common\FrameInfo3E.h">
+      <Filter>Header Files\EmPulse3E\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Common\Parser3E.h">
+      <Filter>Header Files\EmPulse3E\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Device\Calibration3E.h">
+      <Filter>Header Files\EmPulse3E\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Device\CommonDevice3E.h">
+      <Filter>Header Files\EmPulse3E\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Device\Cyclogram3E.h">
+      <Filter>Header Files\EmPulse3E\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Device\Interval3E.h">
+      <Filter>Header Files\EmPulse3E\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Device\Script3E.h">
+      <Filter>Header Files\EmPulse3E\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Device\TimeScale3E.h">
+      <Filter>Header Files\EmPulse3E\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\Channel.h">
+      <Filter>Header Files\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\CyclogramBase.h">
+      <Filter>Header Files\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\Frame.h">
+      <Filter>Header Files\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\Frames.h">
+      <Filter>Header Files\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\FrameTime.h">
+      <Filter>Header Files\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\MetaInfo.h">
+      <Filter>Header Files\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\MetaInfoStorage.h">
+      <Filter>Header Files\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frame\NotifierParserBase.h">
+      <Filter>Header Files\Frame</Filter>
     </ClInclude>
     <ClInclude Include="src\Test\Notifier3E.h">
       <Filter>Header Files\Test</Filter>
     </ClInclude>
-    <ClInclude Include="src\DR7\TimeScale3E.h">
-      <Filter>Header Files\DR7</Filter>
+    <ClInclude Include="src\Test\PrintLogChannels.h">
+      <Filter>Header Files\Test</Filter>
     </ClInclude>
-    <ClInclude Include="src\Device\ChannelInfo3E.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Frames\FrameInfo3E.h">
-      <Filter>Header Files\Frames</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common3E.h">
-      <Filter>Header Files\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CommonDevice3E.h">
-      <Filter>Header Files\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DR7\NotifierParserBase.h">
-      <Filter>Header Files\DR7</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\BufferedFile.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\IndigoTimer.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\MemPack.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\StreamBuffer.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\Value.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Common\ChannelInfo3E.cpp">
+      <Filter>Source Files\EmPulse3E\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Common\DR7Sample.cpp">
+      <Filter>Source Files\EmPulse3E\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Common\DV7Sample.cpp">
+      <Filter>Source Files\EmPulse3E\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Common\FrameInfo3E.cpp">
+      <Filter>Source Files\EmPulse3E\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Common\Parser3E.cpp">
+      <Filter>Source Files\EmPulse3E\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Device\Calibration3E.cpp">
+      <Filter>Source Files\EmPulse3E\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Device\Cyclogram3E.cpp">
+      <Filter>Source Files\EmPulse3E\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Device\Interval3E.cpp">
+      <Filter>Source Files\EmPulse3E\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Device\Script3E.cpp">
+      <Filter>Source Files\EmPulse3E\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Device\TimeScale3E.cpp">
+      <Filter>Source Files\EmPulse3E\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frame\Channel.cpp">
+      <Filter>Source Files\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frame\CyclogramBase.cpp">
+      <Filter>Source Files\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frame\Frame.cpp">
+      <Filter>Source Files\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frame\Frames.cpp">
+      <Filter>Source Files\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frame\MetaInfoStorage.cpp">
+      <Filter>Source Files\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Test\PrintLogChannels.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Test\Notifier3E.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

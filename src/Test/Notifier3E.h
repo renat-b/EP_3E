@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\DR7\NotifierParserBase.h"
+#include "..\Frame\NotifierParserBase.h"
 #include "PrintLogChannels.h"
 
 class Notifier3E : public NotifierParserBase
@@ -30,7 +30,7 @@ public:
     bool           Initialize(const char *file_name, uint32_t num_interval, uint32_t num_frame);
 
     virtual bool   OnParse(uint32_t flags) override;
-    virtual bool OnCyclogram(const CyclogramBase &cyclo) override;
+    virtual bool   OnCyclogram(const CyclogramBase &cyclo) override;
 
     virtual bool   OnCyclo(uint32_t flags) override;
     virtual bool   OnFrame(const Frame &frame) override;
