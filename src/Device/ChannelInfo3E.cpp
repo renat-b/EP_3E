@@ -1,28 +1,28 @@
 #include "StdAfx.h"
-#include "Channel3E.h"
-#include "..\DR7\TimeScale.h"
+#include "ChannelInfo3E.h"
+#include "..\DR7\TimeScale3E.h"
 
-Channel3E::Channel3E(const Channel &channel) 
+ChannelInfo3E::ChannelInfo3E(const Channel &channel) 
 {
     m_channel = &channel;
 }
 
-Channel3E::~Channel3E()
+ChannelInfo3E::~ChannelInfo3E()
 {
     m_channel = nullptr;
 }
 
-const Channel &Channel3E::ChannelGet() const
+const Channel &ChannelInfo3E::ChannelGet() const
 {
     return *m_channel;
 }
 
-uint32_t Channel3E::IDGet() const
+uint32_t ChannelInfo3E::IDGet() const
 {
     return m_channel->IDGet();
 }
 
-ScVar Channel3E::ScaleGet() const
+ScVar ChannelInfo3E::ScaleGet() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -30,7 +30,7 @@ ScVar Channel3E::ScaleGet() const
     return meta->ScaleTypeGet();
 }
 
-uint32_t Channel3E::PointStart() const
+uint32_t ChannelInfo3E::PointStart() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -38,7 +38,7 @@ uint32_t Channel3E::PointStart() const
     return meta->PointStart();
 }
 
-uint32_t Channel3E::PointCount() const
+uint32_t ChannelInfo3E::PointCount() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -46,7 +46,7 @@ uint32_t Channel3E::PointCount() const
     return meta->PointCount();
 }
 
-uint32_t Channel3E::AmountOfSavingsGet() const
+uint32_t ChannelInfo3E::AmountOfSavingsGet() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -54,7 +54,7 @@ uint32_t Channel3E::AmountOfSavingsGet() const
     return meta->AmountOfSavingsGet();
 }
 
-double Channel3E::MsNumPoint(uint32_t num_point) const
+double ChannelInfo3E::MsNumPoint(uint32_t num_point) const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -62,7 +62,7 @@ double Channel3E::MsNumPoint(uint32_t num_point) const
     return meta->MsGet(num_point);   
 }
 
-bool Channel3E::IsPositive() const
+bool ChannelInfo3E::IsPositive() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -71,7 +71,7 @@ bool Channel3E::IsPositive() const
 }
 
 
-bool Channel3E::IsNegative() const
+bool ChannelInfo3E::IsNegative() const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
@@ -79,7 +79,7 @@ bool Channel3E::IsNegative() const
     return meta->ChannelIsNegative();
 }
 
-ChannelMetaInfo3E *Channel3E::MetaInfoGet() const
+ChannelMetaInfo3E *ChannelInfo3E::MetaInfoGet() const
 {
     ChannelMetaInfo3E *meta = nullptr;
     if (!m_channel->MetaInfoGet((IMetaInfo **)&meta, ChannelMetaInfo3E::ID_EmPulse3E))
@@ -159,7 +159,7 @@ bool ChannelMetaInfo3E::ChannelIsNegative() const
 
 double ChannelMetaInfo3E::MsGet(uint32_t num_point) const
 {
-    TimeScale time_scale;
+    TimeScale3E time_scale;
 
     double ms = time_scale.MsGet(m_scale, num_point);
     return ms;

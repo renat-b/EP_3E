@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\CommonDevice.h"
-#include "Channel3E.h"
+#include "..\CommonDevice3E.h"
+#include "ChannelInfo3E.h"
 #include "Channel.h"
 
 class Script3E

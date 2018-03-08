@@ -66,9 +66,6 @@
     <ClCompile Include="src\Device\Cyclogram3E.cpp">
       <Filter>Source Files\Device</Filter>
     </ClCompile>
-    <ClCompile Include="src\Device\Channel3E.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
     <ClCompile Include="src\Common\Value.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
@@ -77,15 +74,6 @@
     </ClCompile>
     <ClCompile Include="src\DR7\DR7Sample.cpp">
       <Filter>Source Files\DR7</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DR7\TimeScale.cpp">
-      <Filter>Source Files\DR7</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DR7\DR7Parser.cpp">
-      <Filter>Source Files\DR7</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Test\Test.cpp">
-      <Filter>Source Files\Test</Filter>
     </ClCompile>
     <ClCompile Include="src\Device\Channel.cpp">
       <Filter>Source Files\Device</Filter>
@@ -108,9 +96,6 @@
     <ClCompile Include="src\Device\MetaInfoStorage.cpp">
       <Filter>Source Files\Device</Filter>
     </ClCompile>
-    <ClCompile Include="src\Frames\Frame3E.cpp">
-      <Filter>Source Files\Frames</Filter>
-    </ClCompile>
     <ClCompile Include="src\Device\CyclogramBase.cpp">
       <Filter>Source Files\Device</Filter>
     </ClCompile>
@@ -122,6 +107,21 @@
     </ClCompile>
     <ClCompile Include="src\Test\PrintLogChannels.cpp">
       <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DR7\Parser3E.cpp">
+      <Filter>Source Files\DR7</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Test\Notifier3E.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DR7\TimeScale3E.cpp">
+      <Filter>Source Files\DR7</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Device\ChannelInfo3E.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frames\FrameInfo3E.cpp">
+      <Filter>Source Files\Frames</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,15 +137,6 @@
     <ClInclude Include="src\Device\Script3E.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
-    <ClInclude Include="src\Device\Channel3E.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CommonDevice.h">
-      <Filter>Header Files\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common.h">
-      <Filter>Header Files\Common</Filter>
-    </ClInclude>
     <ClInclude Include="src\Common\Value.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
@@ -158,17 +149,8 @@
     <ClInclude Include="src\Tools\itool_classes.h">
       <Filter>Header Files\ITool</Filter>
     </ClInclude>
-    <ClInclude Include="src\DR7\TimeScale.h">
-      <Filter>Header Files\DR7</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DR7\DR7Parser.h">
-      <Filter>Header Files\DR7</Filter>
-    </ClInclude>
     <ClInclude Include="src\DR7\EmPulse3ENotifier.h">
       <Filter>Header Files\DR7</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Test\Test.h">
-      <Filter>Header Files\Test</Filter>
     </ClInclude>
     <ClInclude Include="src\Device\Channel.h">
       <Filter>Header Files\Device</Filter>
@@ -194,9 +176,6 @@
     <ClInclude Include="src\Device\MetaInfoStorage.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frames\Frame3E.h">
-      <Filter>Header Files\Frames</Filter>
-    </ClInclude>
     <ClInclude Include="src\Device\CyclogramBase.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
@@ -214,6 +193,27 @@
     </ClInclude>
     <ClInclude Include="src\Frames\FrameTime.h">
       <Filter>Header Files\Frames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\Parser3E.h">
+      <Filter>Header Files\DR7</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Test\Notifier3E.h">
+      <Filter>Header Files\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DR7\TimeScale3E.h">
+      <Filter>Header Files\DR7</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Device\ChannelInfo3E.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Frames\FrameInfo3E.h">
+      <Filter>Header Files\Frames</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common3E.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CommonDevice3E.h">
+      <Filter>Header Files\Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

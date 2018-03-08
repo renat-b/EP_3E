@@ -1,16 +1,16 @@
 #include "StdAfx.h"
-#include "Test.h"
+#include "Notifier3E.h"
 
-TestDR7Parser::TestDR7Parser()
+Notifier3E::Notifier3E()
 {
 }
 
-TestDR7Parser::~TestDR7Parser()
+Notifier3E::~Notifier3E()
 {
     uint32_t break_point = 0;
 }
 
-bool TestDR7Parser::Initialize(const char *file_name, uint32_t num_interval, uint32_t num_frame)
+bool Notifier3E::Initialize(const char *file_name, uint32_t num_interval, uint32_t num_frame)
 {
     m_num_interval = num_interval;
     m_num_frame    = num_frame;
@@ -38,12 +38,12 @@ bool TestDR7Parser::Initialize(const char *file_name, uint32_t num_interval, uin
     return r;
 }
 
-bool TestDR7Parser::OnParse(uint32_t flags)
+bool Notifier3E::OnParse(uint32_t flags)
 {
     return true;
 }
 
-bool TestDR7Parser::OnCyclogram(CyclogramBase &cyclo)
+bool Notifier3E::OnCyclogram(CyclogramBase &cyclo)
 {
     m_vals.clear();
 
@@ -53,16 +53,16 @@ bool TestDR7Parser::OnCyclogram(CyclogramBase &cyclo)
     if (m_num_frame >= cyclo.CountFrames(m_num_interval))
         return false;
     
-    PrintLogCaption(cyclo.FramesGet().Get(m_num_interval, m_num_frame)); 
+    PrintLogCaption(cyclo.Get(m_num_interval, m_num_frame)); 
     return true;
 }
 
-bool TestDR7Parser::OnCyclo(uint32_t flags)
+bool Notifier3E::OnCyclo(uint32_t flags)
 {
     return true;
 }
 
-bool TestDR7Parser::OnFrame(const Frame &frame)
+bool Notifier3E::OnFrame(const Frame &frame)
 {
     if ( !(frame.FrameNumGet() == m_num_frame && frame.IntervalGet() == m_num_interval))
         return true;
@@ -83,9 +83,9 @@ bool TestDR7Parser::OnFrame(const Frame &frame)
     return true;
 }
 
-void TestDR7Parser::AssignValue(const uint64_t &time, const Channel &channel, const Value &value)
+void Notifier3E::AssignValue(const uint64_t &time, const Channel &channel, const Value &value)
 {
-    Channel3E   channel3E(channel);
+    ChannelInfo3E   channel3E(channel);
 
     ChannelData data = { time, 0.0 };
     if (channel3E.ScaleGet() == ScVarType0)
@@ -96,7 +96,7 @@ void TestDR7Parser::AssignValue(const uint64_t &time, const Channel &channel, co
     m_vals.push_back(data);
 }
 
-bool TestDR7Parser::PrintLogValue(const Value &val)
+bool Notifier3E::PrintLogValue(const Value &val)
 {
     double dd = 0.0;
     if (val.Dims() == 0)
@@ -107,7 +107,7 @@ bool TestDR7Parser::PrintLogValue(const Value &val)
     return m_log_file.AddDouble(dd);    
 }
 
-void TestDR7Parser::PrintLogCaption(const Frame &frame)
+void Notifier3E::PrintLogCaption(const Frame &frame)
 {
     std::string caption = "Num\tTime\t";
     char buf[64];
@@ -161,15 +161,15 @@ void TestDR7Parser::PrintLogCaption(const Frame &frame)
     m_log_file.AddEndLine();
 }
 
-char *TestDR7Parser::PrintLogCaptionParams(const Frame &frame, char *buf, uint32_t len)
+char *Notifier3E::PrintLogCaptionParams(const Frame &frame, char *buf, uint32_t len)
 {
     buf[0] = 0;
 
-    Channel3E channel(frame.ChannelGet(0));
+    ChannelInfo3E channel(frame.ChannelGet(0));
     if (channel.ScaleGet() == ScVarType0)
         sprintf_s(buf, len, " (%d)", channel.AmountOfSavingsGet());
     else
-        sprintf_s(buf, len, " (%d, %d)", (uint32_t)channel.PointStart(), (uint32_t)channel.PointCount());
+        sprintf_s(buf, len, " (%d, %d)", channel.PointStart(), channel.PointCount());
 
     return buf;
 }

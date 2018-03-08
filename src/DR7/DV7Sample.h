@@ -1,11 +1,11 @@
 #pragma once
 
 #include "..\Common\StreamBuffer.h"
-#include "..\CommonDevice.h"
+#include "..\CommonDevice3E.h"
 #include "..\Common\StreamBuffer.h"
 #include "..\Device\Cyclogram3E.h"
 #include "..\Device\Calibration3E.h"
-#include "..\Frames\Frame3E.h"
+#include "..\Frames\FrameInfo3E.h"
 #include "..\Frames\Frames.h"
 #include "EmPulse3ENotifier.h"
 
@@ -57,7 +57,7 @@ private:
     bool     ParseHeader();
     bool     ParseFrames();
     bool     ParseChannels(Frame &frame);
-    bool     ParseChannel(Value &value, const Channel3E &channel, uint32_t pos_point);
+    bool     ParseChannel(Value &value, const ChannelInfo3E &channel, uint32_t pos_point);
 
     bool     OnCyclo();
     bool     OnFrame(const Frame &frame);

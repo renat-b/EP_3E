@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "Script3E.h"
-#include "..\Common.h"
+#include "..\Common3E.h"
 
 Script3E::Measure::Measure()
 {

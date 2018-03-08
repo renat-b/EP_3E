@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\CommonDevice.h"
+#include "..\CommonDevice3E.h"
 #include "..\Common\StreamBuffer.h"
 #include "..\Device\Cyclogram3E.h"
 #include "..\Device\CyclogramBase.h"
@@ -10,7 +10,7 @@
 #include "EmPulse3ENotifier.h"
 
 
-class DR7Parser
+class Parser3E
 {
 private:
     enum constants
@@ -34,8 +34,8 @@ private:
     uint32_t           m_mode = MODE_DR7;
 
 public:
-    DR7Parser();
-    ~DR7Parser();
+    Parser3E();
+    ~Parser3E();
 
     bool   Initialize(EmPulse3ENotifier *notifier);
     bool   Parse(IStreamBuffer &stream, bool is_dr7 = true);
@@ -58,5 +58,5 @@ private:
 
     void   OnCyclogram();
     bool   CyclogramBaseCreate();
-    void   FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_measure);
+    void   FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_frame);
 };

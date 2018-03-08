@@ -1,9 +1,9 @@
 #pragma once
 
-#include "..\CommonDevice.h"
+#include "..\CommonDevice3E.h"
 
 
-class TimeScale
+class TimeScale3E
 {
 private:
     struct ScaleLogInfo
@@ -23,8 +23,8 @@ private:
     static ScaleLogInfo s_scale_16_log_60Hz[];
 
 public:
-    TimeScale();
-    ~TimeScale();
+    TimeScale3E();
+    ~TimeScale3E();
 
     uint32_t   AmountOfPointsGet(ScVar scale, uint32_t num_point) const;
     double     MsGet(ScVar scale, uint32_t num_point) const;

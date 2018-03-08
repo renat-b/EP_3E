@@ -1,6 +1,6 @@
 #include "StdAfx.h"
-#include ".\DR7\DR7Parser.h"
-#include ".\Test\Test.h"
+#include ".\DR7\Parser3E.h"
+#include ".\Test\Notifier3E.h"
 #include ".\Common\IndigoTimer.h"
 
 void Usage()
@@ -57,12 +57,13 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    DR7Parser parser;
-    TestDR7Parser notifier;
-    IndigoTimer   timer;
+
+    Parser3E     parser;
+    Notifier3E   notifier;
+    IndigoTimer  timer;
+    StreamFile   stream;
 
     timer.Start(0);
-    StreamFile stream;
 
     bool dr7 = false;
     if (strstr(file_name, ".DR7"))

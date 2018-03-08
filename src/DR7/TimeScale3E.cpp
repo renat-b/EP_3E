@@ -1,8 +1,7 @@
 #include "StdAfx.h"
-#include "TimeScale.h"
-#include "..\CommonDevice.h"
+#include "TimeScale3E.h"
 
-TimeScale::ScaleLogInfo TimeScale::s_scale_32_log[] = 
+TimeScale3E::ScaleLogInfo TimeScale3E::s_scale_32_log[] = 
 {
 {  0.135, 	12,	    4     },
 {  0.180, 	16,	    5     },
@@ -135,7 +134,7 @@ TimeScale::ScaleLogInfo TimeScale::s_scale_32_log[] =
 };
 
 
-TimeScale::ScaleLogInfo TimeScale::s_scale_32_log_50Hz[] = 
+TimeScale3E::ScaleLogInfo TimeScale3E::s_scale_32_log_50Hz[] = 
 {
 {  0.135,	12,	    4      },
 {  0.180,	16,	    5      },
@@ -268,7 +267,7 @@ TimeScale::ScaleLogInfo TimeScale::s_scale_32_log_50Hz[] =
 };
 
 
-TimeScale::ScaleLogInfo TimeScale::s_scale_32_log_60Hz[] = 
+TimeScale3E::ScaleLogInfo TimeScale3E::s_scale_32_log_60Hz[] = 
 {
 {  0.135,	12,	    4      },
 {  0.180,	16,	    5      },
@@ -401,7 +400,7 @@ TimeScale::ScaleLogInfo TimeScale::s_scale_32_log_60Hz[] =
 };
 
 
-TimeScale::ScaleLogInfo TimeScale::s_scale_16_log[] = 
+TimeScale3E::ScaleLogInfo TimeScale3E::s_scale_16_log[] = 
 {
 {   0.135,	12,	    4     },
 {   0.180,	16,	    5     },
@@ -474,7 +473,7 @@ TimeScale::ScaleLogInfo TimeScale::s_scale_16_log[] =
 };
 
 
-TimeScale::ScaleLogInfo TimeScale::s_scale_16_log_50Hz[] = 
+TimeScale3E::ScaleLogInfo TimeScale3E::s_scale_16_log_50Hz[] = 
 {
 {  0.135,	12,	    4     },
 {  0.180,	16,	    5     },
@@ -547,7 +546,7 @@ TimeScale::ScaleLogInfo TimeScale::s_scale_16_log_50Hz[] =
 };
 
 
-TimeScale::ScaleLogInfo TimeScale::s_scale_16_log_60Hz[] = 
+TimeScale3E::ScaleLogInfo TimeScale3E::s_scale_16_log_60Hz[] = 
 {
 {  0.135,	12,	    4     },
 {  0.180,	16,	    5     },
@@ -620,15 +619,15 @@ TimeScale::ScaleLogInfo TimeScale::s_scale_16_log_60Hz[] =
 };
 
 
-TimeScale::TimeScale()
+TimeScale3E::TimeScale3E()
 {
 }
 
-TimeScale::~TimeScale()
+TimeScale3E::~TimeScale3E()
 {
 }
 
-uint32_t TimeScale::AmountOfPointsGet(ScVar scale, uint32_t num_point) const
+uint32_t TimeScale3E::AmountOfPointsGet(ScVar scale, uint32_t num_point) const
 {
     uint32_t amount_of_points = 0;
 
@@ -679,7 +678,7 @@ uint32_t TimeScale::AmountOfPointsGet(ScVar scale, uint32_t num_point) const
     return amount_of_points;
 }
 
-double TimeScale::MsGet(ScVar scale, uint32_t num_point) const
+double TimeScale3E::MsGet(ScVar scale, uint32_t num_point) const
 {
     double ms = 0.0;
     if (scale == ScVarType0 || scale == ScVarType7)

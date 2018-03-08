@@ -1,24 +1,24 @@
 #include "StdAfx.h"
-#include "DR7Parser.h"
-#include "..\Frames\Frame3E.h"
+#include "Parser3E.h"
+#include "..\Frames\FrameInfo3E.h"
 
-DR7Parser::DR7Parser() : m_notifier(nullptr), m_stream(nullptr)
+Parser3E::Parser3E() : m_notifier(nullptr), m_stream(nullptr)
 {
 
 }
 
-DR7Parser::~DR7Parser()
+Parser3E::~Parser3E()
 {
 
 }
 
-bool DR7Parser::Initialize(EmPulse3ENotifier *notifier)
+bool Parser3E::Initialize(EmPulse3ENotifier *notifier)
 {
     m_notifier = notifier;
     return true;
 }
 
-bool DR7Parser::Parse(IStreamBuffer &stream, bool is_dr7/* = true */)
+bool Parser3E::Parse(IStreamBuffer &stream, bool is_dr7/* = true */)
 {
     m_stream = &stream;
     if (is_dr7)
@@ -49,14 +49,14 @@ bool DR7Parser::Parse(IStreamBuffer &stream, bool is_dr7/* = true */)
     return true;
 }
 
-bool DR7Parser::ParseHeader()
+bool Parser3E::ParseHeader()
 {
     if (!m_stream->GetRawData(&m_header, sizeof(DR7Header)))
         return false;
     return true;
 }
 
-bool DR7Parser::ParseCyclogram()
+bool Parser3E::ParseCyclogram()
 {
     // cyclogram
     uint16_t len_cyclo = 0;
@@ -74,7 +74,7 @@ bool DR7Parser::ParseCyclogram()
     return true;
 }
 
-bool DR7Parser::ParseCalibration()
+bool Parser3E::ParseCalibration()
 {
     // calibration table
     uint16_t len_calib = 0;
@@ -91,7 +91,7 @@ bool DR7Parser::ParseCalibration()
     return true;
 }
 
-bool DR7Parser::ParseResource()
+bool Parser3E::ParseResource()
 {
     // res
     uint16_t len_res = 0;
@@ -104,7 +104,7 @@ bool DR7Parser::ParseResource()
     return true;
 }
 
-bool DR7Parser::ParseSamples()
+bool Parser3E::ParseSamples()
 {
     bool r;
     if (m_mode == MODE_DR7)
@@ -115,7 +115,7 @@ bool DR7Parser::ParseSamples()
     return r;
 }
 
-bool DR7Parser::ParseDR7Samples()
+bool Parser3E::ParseDR7Samples()
 {
     bool r = true;
 
@@ -129,13 +129,13 @@ bool DR7Parser::ParseDR7Samples()
     return r;
 }
 
-bool DR7Parser::ParseDR7Sample()
+bool Parser3E::ParseDR7Sample()
 {
     bool r = m_dr7_sample.Parse();
     return r;
 }
 
-bool DR7Parser::ParseDV7Samples()
+bool Parser3E::ParseDV7Samples()
 {
     bool r = true;
 
@@ -149,7 +149,7 @@ bool DR7Parser::ParseDV7Samples()
     return r;
 }
 
-bool DR7Parser::ParseDV7Sample()
+bool Parser3E::ParseDV7Sample()
 {
     bool r = m_dv7_sample.Parse();
     if (!r)
@@ -160,7 +160,7 @@ bool DR7Parser::ParseDV7Sample()
     return r;
 }
 
-void DR7Parser::DR7SampleInit()
+void Parser3E::DR7SampleInit()
 {
     m_dr7_sample.SetNotifier(m_notifier);
     m_dr7_sample.SetStream(m_stream);
@@ -168,7 +168,7 @@ void DR7Parser::DR7SampleInit()
     m_dr7_sample.FramesAssign(m_cyclogram.FramesGet());
 }
 
-void DR7Parser::DV7SampleInit()
+void Parser3E::DV7SampleInit()
 {
     m_dv7_sample.SetNotifier(m_notifier);
     m_dv7_sample.SetStream(m_stream);
@@ -176,7 +176,7 @@ void DR7Parser::DV7SampleInit()
     m_dv7_sample.FramesAssign(m_cyclogram.FramesGet());
 }
 
-void DR7Parser::OnCyclogram()
+void Parser3E::OnCyclogram()
 {
     if (!CyclogramBaseCreate())
         return;
@@ -187,7 +187,7 @@ void DR7Parser::OnCyclogram()
     m_notifier->OnCyclogram(m_cyclogram);
 }
 
-bool DR7Parser::CyclogramBaseCreate()
+bool Parser3E::CyclogramBaseCreate()
 {
     m_cyclogram.Clear();
 
@@ -207,7 +207,7 @@ bool DR7Parser::CyclogramBaseCreate()
             {
 
                 Value     val;
-                Channel3E channel3E(script.ChannelGet(pos_measure, pos_channel));
+                ChannelInfo3E channel3E(script.ChannelGet(pos_measure, pos_channel));
 
                 if (channel3E.ScaleGet() == ScVarType0)
                 {
@@ -232,9 +232,9 @@ bool DR7Parser::CyclogramBaseCreate()
     return true;
 }
 
-void DR7Parser::FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_measure)
+void Parser3E::FrameAssign(Frame &frame, const OperationMeasure &measure, uint32_t pos_interval, uint32_t pos_frame)
 {
-    frame.FrameNumSet(pos_measure);
+    frame.FrameNumSet(pos_frame);
     frame.IntervalSet(pos_interval);
 
     FrameMetaInfo3E *meta = nullptr;

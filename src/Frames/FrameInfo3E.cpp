@@ -1,7 +1,7 @@
 #include "StdAfx.h"
-#include "Frame3E.h"
-#include "..\Device\Channel3E.h"
-#include "..\DR7\TimeScale.h"
+#include "FrameInfo3E.h"
+#include "..\Device\ChannelInfo3E.h"
+#include "..\DR7\TimeScale3E.h"
 
 
 FrameMetaInfo3E::FrameMetaInfo3E() : m_offset_time(0)
@@ -63,17 +63,17 @@ uint32_t FrameMetaInfo3E::NumPoints() const
     return m_num_points;
 }
 
-Frame3E::Frame3E(const Frame &frame)
+FrameInfo3E::FrameInfo3E(const Frame &frame)
 {
     m_frame = &frame;
 }
 
-Frame3E::~Frame3E()
+FrameInfo3E::~FrameInfo3E()
 {
 
 }
 
-uint32_t Frame3E::OffsetTimeGet() const
+uint32_t FrameInfo3E::OffsetTimeGet() const
 {
     FrameMetaInfo3E *meta = nullptr;
     if (!m_frame->MetaInfoGet((IMetaInfo **)&meta, FrameMetaInfo3E::ID_EmPulse3E))
@@ -83,7 +83,7 @@ uint32_t Frame3E::OffsetTimeGet() const
     return offset_time;
 }
 
-uint32_t Frame3E::NumPoints() const
+uint32_t FrameInfo3E::NumPoints() const
 {
     FrameMetaInfo3E *meta = nullptr;
     if (!m_frame->MetaInfoGet((IMetaInfo **)&meta, FrameMetaInfo3E::ID_EmPulse3E))
@@ -93,22 +93,22 @@ uint32_t Frame3E::NumPoints() const
     return num_points;
 }
 
-uint32_t Frame3E::ChannelsCount() const
+uint32_t FrameInfo3E::ChannelsCount() const
 {
     return m_frame->ChannelsCount();
 }
 
-const Channel &Frame3E::ChannelGet(uint32_t pos) const
+const Channel &FrameInfo3E::ChannelGet(uint32_t pos) const
 {
     return m_frame->ChannelGet(pos);
 }
 
-const Value &Frame3E::ValueGet(uint32_t pos) const
+const Value &FrameInfo3E::ValueGet(uint32_t pos) const
 {
     return m_frame->ValueGet(pos);
 }
 
-Value &Frame3E::ValueGet(uint32_t pos)
+Value &FrameInfo3E::ValueGet(uint32_t pos)
 {
     Frame *frame = (Frame *)m_frame;
     return frame->ValueGet(pos);

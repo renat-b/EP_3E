@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\Common\Value.h"
-#include "..\Device\Channel3E.h"
+#include "..\Device\ChannelInfo3E.h"
 #include "..\CommonEmPulse\ChannelID.h"
 
 struct FrameKeyParam

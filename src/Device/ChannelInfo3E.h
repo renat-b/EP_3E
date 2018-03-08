@@ -1,21 +1,21 @@
 #pragma once
 
-#include "..\CommonDevice.h"
-#include "..\Common.h"
+#include "..\CommonDevice3E.h"
+#include "..\Common3E.h"
 #include "Channel.h"
 #include "MetaInfo.h"
 
 class ChannelMetaInfo3E;
 
 
-class Channel3E
+class ChannelInfo3E
 {
 private:
     const Channel  *m_channel = nullptr;
 
 public:
-    Channel3E(const Channel &channel);
-    ~Channel3E();
+    ChannelInfo3E(const Channel &channel);
+    ~ChannelInfo3E();
 
     const Channel    &ChannelGet() const;
 

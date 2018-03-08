@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\CommonDevice.h"
+#include "..\CommonDevice3E.h"
 #include "..\Device\MetaInfo.h"
 #include "Frame.h"
 
@@ -34,14 +34,14 @@ public:
     void       Create(const OperationMeasure &measure);
 };
 
-class Frame3E
+class FrameInfo3E
 {
 private:
     const Frame *m_frame = nullptr;
 
 public:
-    Frame3E(const Frame &frame);
-    ~Frame3E();
+    FrameInfo3E(const Frame &frame);
+    ~FrameInfo3E();
 
     uint32_t   OffsetTimeGet() const;
     uint32_t   NumPoints() const;

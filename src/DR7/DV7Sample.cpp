@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "DV7Sample.h"
-#include "..\Frames\Frame3E.h"
-#include "TimeScale.h"
+#include "..\Frames\FrameInfo3E.h"
+#include "TimeScale3E.h"
 
 DV7Sample::DV7Sample()
 {
@@ -94,7 +94,7 @@ bool DV7Sample::ParseFrames()
 
 bool DV7Sample::ParseChannels(Frame &frame)
 {
-    Frame3E frame3E(frame);
+    FrameInfo3E frame3E(frame);
 
     uint32_t count_channel = frame3E.ChannelsCount();
     uint32_t count_points  = frame3E.NumPoints(); 
@@ -103,7 +103,7 @@ bool DV7Sample::ParseChannels(Frame &frame)
     {
         for (uint32_t pos_channel = 0; pos_channel < count_channel; pos_channel++)
         {
-            Channel3E channel(frame.ChannelGet(pos_channel));
+            ChannelInfo3E channel(frame.ChannelGet(pos_channel));
             Value &value = frame.ValueGet(pos_channel);
 
             if (!ParseChannel(value, channel, pos_point))
@@ -113,7 +113,7 @@ bool DV7Sample::ParseChannels(Frame &frame)
     return true;
 }
 
-bool DV7Sample::ParseChannel(Value &value, const Channel3E &channel, uint32_t pos_point)
+bool DV7Sample::ParseChannel(Value &value, const ChannelInfo3E &channel, uint32_t pos_point)
 {
     int32_t  adc_voltage = 0;
     float    d_adc; 
@@ -140,7 +140,7 @@ bool DV7Sample::ParseChannel(Value &value, const Channel3E &channel, uint32_t po
             return false;
         }
         
-        TimeScale scale;
+        TimeScale3E scale;
         d_adc = ((float)adc_voltage) / scale.AmountOfPointsGet(channel.ScaleGet(), channel.PointStart() + pos_point);
         if (!m_calibration.Calibrate(d_calib, channel.IDGet(), d_adc))
             return false;
@@ -174,7 +174,7 @@ bool DV7Sample::OnFrame(const Frame &frame)
 
 void DV7Sample::FrameAssign(Frame &frame)
 {
-    Frame3E frame3E(frame);
+    FrameInfo3E frame3E(frame);
 
     FrameTime measure_time = m_start_cyclo_time;
     measure_time.AddMs((uint64_t)(frame3E.OffsetTimeGet() * m_measure_unit_offset));   

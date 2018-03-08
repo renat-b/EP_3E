@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "DR7Sample.h"
-#include "..\Frames\Frame3E.h"
+#include "..\Frames\FrameInfo3E.h"
 
 DR7Sample::DR7Sample() : m_notifier(nullptr), m_stream(nullptr)
 {
@@ -110,7 +110,7 @@ bool DR7Sample::ParseChannel(const Channel &channel, Value& value)
     float    d_adc = 0;
     double   d_calib;
 
-    Channel3E channel3E(channel);
+    ChannelInfo3E channel3E(channel);
 
     if (channel3E.ScaleGet() == ScVarType0)
     {
@@ -162,7 +162,7 @@ bool DR7Sample::OnFrame(const Frame &frame)
 
 void DR7Sample::FrameAssign(Frame &frame)
 {
-    Frame3E frame3E(frame);
+    FrameInfo3E frame3E(frame);
 
     FrameTime measure_time = m_start_cyclo_time; 
     measure_time.AddMs((uint64_t)(frame3E.OffsetTimeGet() * m_measure_unit_offset));

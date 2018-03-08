@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\CommonDevice.h"
+#include "..\CommonDevice3E.h"
 #include "Script3E.h"
 
 class Interval3E

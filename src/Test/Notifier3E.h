@@ -3,7 +3,7 @@
 #include "..\DR7\EmPulse3ENotifier.h"
 #include "PrintLogChannels.h"
 
-class TestDR7Parser : public EmPulse3ENotifier
+class Notifier3E : public EmPulse3ENotifier
 {
 private:
     struct ChannelData
@@ -24,13 +24,13 @@ private:
 
 
 public:
-    TestDR7Parser();
-    ~TestDR7Parser();
+    Notifier3E();
+    ~Notifier3E();
 
     bool           Initialize(const char *file_name, uint32_t num_interval, uint32_t num_frame);
 
     virtual bool   OnParse(uint32_t flags) override;
-    virtual bool OnCyclogram(CyclogramBase &cyclo) override;
+    virtual bool   OnCyclogram(CyclogramBase &cyclo) override;
 
     virtual bool   OnCyclo(uint32_t flags) override;
     virtual bool   OnFrame(const Frame &frame) override;

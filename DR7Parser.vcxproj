@@ -85,18 +85,18 @@
     <ClCompile Include="src\Common\Value.cpp" />
     <ClCompile Include="src\Device\Calibration3E.cpp" />
     <ClCompile Include="src\Device\Channel.cpp" />
-    <ClCompile Include="src\Device\Channel3E.cpp" />
+    <ClCompile Include="src\Device\ChannelInfo3E.cpp" />
     <ClCompile Include="src\Device\Cyclogram3E.cpp" />
     <ClCompile Include="src\Device\CyclogramBase.cpp" />
     <ClCompile Include="src\Device\MetaInfoStorage.cpp" />
     <ClCompile Include="src\Device\Script3E.cpp" />
     <ClCompile Include="src\Device\Interval3E.cpp" />
-    <ClCompile Include="src\DR7\DR7Parser.cpp" />
+    <ClCompile Include="src\DR7\Parser3E.cpp" />
     <ClCompile Include="src\DR7\DR7Sample.cpp" />
     <ClCompile Include="src\DR7\DV7Sample.cpp" />
-    <ClCompile Include="src\DR7\TimeScale.cpp" />
+    <ClCompile Include="src\DR7\TimeScale3E.cpp" />
     <ClCompile Include="src\Frames\Frame.cpp" />
-    <ClCompile Include="src\Frames\Frame3E.cpp" />
+    <ClCompile Include="src\Frames\FrameInfo3E.cpp" />
     <ClCompile Include="src\Frames\Frames.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\stdafx.cpp">
@@ -104,11 +104,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Test\PrintLogChannels.cpp" />
-    <ClCompile Include="src\Test\Test.cpp" />
+    <ClCompile Include="src\Test\Notifier3E.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Common.h" />
-    <ClInclude Include="src\CommonDevice.h" />
+    <ClInclude Include="src\Common3E.h" />
+    <ClInclude Include="src\CommonDevice3E.h" />
     <ClInclude Include="src\Common\BinFile.h" />
     <ClInclude Include="src\Common\BufferedFile.h" />
     <ClInclude Include="src\Common\IndigoTimer.h" />
@@ -117,25 +117,25 @@
     <ClInclude Include="src\Common\Value.h" />
     <ClInclude Include="src\Device\Calibration3E.h" />
     <ClInclude Include="src\Device\Channel.h" />
-    <ClInclude Include="src\Device\Channel3E.h" />
+    <ClInclude Include="src\Device\ChannelInfo3E.h" />
     <ClInclude Include="src\Device\CyclogramBase.h" />
     <ClInclude Include="src\Device\MetaInfo.h" />
     <ClInclude Include="src\Device\Cyclogram3E.h" />
     <ClInclude Include="src\Device\MetaInfoStorage.h" />
     <ClInclude Include="src\Device\Script3E.h" />
     <ClInclude Include="src\Device\Interval3E.h" />
-    <ClInclude Include="src\DR7\DR7Parser.h" />
+    <ClInclude Include="src\DR7\Parser3E.h" />
     <ClInclude Include="src\DR7\DV7Sample.h" />
     <ClInclude Include="src\DR7\EmPulse3ENotifier.h" />
     <ClInclude Include="src\DR7\DR7Sample.h" />
-    <ClInclude Include="src\DR7\TimeScale.h" />
+    <ClInclude Include="src\DR7\TimeScale3E.h" />
     <ClInclude Include="src\Frames\Frame.h" />
-    <ClInclude Include="src\Frames\Frame3E.h" />
+    <ClInclude Include="src\Frames\FrameInfo3E.h" />
     <ClInclude Include="src\Frames\Frames.h" />
     <ClInclude Include="src\Frames\FrameTime.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\Test\PrintLogChannels.h" />
-    <ClInclude Include="src\Test\Test.h" />
+    <ClInclude Include="src\Test\Notifier3E.h" />
     <ClInclude Include="src\Tools\itool_classes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

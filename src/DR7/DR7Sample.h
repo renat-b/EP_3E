@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\Common\StreamBuffer.h"
-#include "..\CommonDevice.h"
+#include "..\CommonDevice3E.h"
 #include "..\Common\StreamBuffer.h"
 #include "..\Device\Cyclogram3E.h"
 #include "..\Device\Calibration3E.h"
