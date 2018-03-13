@@ -21,7 +21,7 @@ bool Notifier3E::Initialize(const char *file_name, uint32_t num_interval, uint32
 
     char *ptr;
     char  buf[MAX_PATH];
-    char  name[32];
+    char  name[MAX_PATH];
 
     strcpy_s(buf, file_name);
     ptr = strrchr(buf, '\\');

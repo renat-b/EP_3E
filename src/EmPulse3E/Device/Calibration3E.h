@@ -6,7 +6,8 @@
 class Calibration3E
 {
 private:
-    static float R_REF;
+    static float  s_r_ref;
+    static double s_adc_scale;
 
 #pragma pack(push, 1)
 struct CalibrationTable
@@ -64,9 +65,9 @@ struct CalibrationTable
     // dac_code = dac_value_offset - (current * 10000 * dac_value_coeff) 
 
     float dac_0_value_offset    = 66033.0;          // DAC_0 code offset (in digits)
-    float dac_0_value_coeff     = 19.539f * R_REF;  // DAC_0 coeff
+    float dac_0_value_coeff     = 19.539f * s_r_ref;  // DAC_0 coeff
     float dac_1_value_offset    = 66033.0;          // DAC_1 code offset (in digits)
-    float dac_1_value_coeff     = 19.539f * R_REF;  // DAC_0 coeff
+    float dac_1_value_coeff     = 19.539f * s_r_ref;  // DAC_0 coeff
 
     float control_point_offset  = 0.0;              // Control mesurement point offset (mV)
     float control_point_MSD     = 0.0;              // Control mesurement point MSD of Noise (uV)

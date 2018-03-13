@@ -2,7 +2,9 @@
 #include "Calibration3E.h"
 #include "EmPulse3E/Common3E.h"
 
-float Calibration3E::R_REF = 0.2f;
+float Calibration3E::s_r_ref = 0.2f;
+double Calibration3E::s_adc_scale = 32767 / 2048;
+
 
 const __declspec(selectany) double Calibration3E::s_decimal[10] =
 {
@@ -50,8 +52,9 @@ bool Calibration3E::Calibrate(double &val, uint32_t channel_id, const double adc
 
     double  ch_offset = adc_ch_offset[(channel_id) * 2];
     double  ch_coeff  = adc_ch_coeff[(channel_id) * 2];
-   
-    val = (adc_voltage - ch_offset) * ch_coeff;
+
+    val = adc_voltage / s_adc_scale;
+    val = (val - ch_offset) * ch_coeff;
     val = NormalizeDouble(val, 5);
     return true;
 }
