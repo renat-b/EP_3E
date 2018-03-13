@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "DV7Sample.h"
 #include "FrameInfo3E.h"
-#include "..\Device\TimeScale3E.h"
+#include "EmPulse3E/Device/TimeScale3E.h"
 
 DV7Sample::DV7Sample()
 {

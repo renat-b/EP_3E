@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\..\Common\StreamBuffer.h"
+#include "CommonLibEmPulse/StreamBuffer.h"
 #include "Interval3E.h"
 
 class Cyclogram3E

@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "Calibration3E.h"
-#include "..\Common3E.h"
+#include "EmPulse3E/Common3E.h"
 
 float Calibration3E::R_REF = 0.2f;
 

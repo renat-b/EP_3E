@@ -1,7 +1,7 @@
 #include "StdAfx.h"
-#include ".\EmPulse3E\Common\Parser3E.h"
-#include ".\Test\Notifier3E.h"
-#include ".\Common\IndigoTimer.h"
+#include "EmPulse3E/Common/Parser3E.h"
+#include "Test/Notifier3E.h"
+#include "CommonLibEmPulse/IndigoTimer.h"
 
 void Usage()
 {

@@ -54,22 +54,22 @@
     <ClInclude Include="src\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\BinFile.h">
+    <ClInclude Include="src\CommonLibEmPulse\BinFile.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\BufferedFile.h">
+    <ClInclude Include="src\CommonLibEmPulse\BufferedFile.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\IndigoTimer.h">
+    <ClInclude Include="src\CommonLibEmPulse\IndigoTimer.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\MemPack.h">
+    <ClInclude Include="src\CommonLibEmPulse\MemPack.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\StreamBuffer.h">
+    <ClInclude Include="src\CommonLibEmPulse\StreamBuffer.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\Value.h">
+    <ClInclude Include="src\CommonLibEmPulse\Value.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
     <ClInclude Include="src\EmPulse3E\Common3E.h">
@@ -108,28 +108,28 @@
     <ClInclude Include="src\EmPulse3E\Device\TimeScale3E.h">
       <Filter>Header Files\EmPulse3E\Device</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\Channel.h">
+    <ClInclude Include="src\FrameLib\Channel.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\CyclogramBase.h">
+    <ClInclude Include="src\FrameLib\CyclogramBase.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\Frame.h">
+    <ClInclude Include="src\FrameLib\Frame.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\Frames.h">
+    <ClInclude Include="src\FrameLib\Frames.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\FrameTime.h">
+    <ClInclude Include="src\FrameLib\FrameTime.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\MetaInfo.h">
+    <ClInclude Include="src\FrameLib\MetaInfo.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\MetaInfoStorage.h">
+    <ClInclude Include="src\FrameLib\MetaInfoStorage.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\NotifierParserBase.h">
+    <ClInclude Include="src\FrameLib\NotifierParserBase.h">
       <Filter>Header Files\Frame</Filter>
     </ClInclude>
     <ClInclude Include="src\Test\Notifier3E.h">
@@ -146,19 +146,19 @@
     <ClCompile Include="src\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\BufferedFile.cpp">
+    <ClCompile Include="src\CommonLibEmPulse\BufferedFile.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\IndigoTimer.cpp">
+    <ClCompile Include="src\CommonLibEmPulse\IndigoTimer.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\MemPack.cpp">
+    <ClCompile Include="src\CommonLibEmPulse\MemPack.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\StreamBuffer.cpp">
+    <ClCompile Include="src\CommonLibEmPulse\StreamBuffer.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\Value.cpp">
+    <ClCompile Include="src\CommonLibEmPulse\Value.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
     <ClCompile Include="src\EmPulse3E\Common\ChannelInfo3E.cpp">
@@ -191,19 +191,19 @@
     <ClCompile Include="src\EmPulse3E\Device\TimeScale3E.cpp">
       <Filter>Source Files\EmPulse3E\Device</Filter>
     </ClCompile>
-    <ClCompile Include="src\Frame\Channel.cpp">
+    <ClCompile Include="src\FrameLib\Channel.cpp">
       <Filter>Source Files\Frame</Filter>
     </ClCompile>
-    <ClCompile Include="src\Frame\CyclogramBase.cpp">
+    <ClCompile Include="src\FrameLib\CyclogramBase.cpp">
       <Filter>Source Files\Frame</Filter>
     </ClCompile>
-    <ClCompile Include="src\Frame\Frame.cpp">
+    <ClCompile Include="src\FrameLib\Frame.cpp">
       <Filter>Source Files\Frame</Filter>
     </ClCompile>
-    <ClCompile Include="src\Frame\Frames.cpp">
+    <ClCompile Include="src\FrameLib\Frames.cpp">
       <Filter>Source Files\Frame</Filter>
     </ClCompile>
-    <ClCompile Include="src\Frame\MetaInfoStorage.cpp">
+    <ClCompile Include="src\FrameLib\MetaInfoStorage.cpp">
       <Filter>Source Files\Frame</Filter>
     </ClCompile>
     <ClCompile Include="src\Test\PrintLogChannels.cpp">

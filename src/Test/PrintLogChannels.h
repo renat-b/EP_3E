@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\Common\BinFile.h"
-#include "..\Common\MemPack.h"
+#include "CommonLibEmPulse/BinFile.h"
+#include "CommonLibEmPulse/MemPack.h"
 
 class PrintLogChannels
 {

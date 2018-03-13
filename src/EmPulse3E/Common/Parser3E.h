@@ -1,11 +1,11 @@
 #pragma once
 
-#include "..\..\Common\StreamBuffer.h"
-#include "..\..\Frame\CyclogramBase.h"
-#include "..\..\Frame\NotifierParserBase.h"
-#include "..\Device\CommonDevice3E.h"
-#include "..\Device\Cyclogram3E.h"
-#include "..\Device\Calibration3E.h"
+#include "CommonLibEmPulse/StreamBuffer.h"
+#include "FrameLib\CyclogramBase.h"
+#include "FrameLib\NotifierParserBase.h"
+#include "EmPulse3E/Device/CommonDevice3E.h"
+#include "EmPulse3E/Device/Cyclogram3E.h"
+#include "EmPulse3E/Device/Calibration3E.h"
 #include "DR7Sample.h"
 #include "DV7Sample.h"
 

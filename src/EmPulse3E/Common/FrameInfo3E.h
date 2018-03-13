@@ -1,8 +1,8 @@
 #pragma once
 
-#include "..\Device\CommonDevice3E.h"
-#include "..\..\Frame\MetaInfo.h"
-#include "..\..\Frame\Frame.h"
+#include "EmPulse3E/Device/CommonDevice3E.h"
+#include "FrameLib/MetaInfo.h"
+#include "FrameLib/Frame.h"
 
 class FrameMetaInfo3E : public IMetaInfo
 {

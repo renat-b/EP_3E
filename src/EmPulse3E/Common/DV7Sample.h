@@ -1,13 +1,12 @@
 #pragma once
 
-#include "..\..\Common\StreamBuffer.h"
-#include "..\Device\CommonDevice3E.h"
-#include "..\..\Common\StreamBuffer.h"
-#include "..\Device\Cyclogram3E.h"
-#include "..\Device\Calibration3E.h"
+#include "CommonLibEmPulse/StreamBuffer.h"
+#include "EmPulse3E/Device/CommonDevice3E.h"
+#include "EmPulse3E/Device/Cyclogram3E.h"
+#include "EmPulse3E/Device/Calibration3E.h"
 #include "FrameInfo3E.h"
-#include "..\..\Frame\Frames.h"
-#include "..\..\Frame\NotifierParserBase.h"
+#include "FrameLib/Frames.h"
+#include "FrameLib/NotifierParserBase.h"
 
 class DV7Sample
 {

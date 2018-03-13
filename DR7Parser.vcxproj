@@ -11,12 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Common\BinFile.h" />
-    <ClInclude Include="src\Common\BufferedFile.h" />
-    <ClInclude Include="src\Common\IndigoTimer.h" />
-    <ClInclude Include="src\Common\MemPack.h" />
-    <ClInclude Include="src\Common\StreamBuffer.h" />
-    <ClInclude Include="src\Common\Value.h" />
+    <ClInclude Include="src\CommonLibEmPulse\BinFile.h" />
+    <ClInclude Include="src\CommonLibEmPulse\BufferedFile.h" />
+    <ClInclude Include="src\CommonLibEmPulse\IndigoTimer.h" />
+    <ClInclude Include="src\CommonLibEmPulse\MemPack.h" />
+    <ClInclude Include="src\CommonLibEmPulse\StreamBuffer.h" />
+    <ClInclude Include="src\CommonLibEmPulse\Value.h" />
     <ClInclude Include="src\EmPulse3E\Common3E.h" />
     <ClInclude Include="src\EmPulse3E\Common\ChannelInfo3E.h" />
     <ClInclude Include="src\EmPulse3E\Common\DR7Sample.h" />
@@ -29,24 +29,24 @@
     <ClInclude Include="src\EmPulse3E\Device\Interval3E.h" />
     <ClInclude Include="src\EmPulse3E\Device\Script3E.h" />
     <ClInclude Include="src\EmPulse3E\Device\TimeScale3E.h" />
-    <ClInclude Include="src\Frame\Channel.h" />
-    <ClInclude Include="src\Frame\CyclogramBase.h" />
-    <ClInclude Include="src\Frame\Frame.h" />
-    <ClInclude Include="src\Frame\Frames.h" />
-    <ClInclude Include="src\Frame\FrameTime.h" />
-    <ClInclude Include="src\Frame\MetaInfo.h" />
-    <ClInclude Include="src\Frame\MetaInfoStorage.h" />
-    <ClInclude Include="src\Frame\NotifierParserBase.h" />
+    <ClInclude Include="src\FrameLib\Channel.h" />
+    <ClInclude Include="src\FrameLib\CyclogramBase.h" />
+    <ClInclude Include="src\FrameLib\Frame.h" />
+    <ClInclude Include="src\FrameLib\Frames.h" />
+    <ClInclude Include="src\FrameLib\FrameTime.h" />
+    <ClInclude Include="src\FrameLib\MetaInfo.h" />
+    <ClInclude Include="src\FrameLib\MetaInfoStorage.h" />
+    <ClInclude Include="src\FrameLib\NotifierParserBase.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\Test\Notifier3E.h" />
     <ClInclude Include="src\Test\PrintLogChannels.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Common\BufferedFile.cpp" />
-    <ClCompile Include="src\Common\IndigoTimer.cpp" />
-    <ClCompile Include="src\Common\MemPack.cpp" />
-    <ClCompile Include="src\Common\StreamBuffer.cpp" />
-    <ClCompile Include="src\Common\Value.cpp" />
+    <ClCompile Include="src\CommonLibEmPulse\BufferedFile.cpp" />
+    <ClCompile Include="src\CommonLibEmPulse\IndigoTimer.cpp" />
+    <ClCompile Include="src\CommonLibEmPulse\MemPack.cpp" />
+    <ClCompile Include="src\CommonLibEmPulse\StreamBuffer.cpp" />
+    <ClCompile Include="src\CommonLibEmPulse\Value.cpp" />
     <ClCompile Include="src\EmPulse3E\Common\ChannelInfo3E.cpp" />
     <ClCompile Include="src\EmPulse3E\Common\DR7Sample.cpp" />
     <ClCompile Include="src\EmPulse3E\Common\DV7Sample.cpp" />
@@ -57,11 +57,11 @@
     <ClCompile Include="src\EmPulse3E\Device\Interval3E.cpp" />
     <ClCompile Include="src\EmPulse3E\Device\Script3E.cpp" />
     <ClCompile Include="src\EmPulse3E\Device\TimeScale3E.cpp" />
-    <ClCompile Include="src\Frame\Channel.cpp" />
-    <ClCompile Include="src\Frame\CyclogramBase.cpp" />
-    <ClCompile Include="src\Frame\Frame.cpp" />
-    <ClCompile Include="src\Frame\Frames.cpp" />
-    <ClCompile Include="src\Frame\MetaInfoStorage.cpp" />
+    <ClCompile Include="src\FrameLib\Channel.cpp" />
+    <ClCompile Include="src\FrameLib\CyclogramBase.cpp" />
+    <ClCompile Include="src\FrameLib\Frame.cpp" />
+    <ClCompile Include="src\FrameLib\Frames.cpp" />
+    <ClCompile Include="src\FrameLib\MetaInfoStorage.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -111,6 +111,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\src\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,6 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.\src\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "FrameInfo3E.h"
 #include "ChannelInfo3E.h"
-#include "..\Device\TimeScale3E.h"
+#include "EmPulse3E/Device/TimeScale3E.h"
 
 
 FrameMetaInfo3E::FrameMetaInfo3E() : m_offset_time(0)

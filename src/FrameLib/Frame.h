@@ -2,7 +2,7 @@
 
 #include "MetaInfoStorage.h"
 #include "Channel.h"
-#include "..\Common\Value.h"
+#include "CommonLibEmPulse/Value.h"
 #include "FrameTime.h"
 
 enum FrameTypeID

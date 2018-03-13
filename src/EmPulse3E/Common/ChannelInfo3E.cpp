@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "ChannelInfo3E.h"
-#include "..\Device\TimeScale3E.h"
+#include "EmPulse3E/Device/TimeScale3E.h"
 
 ChannelInfo3E::ChannelInfo3E(const Channel &channel) 
 {

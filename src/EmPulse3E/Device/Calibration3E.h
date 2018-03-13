@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\..\Common\Value.h"
+#include "CommonLibEmPulse/Value.h"
 
 
 class Calibration3E

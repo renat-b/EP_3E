@@ -1,8 +1,8 @@
 #pragma once
 
 #include "CommonDevice3E.h"
-#include "..\Common\ChannelInfo3E.h"
-#include "..\..\Frame\Channel.h"
+#include "EmPulse3E/Common/ChannelInfo3E.h"
+#include "FrameLib/Channel.h"
 
 class Script3E
 {

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "..\Device\CommonDevice3E.h"
-#include "..\Common3E.h"
-#include "..\..\Frame\Channel.h"
-#include "..\..\Frame\MetaInfo.h"
+#include "EmPulse3E/Device/CommonDevice3E.h"
+#include "EmPulse3E/Common3E.h"
+#include "FrameLib/Channel.h"
+#include "FrameLib/MetaInfo.h"
 
 class ChannelMetaInfo3E;
 
