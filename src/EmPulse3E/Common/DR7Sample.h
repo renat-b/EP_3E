@@ -49,7 +49,6 @@ private:
     bool     ParseChannel(const Channel &channel, Value& value);
 
     bool     OnCyclo();
-    bool     OnFrame(const Frame &frame);
 
     void     FrameAssign(Frame &frame);
 };

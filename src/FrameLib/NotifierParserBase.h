@@ -16,6 +16,5 @@ public:
     virtual bool   OnParse(uint32_t flags) = 0;
     virtual bool   OnCyclogram(const CyclogramBase &cyclo) = 0;
 
-    virtual bool   OnCyclo(uint32_t flags) = 0;
-    virtual bool   OnFrame(const Frame &frame) = 0;
+    virtual bool   OnCyclo(const FramesOfInterval& frames) = 0;
 };

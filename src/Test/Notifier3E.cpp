@@ -54,16 +54,21 @@ bool Notifier3E::OnCyclogram(const CyclogramBase &cyclo)
     if (m_num_frame >= cyclo.CountFrames(m_num_interval))
         return false;
     
-    PrintLogCaption(cyclo.Get(m_num_interval, m_num_frame)); 
+    PrintLogCaption(cyclo.Get(m_num_interval).Get(m_num_frame)); 
     return true;
 }
 
-bool Notifier3E::OnCyclo(uint32_t flags)
+bool Notifier3E::OnCyclo(const FramesOfInterval& frames)
 {
+    for (uint32_t pos = 0; pos < frames.Count(); pos++)
+    {
+        if (!AssignFrame(frames.Get(pos)))
+            return false;
+    }
     return true;
 }
 
-bool Notifier3E::OnFrame(const Frame &frame)
+bool Notifier3E::AssignFrame(const Frame &frame)
 {
     if ( !(frame.FrameNumGet() == m_num_frame && frame.IntervalGet() == m_num_interval))
         return true;

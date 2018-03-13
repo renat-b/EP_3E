@@ -32,10 +32,11 @@ public:
     virtual bool   OnParse(uint32_t flags) override;
     virtual bool   OnCyclogram(const CyclogramBase &cyclo) override;
 
-    virtual bool   OnCyclo(uint32_t flags) override;
-    virtual bool   OnFrame(const Frame &frame) override;
+    virtual bool   OnCyclo(const FramesOfInterval& frames) override;
+
 
 private:
+    bool           AssignFrame(const Frame &frame);
     void           AssignValue(const uint64_t &time, const Channel &channel, const Value &value);
     bool           PrintLogValue(const Value &val);
     void           PrintLogCaption(const Frame &frame);

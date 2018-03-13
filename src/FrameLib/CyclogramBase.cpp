@@ -60,15 +60,15 @@ uint32_t CyclogramBase::CountFrames(uint32_t pos_interval) const
     return count;
 }
 
-Frame &CyclogramBase::Get(uint32_t pos_interval, uint32_t pos_script)
+FramesOfInterval& CyclogramBase::Get(uint32_t pos_interval)
 {
-    Frame &frame = m_frames.Get(pos_interval, pos_script);
+    FramesOfInterval &frame = m_frames.Get(pos_interval);
     return frame;
 }
 
-const Frame & CyclogramBase::Get(uint32_t pos_interval, uint32_t pos_script) const
+const FramesOfInterval& CyclogramBase::Get(uint32_t pos_interval) const
 {
-    const Frame &frame = m_frames.Get(pos_interval, pos_script);
+    const FramesOfInterval &frame = m_frames.Get(pos_interval);
     return frame;
 }
 

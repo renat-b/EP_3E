@@ -77,13 +77,10 @@ bool DV7Sample::ParseFrames()
     // parsing sample
     for (uint32_t pos_frame = 0; pos_frame < m_frames.CountFrames(pos_interval); pos_frame++)
     {
-        Frame &frame = m_frames.Get(pos_interval, pos_frame);
+        Frame &frame = m_frames.GetFrame(pos_interval, pos_frame);
         FrameAssign(frame);
 
         if (!ParseChannels(frame))
-            return false;
-
-        if (!OnFrame(frame))
             return false;
     }
 
@@ -157,17 +154,7 @@ bool DV7Sample::OnCyclo()
     if (!m_notifier)
         return true;
 
-    if (!m_notifier->OnCyclo(NotifierParserBase::FLAG_NOTIFY_END))
-        return false;
-    return true;
-}
-
-bool DV7Sample::OnFrame(const Frame &frame)
-{
-    if (!m_notifier)
-        return true;
-
-    if (!m_notifier->OnFrame(frame))
+    if (!m_notifier->OnCyclo(m_frames.Get(m_header.interval_pos)))
         return false;
     return true;
 }
