@@ -76,7 +76,6 @@ bool DR7Sample::ParseFrames()
     for (uint32_t pos_frame = 0; pos_frame < m_frames.CountFrames(pos_interval); pos_frame++)
     {
         Frame &frame = m_frames.Get(pos_interval, pos_frame);
-
         FrameAssign(frame);
 
         if (!ParseChannels(frame))
