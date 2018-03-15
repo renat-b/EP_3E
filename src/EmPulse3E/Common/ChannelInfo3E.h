@@ -24,7 +24,7 @@ public:
     uint32_t          PointStart() const;
     uint32_t          PointCount() const;
     uint32_t          AmountOfSavingsGet() const;
-    double            MsNumPoint(uint32_t num_point) const;
+    double            PointMs(uint32_t num_point) const;
 
     bool              IsPositive() const;
     bool              IsNegative() const;
@@ -66,7 +66,7 @@ public:
     uint32_t          AmountOfSavingsGet() const;
     bool              ChannelIsPositive() const;
     bool              ChannelIsNegative() const;
-    double            MsGet(uint32_t num_point) const;
+    double            PointMs(uint32_t num_point) const;
 
 
     void              Create(const Channel &channel, const OperationMeasure3E &measure);

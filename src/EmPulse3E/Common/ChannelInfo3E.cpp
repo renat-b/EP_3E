@@ -54,12 +54,12 @@ uint32_t ChannelInfo3E::AmountOfSavingsGet() const
     return meta->AmountOfSavingsGet();
 }
 
-double ChannelInfo3E::MsNumPoint(uint32_t num_point) const
+double ChannelInfo3E::PointMs(uint32_t num_point) const
 {
     ChannelMetaInfo3E *meta = MetaInfoGet();
     if (!meta)
         return 0.0;
-    return meta->MsGet(num_point);   
+    return meta->PointMs(num_point);   
 }
 
 bool ChannelInfo3E::IsPositive() const
@@ -157,7 +157,7 @@ bool ChannelMetaInfo3E::ChannelIsNegative() const
     return m_negative_channel;
 }
 
-double ChannelMetaInfo3E::MsGet(uint32_t num_point) const
+double ChannelMetaInfo3E::PointMs(uint32_t num_point) const
 {
     TimeScale3E time_scale;
 
