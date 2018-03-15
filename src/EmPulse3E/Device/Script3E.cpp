@@ -146,9 +146,9 @@ void Script3E::ChannelAdd(uint32_t id, uint32_t flags, Measure &measure)
 void Script3E::ChannelAssign(Channel &channel, uint32_t id, uint32_t flags)
 {
     if (flags & ChannelFlag1stMulti)
-        id = ChannelBaseLast + id;
+        id = ChannelBaseLast + id + 1;
     else if (flags & ChannelFlag2ndMulti)
-        id = Channel1stMultiLast + id;
+        id = Channel1stMultiLast + id + 1;
     else
         id = id;
 
