@@ -19,6 +19,7 @@
     <ClInclude Include="src\CommonLibEmPulse\Value.h" />
     <ClInclude Include="src\EmPulse3E\Common3E.h" />
     <ClInclude Include="src\EmPulse3E\Common\ChannelInfo3E.h" />
+    <ClInclude Include="src\EmPulse3E\Common\CyclogramInfo3E.h" />
     <ClInclude Include="src\EmPulse3E\Common\DR7Sample.h" />
     <ClInclude Include="src\EmPulse3E\Common\DV7Sample.h" />
     <ClInclude Include="src\EmPulse3E\Common\FrameInfo3E.h" />
@@ -48,6 +49,7 @@
     <ClCompile Include="src\CommonLibEmPulse\StreamBuffer.cpp" />
     <ClCompile Include="src\CommonLibEmPulse\Value.cpp" />
     <ClCompile Include="src\EmPulse3E\Common\ChannelInfo3E.cpp" />
+    <ClCompile Include="src\EmPulse3E\Common\CyclogramInfo3E.cpp" />
     <ClCompile Include="src\EmPulse3E\Common\DR7Sample.cpp" />
     <ClCompile Include="src\EmPulse3E\Common\DV7Sample.cpp" />
     <ClCompile Include="src\EmPulse3E\Common\FrameInfo3E.cpp" />

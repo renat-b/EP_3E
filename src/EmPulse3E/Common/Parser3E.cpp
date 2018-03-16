@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "Parser3E.h"
 #include "FrameInfo3E.h"
+#include "CyclogramInfo3E.h"
 
 Parser3E::Parser3E() : m_notifier(nullptr), m_stream(nullptr)
 {
@@ -191,10 +192,20 @@ bool Parser3E::CyclogramBaseCreate()
 {
     m_cyclogram.Clear();
 
-
     m_cyclogram.ToolIdSet(0);
     m_cyclogram.SerNumSet("");
     
+    if (!FramesAssign())
+        return false;
+   
+    if (!MetaInfoCreate())
+        return false;
+
+    return true;
+}
+
+bool Parser3E::FramesAssign()
+{
     for (uint32_t pos_interval = 0; pos_interval < m_cyclogram3E.IntervalCount(); pos_interval++)
     {
         Script3E &script = m_cyclogram3E.IntervalGet(pos_interval).ScriptGet();
@@ -205,22 +216,7 @@ bool Parser3E::CyclogramBaseCreate()
 
             for (uint32_t pos_channel = 0; pos_channel < script.ChannelCount(pos_measure); pos_channel++)
             {
-
-                Value     val;
-                ChannelInfo3E channel3E(script.ChannelGet(pos_measure, pos_channel));
-
-                if (channel3E.ScaleGet() == ScVarType0)
-                {
-                    if (!val.Create(sizeof(double)))
-                        return false;
-                }
-                else
-                {
-                    if (!val.Create1d(sizeof(double), channel3E.PointCount()))
-                        return false;
-                }
-
-                if (!frame.ChannelAdd(channel3E.ChannelGet(), val))
+                if (!ChannelAdd(frame, script.ChannelGet(pos_measure, pos_channel)))
                     return false;
             }
 
@@ -228,8 +224,7 @@ bool Parser3E::CyclogramBaseCreate()
                 return false;
         }
     }
-    
-    return true;
+    return true; 
 }
 
 void Parser3E::FrameAssign(Frame &frame, const OperationMeasure3E &measure, uint32_t pos_interval, uint32_t pos_frame)
@@ -247,4 +242,47 @@ void Parser3E::FrameAssign(Frame &frame, const OperationMeasure3E &measure, uint
 
     meta->Create(measure);
     frame.MetaInfoAdd(meta);
+}
+
+
+bool  Parser3E::ChannelAdd(Frame &frame, const Channel &channel)
+{
+    Value     val;
+    ChannelInfo3E channel3E(channel);
+
+    if (channel3E.ScaleGet() == ScVarType0)
+    {
+        if (!val.Create(sizeof(double)))
+            return false;
+    }
+    else
+    {
+        if (!val.Create1d(sizeof(double), channel3E.PointCount()))
+            return false;
+    }
+
+    if (!frame.ChannelAdd(channel, val))
+        return false;
+
+    return true;
+}
+
+bool Parser3E::MetaInfoCreate()
+{
+    CyclogramMetaInfo3E *meta = new(std::nothrow) CyclogramMetaInfo3E;
+    if (!meta)
+        return false;
+
+    if (!meta->Create(m_cyclogram3E))
+    {
+        delete meta;
+        return false;
+    }
+
+    if (!m_cyclogram.MetaInfoAdd(meta))
+    {
+        delete meta;
+        return false;
+    }
+    return true;
 }

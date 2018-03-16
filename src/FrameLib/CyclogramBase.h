@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Frames.h"
+#include "MetaInfo.h"
 
 class CyclogramBase
 {
@@ -8,6 +9,8 @@ private:
     uint32_t  m_tool_id;
     char      m_ser_num[32];
     Frames    m_frames;
+    MetaInfoStorage  m_storage;
+
 
 public:
     CyclogramBase();
@@ -32,4 +35,6 @@ public:
     bool        Add(uint32_t pos_interval, const Frame &frame);
     bool        Remove(uint32_t pos_interval, uint32_t pos_script);
 
+    bool        MetaInfoGet(IMetaInfo **obj, uint32_t id_meta_info) const;
+    bool        MetaInfoAdd(IMetaInfo *obj);
 };

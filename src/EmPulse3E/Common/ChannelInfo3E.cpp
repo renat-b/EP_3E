@@ -2,24 +2,22 @@
 #include "ChannelInfo3E.h"
 #include "EmPulse3E/Device/TimeScale3E.h"
 
-ChannelInfo3E::ChannelInfo3E(const Channel &channel) 
+ChannelInfo3E::ChannelInfo3E(const Channel &channel) : m_channel(channel)
 {
-    m_channel = &channel;
 }
 
 ChannelInfo3E::~ChannelInfo3E()
 {
-    m_channel = nullptr;
 }
 
 const Channel &ChannelInfo3E::ChannelGet() const
 {
-    return *m_channel;
+    return m_channel;
 }
 
 uint32_t ChannelInfo3E::IDGet() const
 {
-    return m_channel->IDGet();
+    return m_channel.IDGet();
 }
 
 ScaleVariantInner3E ChannelInfo3E::ScaleGet() const
@@ -82,7 +80,7 @@ bool ChannelInfo3E::IsNegative() const
 ChannelMetaInfo3E *ChannelInfo3E::MetaInfoGet() const
 {
     ChannelMetaInfo3E *meta = nullptr;
-    if (!m_channel->MetaInfoGet((IMetaInfo **)&meta, ChannelMetaInfo3E::ID_EmPulse3E))
+    if (!m_channel.MetaInfoGet((IMetaInfo **)&meta, ChannelMetaInfo3E::ID_EmPulse3E))
         return nullptr;
 
     return meta;

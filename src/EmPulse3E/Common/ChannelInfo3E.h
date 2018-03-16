@@ -11,7 +11,7 @@ class ChannelMetaInfo3E;
 class ChannelInfo3E
 {
 private:
-    const Channel  *m_channel = nullptr;
+    const Channel&  m_channel;
 
 public:
     ChannelInfo3E(const Channel &channel);
@@ -20,7 +20,7 @@ public:
     const Channel    &ChannelGet() const;
 
     uint32_t          IDGet() const;
-    ScaleVariantInner3E             ScaleGet() const;
+    ScaleVariantInner3E ScaleGet() const;
     uint32_t          PointStart() const;
     uint32_t          PointCount() const;
     uint32_t          AmountOfSavingsGet() const;
@@ -28,9 +28,11 @@ public:
 
     bool              IsPositive() const;
     bool              IsNegative() const;
+
 private:
     ChannelMetaInfo3E *MetaInfoGet() const;
 };
+
 
 class ChannelMetaInfo3E : public IMetaInfo
 {

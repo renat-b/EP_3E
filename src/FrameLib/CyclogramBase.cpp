@@ -83,3 +83,15 @@ bool CyclogramBase::Remove(uint32_t pos_interval, uint32_t pos_script)
     bool r = m_frames.Remove(pos_interval, pos_script);
     return r;
 }
+
+bool CyclogramBase::MetaInfoGet(IMetaInfo **object, uint32_t id_meta_info) const
+{
+    bool r = m_storage.MetaInfoGet(object, id_meta_info);
+    return r;
+}
+
+bool CyclogramBase::MetaInfoAdd(IMetaInfo *object)
+{
+    bool r = m_storage.MetaInfoAdd(object);
+    return r;
+}

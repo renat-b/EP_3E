@@ -138,6 +138,9 @@
     <ClInclude Include="src\Test\PrintLogChannels.h">
       <Filter>Header Files\Test</Filter>
     </ClInclude>
+    <ClInclude Include="src\EmPulse3E\Common\CyclogramInfo3E.h">
+      <Filter>Header Files\EmPulse3E\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="src\Test\Notifier3E.cpp">
       <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmPulse3E\Common\CyclogramInfo3E.cpp">
+      <Filter>Source Files\EmPulse3E\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
