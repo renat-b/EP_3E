@@ -40,7 +40,7 @@ uint32_t Interval3E::Cycles() const
     return val;
 }
 
-uint32_t Interval3E::CycCnt() const
+uint32_t Interval3E::CyclesReal() const
 {
     uint32_t val = m_interval.CycCnt.Get();
     return val;

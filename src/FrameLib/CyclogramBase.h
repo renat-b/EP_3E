@@ -6,8 +6,22 @@
 class CyclogramBase
 {
 private:
+    typedef std::vector<uint32_t> CyclosOfInterval;
+
+private:
+    enum constants
+    {
+        MAX_INTERVAL   = 12,
+        UNKNOWN_CYCLOS = -1,
+    };
+
+private:
     uint32_t  m_tool_id;
     char      m_ser_num[32];
+    
+    CyclosOfInterval  m_cycles_must_be; 
+    CyclosOfInterval  m_cycles_real;
+
     Frames    m_frames;
     MetaInfoStorage  m_storage;
 
@@ -23,6 +37,12 @@ public:
 
     const char* SerNumGet() const;
     void        SerNumSet(const char *ser_num);
+    
+    uint32_t    Cycles(uint32_t pos_interval) const;
+    void        CyclesSet(uint32_t pos_interval, uint32_t cyclos);
+
+    uint32_t    CyclesReal(uint32_t pos_interval) const;
+    void        CyclesRealSet(uint32_t pos_interval, uint32_t cyclos);
 
     Frames&     FramesGet();
     void        FramesAssign(const Frames &frames);

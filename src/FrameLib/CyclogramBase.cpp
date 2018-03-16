@@ -15,6 +15,10 @@ void CyclogramBase::Clear()
 {
     m_tool_id    = 0;
     m_ser_num[0] = 0;
+
+    m_cycles_must_be.clear();
+    m_cycles_real.clear();
+
     m_frames.Clear();
 }
 
@@ -36,6 +40,46 @@ const char *CyclogramBase::SerNumGet() const
 void CyclogramBase::SerNumSet(const char *ser_num)
 {
     strcpy_s(m_ser_num, ser_num);
+}
+
+uint32_t CyclogramBase::Cycles(uint32_t pos_interval) const
+{
+    if (pos_interval >= m_cycles_must_be.size())
+        return UNKNOWN_CYCLOS;
+
+    return m_cycles_must_be[pos_interval];
+}
+
+void CyclogramBase::CyclesSet(uint32_t pos_interval, uint32_t cyclos)
+{
+    if (pos_interval >= m_cycles_must_be.size() && pos_interval > MAX_INTERVAL)
+        return; 
+    
+    for (uint32_t i = m_cycles_must_be.size(); i <= pos_interval; i++)
+    {
+        m_cycles_must_be.push_back(UNKNOWN_CYCLOS);
+    }
+    m_cycles_must_be[pos_interval] = cyclos;
+}
+
+uint32_t CyclogramBase::CyclesReal(uint32_t pos_interval) const
+{
+    if (pos_interval >= m_cycles_real.size())
+        return UNKNOWN_CYCLOS;
+
+    return m_cycles_real[pos_interval];
+}
+
+void CyclogramBase::CyclesRealSet(uint32_t pos_interval, uint32_t cyclos)
+{
+    if (pos_interval >= m_cycles_real.size() && pos_interval > MAX_INTERVAL)
+        return; 
+    
+    for (uint32_t i = m_cycles_real.size(); i <= pos_interval; i++)
+    {
+        m_cycles_real.push_back(UNKNOWN_CYCLOS);
+    }
+    m_cycles_real[pos_interval] = cyclos;
 }
 
 Frames &CyclogramBase::FramesGet()

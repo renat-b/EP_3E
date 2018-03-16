@@ -21,7 +21,7 @@ public:
     uint32_t   ScrTim() const;   
     uint32_t   Pause()  const;    
     uint32_t   Cycles() const;   
-    uint32_t   CycCnt() const;   
+    uint32_t   CyclesReal() const;   
 
     Script3E &ScriptGet();
 };

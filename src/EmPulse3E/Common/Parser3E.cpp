@@ -273,16 +273,19 @@ bool Parser3E::MetaInfoCreate()
     if (!meta)
         return false;
 
-    if (!meta->Create(m_cyclogram3E))
-    {
-        delete meta;
-        return false;
-    }
-
     if (!m_cyclogram.MetaInfoAdd(meta))
     {
         delete meta;
         return false;
     }
+
+    for (uint32_t i = 0; i < m_cyclogram3E.IntervalCount(); i++)
+    {
+        Interval3E &interval = m_cyclogram3E.IntervalGet(i);
+
+        m_cyclogram.CyclesSet(i, interval.Cycles());
+        m_cyclogram.CyclesRealSet(i, interval.CyclesReal());
+    }
+
     return true;
 }

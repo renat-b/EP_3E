@@ -6,12 +6,6 @@
 
 class CyclogramMetaInfo3E : public IMetaInfo
 {
-private:
-    typedef std::vector<uint32_t> CyclosOfInterval;
-
-private:
-    CyclosOfInterval  m_cyclos;
-
 public:
     enum ID_Constants
     {
@@ -29,10 +23,6 @@ public:
 
 public:
     void operator = (const CyclogramMetaInfo3E& other);
-    
-    uint32_t Cyclos(uint32_t pos_interval) const;
-
-    bool     Create(Cyclogram3E &cyclogram);
 };
 
 
@@ -45,5 +35,5 @@ public:
     CyclogramInfo3E(const CyclogramBase &cyclogram);
     ~CyclogramInfo3E();
     
-    uint32_t    GetCyclos(uint32_t pos_interval) const;
+    uint32_t    Cycles(uint32_t pos_interval) const;
 };
