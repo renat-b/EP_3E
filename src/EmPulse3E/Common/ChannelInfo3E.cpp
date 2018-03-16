@@ -161,7 +161,7 @@ double ChannelMetaInfo3E::PointMs(uint32_t num_point) const
 {
     TimeScale3E time_scale;
 
-    double ms = time_scale.MsGet(m_scale, num_point);
+    double ms = time_scale.MsGet(m_scale, m_point_start + num_point);
     return ms;
 }
 
