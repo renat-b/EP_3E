@@ -20,9 +20,8 @@ public:
 
     inline void     AddSec(uint64_t sec);
     inline void     AddMs(uint64_t ms);
-
-    inline uint64_t GetTimeUnix() const;
-    inline uint16_t GetTimeMs() const;
+    
+    inline uint64_t GetUnixTimeMs() const;
     inline double   GetTimeIndigo() const;
 };
 
@@ -53,23 +52,14 @@ void FrameTime::AddMs(uint64_t ms)
     m_time += ms * DIGIT_MS;
 }
 
-uint64_t FrameTime::GetTimeUnix() const
+uint64_t FrameTime::GetUnixTimeMs() const
 {
-    uint64_t ret = m_time / DIGIT_SEC;
+    uint64_t ret = m_time / DIGIT_MS;
     return ret;
-}
-
-uint16_t FrameTime::GetTimeMs() const
-{
-    uint64_t ret = m_time % DIGIT_SEC;
-    ret /= DIGIT_MS;
-    return (uint16_t)ret;
 }
 
 double FrameTime::GetTimeIndigo() const
 {
-    double ret = (double)(m_time / DIGIT_SEC);
-    double ms  = ((double)(m_time % DIGIT_SEC)) / DIGIT_SEC;  
-    ret += ms;
-    return ret;
+    double unix_time = ((double)m_time) / DIGIT_SEC;
+    return unix_time;
 }

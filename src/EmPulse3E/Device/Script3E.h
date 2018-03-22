@@ -53,7 +53,7 @@ private:
     bool        MeasureAdd(const OperationMeasure3E &measure);
     void        ChannelAdd(uint32_t id, uint32_t flags, Measure &measure);
 
-    void        ChannelAssign(Channel &channel, uint32_t id, uint32_t flags);
+    void        ChannelAssign(Channel &channel, uint32_t id, uint32_t flags, const OperationMeasure3E &measure);
     void        MetaCreate(Channel &channel, const OperationMeasure3E &operation);
     void        MetaAssign(ChannelMetaInfo3E *meta, const Channel &channel, const OperationMeasure3E &operation);
 };

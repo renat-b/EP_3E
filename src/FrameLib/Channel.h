@@ -5,12 +5,10 @@
 class Channel
 {
 private:
-    uint32_t   m_id    = 0;
-    uint32_t   m_flags = 0;
-    bool       m_single_point   = true;
-    bool       m_multi_point    = false;
+    uint32_t   m_id     = 0;
+    uint32_t   m_flags  = 0;
+    uint32_t   m_points = 1;
     MetaInfoStorage  m_storage;
-
 
 public:
     Channel();
@@ -25,11 +23,8 @@ public:
     uint32_t FlagsGet() const;
     void     FlagsSet(uint32_t flags);
 
-    bool     SinglePointIs() const;
-    void     SinglePointSet(bool single);
-
-    bool     MultiPointIs() const;
-    void     MultiPointSet(bool multi);
+    uint32_t Points() const;
+    void     PointsSet(uint32_t points);
 
     bool     MetaInfoGet(IMetaInfo **object, uint32_t id_meta_info) const;
     bool     MetaInfoAdd(IMetaInfo *object);

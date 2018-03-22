@@ -3,15 +3,21 @@
 class Value
 {
 private:
-        
+    enum constants
+    {
+        TYPE_UNUSED = 0,
+        DIM_1VALUE = 0,       // одиночное значение
+        DIM_VECTOR = 1,       // вектор
+        DIM_MATRIX = 2,       // матрица
+    };
 
 private:
-    uint8_t  *m_data;    
-    uint32_t  m_element_size;
+    uint8_t  *m_data;          // указатель на данные
+    uint32_t  m_element_size;  // размер одного элемента в байтах
 
-    uint8_t   m_dimension;
-    uint8_t   m_size_column;
-    uint8_t   m_size_row;
+    uint8_t   m_dimension;     // размерность может быть DIM_1VALUE, DIM_VECTOR, DIM_MATRIX
+    uint8_t   m_size_column;   // размерность в случае вектора, его длина, в случае матрицы - колво колонок
+    uint8_t   m_size_row;      // размерность, только для матрицы - колво строк в матрице
 
 
 public:

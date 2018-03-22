@@ -168,7 +168,7 @@ void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure3E 
     m_positive_channel = false;
     m_negative_channel = false;
 
-    if (channel.SinglePointIs()) // это одинарная точка
+    if (measure.sc_var == ScVarType0) // это одинарная точка
     {
         // запомним параметры, шкалу и кол-во накоплений
         m_scale = ScVarType0;
@@ -181,7 +181,7 @@ void ChannelMetaInfo3E::Create(const Channel &channel, const OperationMeasure3E 
     else // это спад
     {
         // выставим параметры, шкалу, стартовую точку, кол-во точек в спаде        
-        m_scale  = measure.sc_var;
+        m_scale       = measure.sc_var;
         m_point_start = measure.b_point.data;
         m_point_count = measure.n_point.data;
 

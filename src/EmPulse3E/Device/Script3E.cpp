@@ -137,13 +137,13 @@ void Script3E::ChannelAdd(uint32_t id, uint32_t flags, Measure &measure)
 {
     Channel channel;
 
-    ChannelAssign(channel, id, flags);
+    ChannelAssign(channel, id, flags, measure.operation);
     MetaCreate(channel, measure.operation);
 
     measure.channels.push_back(channel);
 }
 
-void Script3E::ChannelAssign(Channel &channel, uint32_t id, uint32_t flags)
+void Script3E::ChannelAssign(Channel &channel, uint32_t id, uint32_t flags, const OperationMeasure3E &measure)
 {
     if (flags & ChannelFlag1stMulti)
         id = ChannelBaseLast + id + 1;
@@ -153,15 +153,14 @@ void Script3E::ChannelAssign(Channel &channel, uint32_t id, uint32_t flags)
         id = id;
 
     channel.IDSet(id);
-    if (flags & ChannelFlagSingleMeasure)
+    // выставим колво точек в канале
+    if (measure.sc_var == ScVarType0) // это одинарная точка
     {
-        channel.SinglePointSet(true);
-        channel.MultiPointSet(false);
+        channel.PointsSet(1);
     }
-    else
+    else // это спад
     {
-        channel.SinglePointSet(false);
-        channel.MultiPointSet(true);
+        channel.PointsSet(measure.n_point.data);
     }
 }
 

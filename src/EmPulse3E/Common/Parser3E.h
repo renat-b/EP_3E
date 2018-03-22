@@ -62,5 +62,5 @@ private:
     bool   FramesAssign();
     void   FrameAssign(Frame &frame, const OperationMeasure3E &measure, uint32_t pos_interval, uint32_t pos_frame);
     bool   ChannelAdd(Frame &frame, const Channel &channel);
-    bool   MetaInfoCreate();
+    bool   CyclesAssign();
 };

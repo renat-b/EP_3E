@@ -43,7 +43,7 @@ public:
     };
 
 protected:
-    ScaleVariantInner3E      m_scale  = ScVarType0;
+    ScaleVariantInner3E  m_scale  = ScVarType0;
     uint32_t   m_point_start = 0;
     uint32_t   m_point_count = 0;
     uint32_t   m_amount_of_savings = 0;

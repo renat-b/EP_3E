@@ -198,7 +198,7 @@ bool Parser3E::CyclogramBaseCreate()
     if (!FramesAssign())
         return false;
    
-    if (!MetaInfoCreate())
+    if (!CyclesAssign())
         return false;
 
     return true;
@@ -267,7 +267,7 @@ bool  Parser3E::ChannelAdd(Frame &frame, const Channel &channel)
     return true;
 }
 
-bool Parser3E::MetaInfoCreate()
+bool Parser3E::CyclesAssign()
 {
     CyclogramMetaInfo3E *meta = new(std::nothrow) CyclogramMetaInfo3E;
     if (!meta)

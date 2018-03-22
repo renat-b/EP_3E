@@ -27,9 +27,9 @@ bool Value::Create(uint32_t elememnt_size)
     Shutdow();
 
     m_element_size = elememnt_size;
-    m_dimension    = 0;
-    m_size_column  = 0;
-    m_size_row     = 0;
+    m_dimension    = DIM_1VALUE;
+    m_size_column  = TYPE_UNUSED;
+    m_size_row     = TYPE_UNUSED;
 
     m_data = new(std::nothrow) uint8_t[m_element_size];
     if (!m_data)
@@ -41,18 +41,16 @@ bool Value::Create(uint32_t elememnt_size)
 
 bool Value::Create1d(uint32_t element_size, uint8_t size_column)
 {
-    if (m_dimension == 1 && element_size == m_element_size && size_column == m_size_column)
-    {
+    if (m_dimension == DIM_VECTOR && element_size == m_element_size && size_column == m_size_column)
         return true;
-    }
 
 
     Shutdow();
 
     m_element_size = element_size;
-    m_dimension    = 1;
+    m_dimension    = DIM_VECTOR;
     m_size_column  = size_column;
-    m_size_row     = 0;
+    m_size_row     = TYPE_UNUSED;
     
     uint32_t full_size = m_element_size * m_size_column;
     m_data = new(std::nothrow) uint8_t[full_size];
@@ -68,7 +66,7 @@ bool Value::Create2d(uint32_t element_size, uint8_t size_column, uint8_t size_ro
     Shutdow();
 
     m_element_size = element_size;
-    m_dimension    = 2;
+    m_dimension    = DIM_MATRIX;
     m_size_column  = size_column;
     m_size_row     = size_row;
     
@@ -87,20 +85,22 @@ bool Value::CreateByTemplate(const Value& template_value)
     if (check)
         check = (ElemSize() == template_value.ElemSize());
     if (check)
-        if (1 == template_value.Dims())
-            check = (Size(0) == template_value.Size(0));
+    {
+        if (DIM_VECTOR == template_value.Dims())
+            check = (Size(DIM_VECTOR) == template_value.Size(DIM_VECTOR));
+    }
 
-
+    // если шаблонный класс не равен текущему, перестроим его
     if (!check)
     {
-        if (0 == template_value.Dims())
+        if (DIM_1VALUE == template_value.Dims())
         {
             if (!Create(template_value.ElemSize()))
                 return false;
         }
-        else if (1 == template_value.Dims())
+        else if (DIM_VECTOR == template_value.Dims())
         {
-            if (!Create1d(template_value.ElemSize(), template_value.Size(0)))
+            if (!Create1d(template_value.ElemSize(), template_value.Size(DIM_VECTOR)))
                 return false;
         }
         else
@@ -114,11 +114,11 @@ void Value::Shutdow()
     if (m_data)
         delete[] m_data;
 
-    m_data = nullptr;
-    m_dimension = 0;
-    m_element_size = 0;
-    m_size_column = 0;
-    m_size_row = 0;
+    m_data         = nullptr;
+    m_dimension    = TYPE_UNUSED;
+    m_element_size = TYPE_UNUSED;
+    m_size_column  = TYPE_UNUSED;
+    m_size_row     = TYPE_UNUSED;
 }
 
 uint32_t Value::Dims() const
@@ -128,12 +128,16 @@ uint32_t Value::Dims() const
 
 uint32_t Value::Size(int dim) const
 {
-    if (1 == dim)
-        return m_size_column; 
-    else if (2 == dim)
+    if (m_dimension == DIM_VECTOR)
+        return m_size_column;
+    else if (m_dimension == DIM_MATRIX)
+    {
+        if (dim == 0)
+            return m_size_column;
         return m_size_row;
-
-    return 0;
+    }
+    // SIZE_1VALUE
+    return 1;
 }
 
 uint16_t Value::ElemSize() const
@@ -154,16 +158,16 @@ bool Value::Assign(const Value &other)
    
     // allocate new memory 
     uint32_t full_size = m_element_size; 
-    if (1 == m_dimension)
+    if (DIM_1VALUE == m_dimension)
         full_size = m_size_column * m_element_size;
-    else if (2 == m_dimension)
+    else if (DIM_MATRIX == m_dimension)
         full_size = m_size_column * m_size_row * m_element_size;
        
     m_data = new(std::nothrow) uint8_t[full_size];
     if (!m_data)
         return false;
     
-    if (memcpy(m_data, other.m_data, full_size) == nullptr)
+    if ( !memcpy(m_data, other.m_data, full_size))
         return false;
     return true;
 }
@@ -185,7 +189,7 @@ uint8_t* Value::Ptr()
     if (!m_data)
         return nullptr;
 
-    if (m_dimension == 0)
+    if (m_dimension == DIM_1VALUE)
         return m_data;
 
     return nullptr;
@@ -196,7 +200,7 @@ const uint8_t *Value::Ptr() const
     if (!m_data)
         return nullptr;
 
-    if (m_dimension == 0)
+    if (m_dimension == DIM_1VALUE)
         return m_data;
 
     return nullptr;
@@ -207,10 +211,10 @@ uint8_t *Value::Ptr(uint8_t column)
     if (!m_data)
         return nullptr;
 
-    if (column >= m_size_column)
+    if (m_dimension != DIM_VECTOR)
         return nullptr;
 
-    if (m_dimension != 1)
+    if (column >= m_size_column)
         return nullptr;
 
     return m_data + column * m_element_size;
@@ -221,10 +225,10 @@ const uint8_t *Value::Ptr(uint8_t column) const
     if (!m_data)
         return nullptr;
 
-    if (column >= m_size_column)
+    if (m_dimension != DIM_VECTOR)
         return nullptr;
 
-    if (m_dimension != 1)
+    if (column >= m_size_column)
         return nullptr;
 
     return m_data + column * m_element_size;
@@ -235,7 +239,7 @@ uint8_t *Value::Ptr(uint8_t column, uint8_t row)
     if (!m_data)
         return nullptr;
 
-    if (m_dimension != 2)
+    if (m_dimension != DIM_MATRIX)
         return nullptr;
 
     if (m_size_column >= column || m_size_row >= row)
@@ -252,7 +256,7 @@ const uint8_t *Value::Ptr(uint8_t column, uint8_t row) const
     if (!m_data)
         return nullptr;
 
-    if (m_dimension != 2)
+    if (m_dimension != DIM_MATRIX)
         return nullptr;
 
     if (m_size_column >= column || m_size_row >= row)
