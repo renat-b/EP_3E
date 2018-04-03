@@ -120,7 +120,7 @@ bool DR7Sample::ParseChannel(const Channel &channel, Value& value)
     }
     else
     {
-        assert(channel3E.PointCount() != 0);
+        assert(channel3E.PointCount() != 0 && channel.Points() == channel3E.PointCount());
         for (uint32_t i = 0; i < channel3E.PointCount(); i++)
         {
             if (!m_stream->GetRawData(&d_adc, sizeof(d_adc)))

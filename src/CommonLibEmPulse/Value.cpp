@@ -158,7 +158,7 @@ bool Value::Assign(const Value &other)
    
     // allocate new memory 
     uint32_t full_size = m_element_size; 
-    if (DIM_1VALUE == m_dimension)
+    if (DIM_VECTOR == m_dimension)
         full_size = m_size_column * m_element_size;
     else if (DIM_MATRIX == m_dimension)
         full_size = m_size_column * m_size_row * m_element_size;

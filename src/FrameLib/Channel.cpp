@@ -18,6 +18,7 @@ void Channel::operator = (const Channel &other)
 {
     m_id      = other.m_id;
     m_flags   = other.m_flags;
+    m_points  = other.m_points;
     m_storage = other.m_storage;    
 }
 

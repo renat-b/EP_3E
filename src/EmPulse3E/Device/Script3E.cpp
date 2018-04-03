@@ -14,8 +14,8 @@ Script3E::Measure::Measure(const Measure &other)
 
 void Script3E::Measure::operator=(const Measure &other)
 {
-    operation  = other.operation;
-    channels = other.channels;
+    operation = other.operation;
+    channels  = other.channels;
 }
 
 
@@ -43,7 +43,7 @@ void Script3E::ChannelsCreate()
 {
     for (uint32_t pos = 0; pos < m_measures.size(); pos++)
     {
-        Measure          &measure   = m_measures[pos];
+        Measure            &measure   = m_measures[pos];
         OperationMeasure3E &operation = measure.operation;
 
         if (operation.sc_var == ScVarType0)
