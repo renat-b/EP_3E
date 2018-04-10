@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
             pos++;
             strcpy_s(file_name, argv[pos]);
         }
-        else if (strcmp(argv[pos], "-n") == 0) // num frame for analize
+        else if (strcmp(argv[pos], "-n") == 0) // num frame for analyze
         {
             if ((pos + 1) >= argc)
             {
@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
             pos++;
             num_frame = atoi(argv[pos]);
         }
-        else if (strcmp(argv[pos], "-i") == 0) // num interval for analize
+        else if (strcmp(argv[pos], "-i") == 0) // num interval for analyze
         {
             if ((pos + 1) >= argc)
             {

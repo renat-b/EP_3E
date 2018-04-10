@@ -3,7 +3,7 @@
 #include "EmPulse3E/Common3E.h"
 
 float Calibration3E::s_r_ref = 0.2f;
-double Calibration3E::s_adc_scale = 32767 / 2048;
+double Calibration3E::s_adc_scale = 32767.0 / 2048.0;
 
 
 const __declspec(selectany) double Calibration3E::s_decimal[10] =
